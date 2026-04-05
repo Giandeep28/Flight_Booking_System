@@ -1,0 +1,12 @@
+flights.push({
+                    id: 'FL' + (1000 + i),
+                    airline: airlines[Math.floor(Math.random() * airlines.length)],
+                    airline_code: airlineCodes[airlines[Math.floor(Math.random() * airlines.length)]],
+                    flightNumber: airlineCodes[airlines[Math.floor(Math.random() * airlines.length)] + Math.floor(Math.random() * 900 + 100),
+                    departure: departureTime,
+                    arrival: arrivalTime,
+                    duration: duration + 'h ' + Math.floor(Math.random() * 60) + 'm',
+                    price: Math.floor(Math.random() * 15000 + 3000),
+                    stops: Math.random() > 0.7 ? Math.floor(Math.random() * 2) + 1 : 0,
+                    aircraft: ['Boeing 737', 'Airbus A320', 'Boeing 787', 'Airbus A330'][Math.floor(Math.random() * 4)]
+                });

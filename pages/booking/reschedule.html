@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reschedule Flight — SkyVoyage</title>
+    <meta name="description" content="Reschedule your SkyVoyage flight with minimal fees. Flexible rebooking options available.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 700px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Reschedule Flight</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Flexible Travel</span>
+                <h1>RESCHEDULE <span style="color: var(--primary);">FLIGHT</span></h1>
+                <p>Plans changed? Reschedule to a different date or time with our hassle-free modification process.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 4rem;">
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Booking PNR</span>
+                    <input type="text" class="input-field" placeholder="e.g. SKY9982">
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Passenger Last Name</span>
+                    <input type="text" class="input-field" placeholder="e.g. Sharma">
+                </div>
+                <div style="margin-bottom: 3rem;">
+                    <span class="input-label">New Preferred Date</span>
+                    <input type="date" class="input-field">
+                </div>
+                <button class="btn btn-primary" style="width: 100%; height: 65px; font-size: 1.1rem;">
+                    <i class="fas fa-calendar-alt"></i> CHECK AVAILABILITY
+                </button>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; border: 1px solid var(--border); border-radius: 16px; background: rgba(197, 160, 89, 0.05);">
+                <h4 style="font-weight: 900; color: var(--primary); margin-bottom: 1rem;">RESCHEDULE POLICY</h4>
+                <ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 2; list-style: none;">
+                    <li>✓ Free rescheduling up to <strong style="color: var(--text);">24 hours</strong> after booking</li>
+                    <li>✓ ₹500–₹2,500 fee for changes within <strong style="color: var(--text);">72 hours</strong> of departure</li>
+                    <li>✓ Fare difference (if any) will be charged additionally</li>
+                    <li>✓ Premium and Business class enjoy <strong style="color: var(--text);">unlimited free changes</strong></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

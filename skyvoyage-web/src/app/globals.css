@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #C5A059;
+  --primary-dark: #A48446;
+  --secondary: #10B981;
+  --accent: #10B981;
+  --dark: #000814;
+  --text: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(5, 13, 28, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow-gold: 0 0 25px rgba(197, 160, 89, 0.25);
+  --nav-height: 80px;
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-dark: var(--dark);
+}
+
+@layer base {
+  body {
+    @apply bg-[#000814] text-[#F8FAFC] antialiased;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-2xl font-extrabold uppercase tracking-wider text-sm transition-all duration-300 transform active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-[#C5A059] text-[#000814] shadow-[0_0_25px_rgba(197,160,89,0.25)] hover:bg-white hover:-translate-y-1;
+  }
+
+  .glass-card {
+    @apply bg-[rgba(5,13,28,0.8)] border border-[rgba(255,255,255,0.08)] rounded-[24px] backdrop-blur-xl transition-all duration-400 hover:shadow-[0_30px_60px_rgba(0,0,0,0.3)];
+  }
+
+  .input-label {
+    @apply block text-[10px] font-black text-[#94A3B8] uppercase tracking-[1px] mb-2;
+  }
+
+  .input-field {
+    @apply w-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] p-5 rounded-2xl text-white font-bold text-lg outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-[rgba(255,255,255,0.05)];
+  }
+
+  .mega-menu {
+    @apply absolute top-[80px] left-0 w-full bg-white border-t border-[rgba(0,0,0,0.05)] border-b-[3px] border-[#C5A059] shadow-[0_40px_100px_rgba(0,0,0,0.3)] z-[9999] p-16 opacity-0 invisible translate-y-2 transition-all duration-400;
+  }
+
+  .nav-item:hover .mega-menu {
+    @apply opacity-100 visible translate-y-0;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Hero Carousel */
+.slide {
+  @apply absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center;
+}
+
+.slide.active {
+  @apply opacity-100;
+}
+
+.slide-overlay {
+  @apply absolute inset-0 bg-gradient-to-r from-[rgba(0,8,20,0.95)] to-transparent flex items-center pl-[10%];
+}

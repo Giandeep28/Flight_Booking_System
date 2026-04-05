@@ -1,0 +1,1969 @@
+[
+  {
+    "code": "AMD",
+    "name": "Sardar Vallabhbhai Patel International Airport",
+    "city": "Ahmedabad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "AKD",
+    "name": "Akola Airport",
+    "city": "Akola",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXU",
+    "name": "Aurangabad Airport",
+    "city": "Aurangabad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BOM",
+    "name": "Chhatrapati Shivaji International Airport",
+    "city": "Mumbai",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PAB",
+    "name": "Bilaspur Airport",
+    "city": "Bilaspur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BHJ",
+    "name": "Bhuj Airport",
+    "city": "Bhuj",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXG",
+    "name": "Belgaum Airport",
+    "city": "Belgaum",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BDQ",
+    "name": "Vadodara Airport",
+    "city": "Baroda",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BHO",
+    "name": "Raja Bhoj International Airport",
+    "city": "Bhopal",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BHU",
+    "name": "Bhavnagar Airport",
+    "city": "Bhaunagar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "NMB",
+    "name": "Daman Airport",
+    "city": "Daman",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GUX",
+    "name": "Guna Airport",
+    "city": "Guna",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GOI",
+    "name": "Dabolim Airport",
+    "city": "Goa",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IDR",
+    "name": "Devi Ahilyabai Holkar Airport",
+    "city": "Indore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JLR",
+    "name": "Jabalpur Airport",
+    "city": "Jabalpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JGA",
+    "name": "Jamnagar Airport",
+    "city": "Jamnagar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXY",
+    "name": "Kandla Airport",
+    "city": "Kandla",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "HJR",
+    "name": "Khajuraho Airport",
+    "city": "Khajuraho",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "KLH",
+    "name": "Kolhapur Airport",
+    "city": "Kolhapur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXK",
+    "name": "Keshod Airport",
+    "city": "Keshod",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "NAG",
+    "name": "Dr. Babasaheb Ambedkar International Airport",
+    "city": "Nagpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "ISK",
+    "name": "Nashik Airport",
+    "city": "Nasik Road",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PNQ",
+    "name": "Pune Airport",
+    "city": "Pune",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PBD",
+    "name": "Porbandar Airport",
+    "city": "Porbandar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RAJ",
+    "name": "Rajkot Airport",
+    "city": "Rajkot",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RPR",
+    "name": "Raipur Airport",
+    "city": "Raipur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SSE",
+    "name": "Solapur Airport",
+    "city": "Sholapur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "STV",
+    "name": "Surat Airport",
+    "city": "Surat",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "UDR",
+    "name": "Maharana Pratap Airport",
+    "city": "Udaipur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXV",
+    "name": "Along Airport",
+    "city": "Along",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXA",
+    "name": "Agartala Airport",
+    "city": "Agartala",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "AJL",
+    "name": "Lengpui Airport",
+    "city": "Aizwal",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXB",
+    "name": "Bagdogra Airport",
+    "city": "Baghdogra",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BBI",
+    "name": "Biju Patnaik Airport",
+    "city": "Bhubaneswar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CCU",
+    "name": "Netaji Subhash Chandra Bose International Airport",
+    "city": "Kolkata",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "COH",
+    "name": "Cooch Behar Airport",
+    "city": "Cooch-behar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DBD",
+    "name": "Dhanbad Airport",
+    "city": "Dhanbad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GAY",
+    "name": "Gaya Airport",
+    "city": "Gaya",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IMF",
+    "name": "Imphal Airport",
+    "city": "Imphal",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXW",
+    "name": "Sonari Airport",
+    "city": "Jamshedpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JRH",
+    "name": "Jorhat Airport",
+    "city": "Jorhat",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXH",
+    "name": "Kailashahar Airport",
+    "city": "Kailashahar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXS",
+    "name": "Silchar Airport",
+    "city": "Silchar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXI",
+    "name": "North Lakhimpur Airport",
+    "city": "Lilabari",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DIB",
+    "name": "Dibrugarh Airport",
+    "city": "Mohanbari",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "MZU",
+    "name": "Muzaffarpur Airport",
+    "city": "Mazuffarpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PAT",
+    "name": "Lok Nayak Jayaprakash Airport",
+    "city": "Patina",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXR",
+    "name": "Birsa Munda Airport",
+    "city": "Ranchi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RRK",
+    "name": "Rourkela Airport",
+    "city": "Rourkela",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "VTZ",
+    "name": "Vishakhapatnam Airport",
+    "city": "Vishakhapatnam",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "ZER",
+    "name": "Ziro Airport",
+    "city": "Zero",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "AGR",
+    "name": "Agra Airport",
+    "city": "Agra",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXD",
+    "name": "Allahabad Airport",
+    "city": "Allahabad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "ATQ",
+    "name": "Sri Guru Ram Dass Jee International Airport",
+    "city": "Amritsar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BKB",
+    "name": "Nal Airport",
+    "city": "Bikaner",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "VNS",
+    "name": "Lal Bahadur Shastri Airport",
+    "city": "Varanasi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "KUU",
+    "name": "Kullu Manali Airport",
+    "city": "Kulu",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BUP",
+    "name": "Bhatinda Air Force Station",
+    "city": "Bhatinda",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BEK",
+    "name": "Bareilly Air Force Station",
+    "city": "Bareilly",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXC",
+    "name": "Chandigarh Airport",
+    "city": "Chandigarh",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "KNU",
+    "name": "Kanpur Airport",
+    "city": "Kanpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DED",
+    "name": "Dehradun Airport",
+    "city": "Dehra Dun",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DEL",
+    "name": "Indira Gandhi International Airport",
+    "city": "Delhi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GWL",
+    "name": "Gwalior Airport",
+    "city": "Gwalior",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "HSS",
+    "name": "Hissar Airport",
+    "city": "Hissar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JDH",
+    "name": "Jodhpur Airport",
+    "city": "Jodhpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JAI",
+    "name": "Jaipur International Airport",
+    "city": "Jaipur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "JSA",
+    "name": "Jaisalmer Airport",
+    "city": "Jaisalmer",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXJ",
+    "name": "Jammu Airport",
+    "city": "Jammu",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "KTU",
+    "name": "Kota Airport",
+    "city": "Kota",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "LUH",
+    "name": "Ludhiana Airport",
+    "city": "Ludhiaha",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXL",
+    "name": "Leh Kushok Bakula Rimpochee Airport",
+    "city": "Leh",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "LKO",
+    "name": "Chaudhary Charan Singh International Airport",
+    "city": "Lucknow",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXP",
+    "name": "Pathankot Airport",
+    "city": "Pathankot",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PGH",
+    "name": "Pantnagar Airport",
+    "city": "Nainital",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SXR",
+    "name": "Sheikh ul Alam Airport",
+    "city": "Srinagar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TNI",
+    "name": "Satna Airport",
+    "city": "Satna",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "AGX",
+    "name": "Agatti Airport",
+    "city": "Agatti Island",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BLR",
+    "name": "Kempegowda International Airport",
+    "city": "Bangalore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BEP",
+    "name": "Bellary Airport",
+    "city": "Bellary",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "VGA",
+    "name": "Vijayawada Airport",
+    "city": "Vijayawada",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CJB",
+    "name": "Coimbatore International Airport",
+    "city": "Coimbatore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "COK",
+    "name": "Cochin International Airport",
+    "city": "Kochi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CCJ",
+    "name": "Calicut International Airport",
+    "city": "Calicut",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CDP",
+    "name": "Kadapa Airport",
+    "city": "Cuddapah",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CBD",
+    "name": "Car Nicobar Air Force Station",
+    "city": "Carnicobar",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "BPM",
+    "name": "Begumpet Airport",
+    "city": "Hyderabad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXM",
+    "name": "Madurai Airport",
+    "city": "Madurai",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXE",
+    "name": "Mangalore International Airport",
+    "city": "Mangalore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "MAA",
+    "name": "Chennai International Airport",
+    "city": "Madras",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXZ",
+    "name": "Vir Savarkar International Airport",
+    "city": "Port Blair",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PNY",
+    "name": "Pondicherry Airport",
+    "city": "Pendicherry",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RJA",
+    "name": "Rajahmundry Airport",
+    "city": "Rajahmundry",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SXV",
+    "name": "Salem Airport",
+    "city": "Salem",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TJV",
+    "name": "Tanjore Air Force Base",
+    "city": "Tanjore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TIR",
+    "name": "Tirupati Airport",
+    "city": "Tirupeti",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TRZ",
+    "name": "Tiruchirapally Civil Airport Airport",
+    "city": "Tiruchirappalli",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TRV",
+    "name": "Trivandrum International Airport",
+    "city": "Trivandrum",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DIU",
+    "name": "Diu Airport",
+    "city": "Diu",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "HBX",
+    "name": "Hubli Airport",
+    "city": "Hubli",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SHL",
+    "name": "Shillong Airport",
+    "city": "Shillong",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GAU",
+    "name": "Lokpriya Gopinath Bordoloi International Airport",
+    "city": "Guwahati",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DMU",
+    "name": "Dimapur Airport",
+    "city": "Dimapur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TEZ",
+    "name": "Tezpur Airport",
+    "city": "Tezpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "GOP",
+    "name": "Gorakhpur Airport",
+    "city": "Gorakhpur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "DHM",
+    "name": "Kangra Airport",
+    "city": "Kangra",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "NDC",
+    "name": "Nanded Airport",
+    "city": "Nanded",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SLV",
+    "name": "Shimla Airport",
+    "city": "Shimla",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "MYQ",
+    "name": "Mysore Airport",
+    "city": "Mysore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "IXT",
+    "name": "Pasighat Airport",
+    "city": "Pasighat",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RTC",
+    "name": "Ratnagiri Airport",
+    "city": "Ratnagiri Airport",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "RDP",
+    "name": "Kazi Nazrul Islam Airport",
+    "city": "Durgapur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PUT",
+    "name": "Sri Sathya Sai Airport",
+    "city": "Puttaparthi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "HYD",
+    "name": "Rajiv Gandhi International Airport",
+    "city": "Hyderabad",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "TEI",
+    "name": "Tezu Airport",
+    "city": "Tezu",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "AIP",
+    "name": "Adampur Airport",
+    "city": "Adampur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "VDY",
+    "name": "Vijayanagar Aerodrome (JSW)",
+    "city": "Toranagallu",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "SAG",
+    "name": "Shirdi Airport",
+    "city": "Shirdi",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "PYB",
+    "name": "Jeypore Airport",
+    "city": "Jeypore",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "KQH",
+    "name": "Kishangarh Airport",
+    "city": "Ajmer",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "CNN",
+    "name": "Kannur International Airport",
+    "city": "Kannur",
+    "country": "India",
+    "region": "IN"
+  },
+  {
+    "code": "ARR",
+    "name": "D. Casimiro Szlapelis Airport",
+    "city": "Alto Rio Senguer",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "BHI",
+    "name": "Comandante Espora Airport",
+    "city": "Bahia Blanca",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "AEP",
+    "name": "Jorge Newbery Airpark",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "EZE",
+    "name": "Ministro Pistarini International Airport",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CTC",
+    "name": "Catamarca Airport",
+    "city": "Catamarca",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "HOS",
+    "name": "Chos Malal Airport",
+    "city": "Chosmadal",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CSZ",
+    "name": "Brigadier D.H.E. Ruiz Airport",
+    "city": "Colonel Suarez",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CRD",
+    "name": "General E. Mosconi Airport",
+    "city": "Comodoro Rivadavia",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "COC",
+    "name": "Comodoro Pierrestegui Airport",
+    "city": "Concordia",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "COR",
+    "name": "Ingeniero Ambrosio Taravella Airport",
+    "city": "Cordoba",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CNQ",
+    "name": "Corrientes Airport",
+    "city": "Corrientes",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "UZU",
+    "name": "Curuzu Cuatia Airport",
+    "city": "Curuzu Cuatia",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CUT",
+    "name": "Cutral-Co Airport",
+    "city": "Cutralco",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "EHL",
+    "name": "El Bolson Airport",
+    "city": "El Bolson",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "FTE",
+    "name": "El Calafate Airport",
+    "city": "El Calafate",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ING",
+    "name": "Lago Argentino Airport",
+    "city": "El Calafate",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ELO",
+    "name": "El Dorado Airport",
+    "city": "El Dorado",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "EPA",
+    "name": "El Palomar Airport",
+    "city": "El Palomar",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "EQS",
+    "name": "Brigadier Antonio Parodi Airport",
+    "city": "Esquel",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "FMA",
+    "name": "Formosa Airport",
+    "city": "Formosa",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "GNR",
+    "name": "Dr. Arturo H. Illia Airport",
+    "city": "Fuerte Gral Roca",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "GPO",
+    "name": "General Pico Airport",
+    "city": "General Pico",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "GGS",
+    "name": "Gobernador Gregores Airport",
+    "city": "Gobernador Gregores",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "OYA",
+    "name": "Goya Airport",
+    "city": "Goya",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "GHU",
+    "name": "Gualeguaychu Airport",
+    "city": "Gualeguaychu",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "IGR",
+    "name": "Cataratas Del Iguazú International Airport",
+    "city": "Iguazu Falls",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "IGB",
+    "name": "Cabo F.A.A. H. R. Bordón Airport",
+    "city": "Ingeniero Jacobacci",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "JSM",
+    "name": "Jose De San Martin Airport",
+    "city": "Jose de San Martin",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "JUJ",
+    "name": "Gobernador Horacio Guzman International Airport",
+    "city": "Jujuy",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "JNI",
+    "name": "Junin Airport",
+    "city": "Junin",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "LPG",
+    "name": "La Plata Airport",
+    "city": "La Plata",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "IRJ",
+    "name": "Capitan V A Almonacid Airport",
+    "city": "La Rioja",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "LHS",
+    "name": "Las Heras Airport",
+    "city": "Las Heras",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "LGS",
+    "name": "Comodoro D.R. Salomón Airport",
+    "city": "Malargue",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "MDQ",
+    "name": "Ástor Piazzola International Airport",
+    "city": "Mar Del Plata",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "MDZ",
+    "name": "El Plumerillo Airport",
+    "city": "Mendoza",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "MCS",
+    "name": "Monte Caseros Airport",
+    "city": "Monte Caseros",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "NEC",
+    "name": "Necochea Airport",
+    "city": "Necochea",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "NQN",
+    "name": "Presidente Peron Airport",
+    "city": "Neuquen",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "OVR",
+    "name": "Olavarria Airport",
+    "city": "Olavarria",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ORA",
+    "name": "Orán Airport",
+    "city": "Oran",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PRA",
+    "name": "General Urquiza Airport",
+    "city": "Parana",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "AOL",
+    "name": "Paso De Los Libres Airport",
+    "city": "Paso De Los Libres",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PEH",
+    "name": "Comodoro Pedro Zanni Airport",
+    "city": "Pehuajo",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PMQ",
+    "name": "Perito Moreno Airport",
+    "city": "Perito Moreno",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PSS",
+    "name": "Libertador Gral D Jose De San Martin Airport",
+    "city": "Posadas",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PRQ",
+    "name": "Termal Airport",
+    "city": "Presidencia R.s.pena",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PUD",
+    "name": "Puerto Deseado Airport",
+    "city": "Puerto Deseado",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "PMY",
+    "name": "El Tehuelche Airport",
+    "city": "Puerto Madryn",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RCQ",
+    "name": "Reconquista Airport",
+    "city": "Reconquista",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RES",
+    "name": "Resistencia International Airport",
+    "city": "Resistencia",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RDS",
+    "name": "Rincon De Los Sauces Airport",
+    "city": "Rincon de los Sauces",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RCU",
+    "name": "Area De Material Airport",
+    "city": "Rio Cuarto",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RGL",
+    "name": "Piloto Civil N. Fernández Airport",
+    "city": "Rio Gallegos",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RGA",
+    "name": "Hermes Quijada International Airport",
+    "city": "Rio Grande",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RHD",
+    "name": "Termas de Río Hondo international Airport",
+    "city": "Rio Hondo",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ROS",
+    "name": "Islas Malvinas Airport",
+    "city": "Rosario",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "SLA",
+    "name": "Martin Miguel De Guemes International Airport",
+    "city": "Salta",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "OES",
+    "name": "Antoine de Saint Exupéry Airport",
+    "city": "San Antonio Oeste",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "BRC",
+    "name": "San Carlos De Bariloche Airport",
+    "city": "San Carlos De Bariloche",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "FDO",
+    "name": "San Fernando Airport",
+    "city": "San Fernando",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "UAQ",
+    "name": "Domingo Faustino Sarmiento Airport",
+    "city": "San Juan",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ULA",
+    "name": "Capitan D Daniel Vazquez Airport",
+    "city": "San Julian",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "LUQ",
+    "name": "Brigadier Mayor D Cesar Raul Ojeda Airport",
+    "city": "San Luis",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "CPC",
+    "name": "Aviador C. Campos Airport",
+    "city": "San Martin Des Andes",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "AFA",
+    "name": "Suboficial Ay Santiago Germano Airport",
+    "city": "San Rafael",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RZA",
+    "name": "Santa Cruz Airport",
+    "city": "Santa Cruz",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "SFN",
+    "name": "Sauce Viejo Airport",
+    "city": "Santa Fe",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "RSA",
+    "name": "Santa Rosa Airport",
+    "city": "Santa Rosa",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "SST",
+    "name": "Santa Teresita Airport",
+    "city": "Santa Teresita",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "SDE",
+    "name": "Vicecomodoro Angel D. La Paz Aragonés Airport",
+    "city": "Santiago Del Estero",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "SGV",
+    "name": "Sierra Grande Airport",
+    "city": "Sierra Grande",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "NCJ",
+    "name": "Sunchales Aeroclub Airport",
+    "city": "Sunchales",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "TDL",
+    "name": "Héroes De Malvinas Airport",
+    "city": "Tandil",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "TTG",
+    "name": "General Enrique Mosconi Airport",
+    "city": "Tartagal",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "REL",
+    "name": "Almirante Marco Andres Zar Airport",
+    "city": "Trelew",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "OYO",
+    "name": "Tres Arroyos Airport",
+    "city": "Tres Arroyos",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "TUC",
+    "name": "Teniente Benjamin Matienzo Airport",
+    "city": "Tucuman",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "USH",
+    "name": "Malvinas Argentinas Airport",
+    "city": "Ushuaia",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "VDM",
+    "name": "Gobernador Castello Airport",
+    "city": "Viedma",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "VDR",
+    "name": "Villa Dolores Airport",
+    "city": "Villa Dolores",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "VLG",
+    "name": "Villa Gesell Airport",
+    "city": "Villa Gesell",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "VME",
+    "name": "Villa Reynolds Airport",
+    "city": "Villa Reynolds",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "APZ",
+    "name": "Zapala Airport",
+    "city": "ZAPALA",
+    "country": "Argentina",
+    "region": "INTL"
+  },
+  {
+    "code": "ARY",
+    "name": "Ararat Airport",
+    "city": "Ararat Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BLN",
+    "name": "Benalla Airport",
+    "city": "Benalla Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BZD",
+    "name": "Balranald Airport",
+    "city": "Balranald Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BWQ",
+    "name": "Brewarrina Airport",
+    "city": "Brewarrina Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CVC",
+    "name": "Cleve Airport",
+    "city": "Cleve Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CWW",
+    "name": "Corowa Airport",
+    "city": "Corowa Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CYG",
+    "name": "Corryong Airport",
+    "city": "Corryong Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CMD",
+    "name": "Cootamundra Airport",
+    "city": "Cootamundra Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "DRN",
+    "name": "Dirranbandi Airport",
+    "city": "Dirranbandi Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "DYA",
+    "name": "Dysart Airport",
+    "city": "Dysart Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ECH",
+    "name": "Echuca Airport",
+    "city": "Echuca Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "GUH",
+    "name": "Gunnedah Airport",
+    "city": "Gunnedah Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "HXX",
+    "name": "Hay Airport",
+    "city": "Hay Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "HTU",
+    "name": "Hopetoun Airport",
+    "city": "Hopetoun Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "KRA",
+    "name": "Kerang Airport",
+    "city": "Kerang Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "KPS",
+    "name": "Kempsey Airport",
+    "city": "Kempsey Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "KGY",
+    "name": "Kingaroy Airport",
+    "city": "Kingaroy Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "MRG",
+    "name": "Mareeba Airport",
+    "city": "Mareeba Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "RPM",
+    "name": "Ngukurr Airport",
+    "city": "Ngukurr Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "QRM",
+    "name": "Narromine Airport",
+    "city": "Narromine Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "PPI",
+    "name": "Port Pirie Airport",
+    "city": "Port Pirie Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "SIO",
+    "name": "Smithton Airport",
+    "city": "Smithton Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "SNB",
+    "name": "Snake Bay Airport",
+    "city": "Snake Bay Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "SWC",
+    "name": "Stawell Airport",
+    "city": "Stawell Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "TYB",
+    "name": "Tibooburra Airport",
+    "city": "Tibooburra Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "TUM",
+    "name": "Tumut Airport",
+    "city": "Tumut Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "WGT",
+    "name": "Wangaratta Airport",
+    "city": "Wangaratta Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "WKB",
+    "name": "Warracknabeal Airport",
+    "city": "Warracknabeal Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "QRR",
+    "name": "Warren Airport",
+    "city": "Warren Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "NGA",
+    "name": "Young Airport",
+    "city": "Young Airport",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ADL",
+    "name": "Adelaide International Airport",
+    "city": "Adelaide",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "WSY",
+    "name": "Whitsunday Island Airport",
+    "city": "Airlie Beach",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ALH",
+    "name": "Albany Airport",
+    "city": "Albany",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ABX",
+    "name": "Albury Airport",
+    "city": "Albury",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ASP",
+    "name": "Alice Springs Airport",
+    "city": "Alice Springs",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ABH",
+    "name": "Alpha Airport",
+    "city": "Alpha",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "AMT",
+    "name": "Amata Airport",
+    "city": "Amata",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ABM",
+    "name": "Northern Peninsula Airport",
+    "city": "Amberley",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "GYL",
+    "name": "Argyle Airport",
+    "city": "Argyle",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "PUG",
+    "name": "Port Augusta Airport",
+    "city": "Argyle",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ARM",
+    "name": "Armidale Airport",
+    "city": "Armidale",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "AUU",
+    "name": "Aurukun Airport",
+    "city": "Aurukun",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "AVV",
+    "name": "Avalon Airport",
+    "city": "Avalon",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BDD",
+    "name": "Badu Island Airport",
+    "city": "Badu Island",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BSJ",
+    "name": "Bairnsdale Airport",
+    "city": "Bairnsdale",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BBL",
+    "name": "Ballera Airport",
+    "city": "Ballera",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BNK",
+    "name": "Ballina Byron Gateway Airport",
+    "city": "Ballina Byron Bay",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BCI",
+    "name": "Barcaldine Airport",
+    "city": "Barcaldine",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BYP",
+    "name": "Barimunya Airport",
+    "city": "Barimunya",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BWB",
+    "name": "Barrow Island Airport",
+    "city": "Barrow Island",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BHS",
+    "name": "Bathurst Airport",
+    "city": "Bathurst",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BRT",
+    "name": "Bathurst Island Airport",
+    "city": "Bathurst Island",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BEU",
+    "name": "Bedourie Airport",
+    "city": "Bedourie",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BXG",
+    "name": "Bendigo Airport",
+    "city": "Bendigo",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "THG",
+    "name": "Thangool Airport",
+    "city": "Biloela",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BVI",
+    "name": "Birdsville Airport",
+    "city": "Birdsville",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BKQ",
+    "name": "Blackall Airport",
+    "city": "Blackall",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BLT",
+    "name": "Blackwater Airport",
+    "city": "Blackwater",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "GIC",
+    "name": "Boigu Airport",
+    "city": "Boigu",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BOX",
+    "name": "Borroloola Airport",
+    "city": "Borroloola",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BQL",
+    "name": "Boulia Airport",
+    "city": "Boulia",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BRK",
+    "name": "Bourke Airport",
+    "city": "Bourke",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ZBO",
+    "name": "Bowen Airport",
+    "city": "Bowen",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BMP",
+    "name": "Brampton Island Airport",
+    "city": "Brampton Island",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "ACF",
+    "name": "Brisbane Archerfield Airport",
+    "city": "Brisbane",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BNE",
+    "name": "Brisbane International Airport",
+    "city": "Brisbane",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "OCM",
+    "name": "Boolgeeda",
+    "city": "Brockman",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BHQ",
+    "name": "Broken Hill Airport",
+    "city": "Broken Hill",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BME",
+    "name": "Broome International Airport",
+    "city": "Broome",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BQB",
+    "name": "Busselton Regional Airport",
+    "city": "Brusselton",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BUY",
+    "name": "Bunbury Airport",
+    "city": "Bunbury",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BDB",
+    "name": "Bundaberg Airport",
+    "city": "Bundaberg",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BUC",
+    "name": "Burketown Airport",
+    "city": "Burketown",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "BWT",
+    "name": "Wynyard Airport",
+    "city": "Burnie",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CNS",
+    "name": "Cairns International Airport",
+    "city": "Cairns",
+    "country": "Australia",
+    "region": "INTL"
+  },
+  {
+    "code": "CUD",
+    "name": "Caloundra Airport",
+    "city": "Caloundra",
+    "country": "Australia",
+    "region": "INTL"
+  }
+]

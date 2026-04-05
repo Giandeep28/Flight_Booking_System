@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection — SkyVoyage</title>
+    <meta name="description" content="Choose your preferred seat on SkyVoyage flights. Window, aisle, exit row, and premium seats available.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <style>
+        .seat-map { display: flex; flex-direction: column; gap: 8px; align-items: center; margin: 2rem 0; }
+        .seat-row { display: flex; gap: 8px; align-items: center; }
+        .seat {
+            width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; cursor: pointer; transition: all 0.2s; border: 2px solid transparent;
+        }
+        .seat.available { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+        .seat.available:hover { background: rgba(197, 160, 89, 0.2); border-color: var(--primary); color: var(--text); transform: scale(1.1); }
+        .seat.occupied { background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.15); cursor: not-allowed; }
+        .seat.selected { background: var(--primary); color: var(--dark); border-color: var(--primary); transform: scale(1.1); }
+        .seat.premium { background: rgba(197, 160, 89, 0.12); color: var(--primary); }
+        .seat.premium:hover { background: rgba(197, 160, 89, 0.3); }
+        .seat.exit { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+        .aisle { width: 30px; }
+        .row-label { width: 30px; text-align: center; font-weight: 900; font-size: 0.8rem; color: var(--text-muted); }
+        .legend { display: flex; gap: 2rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); }
+        .legend-box { width: 20px; height: 20px; border-radius: 5px; }
+    </style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('booking'); return false;">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Seat Selection</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Pick Your Spot</span>
+                <h1>SEAT <span style="color: var(--primary);">SELECTION</span></h1>
+                <p>Choose your preferred seat for maximum comfort. Pre-booking saves up to 60% compared to airport selection.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div>
+                        <span class="input-label">Booking PNR</span>
+                        <input type="text" class="input-field" placeholder="e.g. SKY9982">
+                    </div>
+                    <div>
+                        <span class="input-label">Passenger Last Name</span>
+                        <input type="text" class="input-field" placeholder="e.g. Kumar">
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1rem 3rem;" onclick="document.getElementById('seat-section').style.display='block'">
+                    <i class="fas fa-search"></i> LOAD SEAT MAP
+                </button>
+            </div>
+
+            <!-- Interactive Seat Map -->
+            <div id="seat-section" style="display: block;">
+                <div class="glass-card" style="padding: 3rem;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h3 style="font-weight: 900;">AIRBUS A320 — SV-1042</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">DEL → BOM • 14:30 IST</p>
+                    </div>
+
+                    <!-- Seat column headers -->
+                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 1rem;">
+                        <div class="row-label"></div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">A</div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">B</div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">C</div>
+                        <div class="aisle"></div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">D</div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">E</div>
+                        <div style="width: 42px; text-align: center; font-weight: 900; font-size: 0.75rem; color: var(--primary);">F</div>
+                    </div>
+
+                    <div class="seat-map" id="seatMap"></div>
+
+                    <!-- Legend -->
+                    <div class="legend">
+                        <div class="legend-item"><div class="legend-box" style="background: rgba(255,255,255,0.06);"></div> Available</div>
+                        <div class="legend-item"><div class="legend-box" style="background: rgba(197,160,89,0.12); border: 1px solid var(--primary);"></div> Premium (₹499)</div>
+                        <div class="legend-item"><div class="legend-box" style="background: rgba(16,185,129,0.1); border: 1px solid #10B981;"></div> Exit Row (₹399)</div>
+                        <div class="legend-item"><div class="legend-box" style="background: rgba(255,255,255,0.02);"></div> Occupied</div>
+                        <div class="legend-item"><div class="legend-box" style="background: var(--primary);"></div> Your Selection</div>
+                    </div>
+
+                    <div id="seat-selection-info" style="text-align: center; padding: 1.5rem; background: rgba(197,160,89,0.05); border-radius: 12px; margin-top: 1rem; display: none;">
+                        <span style="font-weight: 800;">Selected Seat: </span>
+                        <span id="selected-seat-label" style="color: var(--primary); font-weight: 900; font-size: 1.2rem;"></span>
+                        <span id="selected-seat-price" style="margin-left: 1rem; color: var(--text-muted);"></span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                            <i class="fas fa-check"></i> CONFIRM SEAT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+
+        // Generate seat map
+        const seatMap = document.getElementById('seatMap');
+        const occupiedSeats = new Set(['1A','1C','2B','2E','3A','3D','4F','5C','5D','6A','6B','7E','8C','9A','9F','10B','10D','11A','11E','12C','12F']);
+        const premiumRows = [1, 2, 3];
+        const exitRows = [11, 12];
+        let selectedSeat = null;
+
+        for (let row = 1; row <= 20; row++) {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'seat-row';
+
+            const label = document.createElement('div');
+            label.className = 'row-label';
+            label.textContent = row;
+            rowDiv.appendChild(label);
+
+            const cols = ['A','B','C','','D','E','F'];
+            cols.forEach(col => {
+                if (col === '') {
+                    const aisle = document.createElement('div');
+                    aisle.className = 'aisle';
+                    rowDiv.appendChild(aisle);
+                    return;
+                }
+                const seatId = row + col;
+                const seat = document.createElement('div');
+                seat.className = 'seat';
+                seat.textContent = col;
+                seat.dataset.id = seatId;
+
+                if (occupiedSeats.has(seatId)) {
+                    seat.classList.add('occupied');
+                    seat.textContent = '×';
+                } else if (premiumRows.includes(row)) {
+                    seat.classList.add('available', 'premium');
+                    seat.onclick = () => selectSeatFn(seatId, '₹499');
+                } else if (exitRows.includes(row)) {
+                    seat.classList.add('available', 'exit');
+                    seat.onclick = () => selectSeatFn(seatId, '₹399');
+                } else {
+                    seat.classList.add('available');
+                    seat.onclick = () => selectSeatFn(seatId, 'FREE');
+                }
+                rowDiv.appendChild(seat);
+            });
+            seatMap.appendChild(rowDiv);
+        }
+
+        function selectSeatFn(seatId, price) {
+            // Deselect previous
+            document.querySelectorAll('.seat.selected').forEach(s => {
+                s.classList.remove('selected');
+                if (premiumRows.includes(parseInt(s.dataset.id))) s.classList.add('premium');
+                else if (exitRows.includes(parseInt(s.dataset.id))) s.classList.add('exit');
+            });
+            // Select new
+            const seatEl = document.querySelector(`[data-id="${seatId}"]`);
+            if (seatEl) {
+                seatEl.classList.remove('premium', 'exit');
+                seatEl.classList.add('selected');
+            }
+            selectedSeat = seatId;
+            document.getElementById('seat-selection-info').style.display = 'block';
+            document.getElementById('selected-seat-label').textContent = seatId;
+            document.getElementById('selected-seat-price').textContent = price === 'FREE' ? '(Complimentary)' : `(${price})`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Check-In — SkyVoyage</title>
+    <meta name="description" content="Check in online for your SkyVoyage flight. Get your boarding pass 48 hours before departure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 700px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Online Check-In</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Skip the Queue</span>
+                <h1>ONLINE <span style="color: var(--primary);">CHECK-IN</span></h1>
+                <p>Check in from 48 hours to 1 hour before departure. Get your digital boarding pass and head straight to security.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 4rem;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2.5rem;">
+                    <button class="btn btn-primary" style="flex: 1; padding: 1rem;">PNR / Booking Ref</button>
+                    <button class="btn" style="flex: 1; padding: 1rem; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border);">E-Ticket Number</button>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Booking PNR</span>
+                    <input type="text" class="input-field" placeholder="e.g. SKY9982">
+                </div>
+                <div style="margin-bottom: 3rem;">
+                    <span class="input-label">Passenger Last Name</span>
+                    <input type="text" class="input-field" placeholder="e.g. Malhotra">
+                </div>
+                <button class="btn btn-primary" style="width: 100%; height: 65px; font-size: 1.1rem;">
+                    <i class="fas fa-user-check"></i> CHECK IN NOW
+                </button>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; border: 1px solid var(--border); border-radius: 16px; background: rgba(197, 160, 89, 0.05);">
+                <h4 style="font-weight: 900; color: var(--primary); margin-bottom: 1rem;">CHECK-IN WINDOW</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Web check-in opens <strong style="color: var(--text);">48 hours</strong> before departure and closes <strong style="color: var(--text);">1 hour</strong> before scheduled departure time. For international flights, check-in closes <strong style="color: var(--text);">2 hours</strong> before departure.</p>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

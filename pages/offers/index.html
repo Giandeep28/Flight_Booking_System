@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Offers — SkyVoyage</title>
+    <meta name="description" content="Exclusive flight offers and discounts for SkyVoyage members. Student, senior, and loyalty rewards.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Member Offers</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Global Deals</span>
+                <h1>EXCLUSIVE <span style="color: var(--primary);">OFFERS</span></h1>
+                <p>Unlock premium discounts and member-only deals for your next journey with SkyVoyage.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; cursor: pointer;" onclick="openPage('offers-student')">
+                    <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); flex-shrink: 0;">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Student Fare Special</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Get up to 25% off and extra 10kg baggage allowance. Verification required.</p>
+                        <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem;">LEARN MORE →</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; cursor: pointer;" onclick="openPage('offers-senior')">
+                    <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); flex-shrink: 0;">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Senior Citizen Discount</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Up to 20% off base fares for travelers aged 60+. Priority boarding included.</p>
+                        <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem;">LEARN MORE →</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; cursor: pointer;" onclick="openPage('offers-armed')">
+                    <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); flex-shrink: 0;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Defense Personnel</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Flat 50% off on base fares for active duty and retired armed forces members.</p>
+                        <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem;">LEARN MORE →</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; cursor: pointer;" onclick="openPage('offers-festive')">
+                    <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); flex-shrink: 0;">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Festive Sky Sale</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Zero convenience fee and free seat selection during festival seasons.</p>
+                        <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem;">LEARN MORE →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('offers');
+    </script>
+</body>
+</html>

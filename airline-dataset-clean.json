@@ -1,0 +1,39 @@
+{
+  "airlines": [
+    {
+      "name": "Air India",
+      "iata": "AI",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_AI_350_100_r.png"
+    },
+    {
+      "name": "Air India Express",
+      "iata": "IX",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_IX_350_100_r.png"
+    },
+    {
+      "name": "IndiGo",
+      "iata": "6E",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_6E_350_100_r.png"
+    },
+    {
+      "name": "SpiceJet",
+      "iata": "SG",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_SG_350_100_r.png"
+    },
+    {
+      "name": "Akasa Air",
+      "iata": "QP",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_QP_350_100_r.png"
+    },
+    {
+      "name": "Alliance Air",
+      "iata": "9I",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_9I_350_100_r.png"
+    },
+    {
+      "name": "Star Air",
+      "iata": "S5",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_S5_350_100_r.png"
+    }
+  ]
+}

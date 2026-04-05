@@ -1,0 +1,774 @@
+{
+  "domestic_routes": {
+    "DEL-BOM": [
+      {
+        "id": "AI-647",
+        "airline": "Air India",
+        "iata": "AI",
+        "flight_number": "647",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "06:30",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "08:45",
+          "terminal": "2"
+        },
+        "duration": "2h 15m",
+        "price": 4500,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A320neo",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "6E-2174",
+        "airline": "IndiGo",
+        "iata": "6E",
+        "flight_number": "2174",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "08:15",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "10:45",
+          "terminal": "2"
+        },
+        "duration": "2h 30m",
+        "price": 3800,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A320",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "SG-815",
+        "airline": "SpiceJet",
+        "iata": "SG",
+        "flight_number": "815",
+        "departure": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "09:00",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "Rajiv Gandhi International Airport",
+          "iata": "HYD",
+          "city": "Hyderabad",
+          "country": "India",
+          "time": "10:45",
+          "terminal": "1"
+        },
+        "duration": "1h 45m",
+        "price": 3200,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 737-800",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "IX-1348",
+        "airline": "Air India Express",
+        "iata": "IX",
+        "flight_number": "1348",
+        "departure": {
+          "airport": "Kempegowda International Airport",
+          "iata": "BLR",
+          "city": "Bengaluru",
+          "country": "India",
+          "time": "10:30",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "Cochin International Airport",
+          "iata": "COK",
+          "city": "Kochi",
+          "country": "India",
+          "time": "12:30",
+          "terminal": "1"
+        },
+        "duration": "2h 00m",
+        "price": 2800,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 737-800",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "QP-1152",
+        "airline": "Akasa Air",
+        "iata": "QP",
+        "flight_number": "1152",
+        "departure": {
+          "airport": "Rajiv Gandhi International Airport",
+          "iata": "HYD",
+          "city": "Hyderabad",
+          "country": "India",
+          "time": "11:45",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "Chennai International Airport",
+          "iata": "MAA",
+          "city": "Chennai",
+          "country": "India",
+          "time": "13:15",
+          "terminal": "1"
+        },
+        "duration": "1h 30m",
+        "price": 2500,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 737 MAX",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "9I-623",
+        "airline": "Alliance Air",
+        "iata": "9I",
+        "flight_number": "623",
+        "departure": {
+          "airport": "Chennai International Airport",
+          "iata": "MAA",
+          "city": "Chennai",
+          "country": "India",
+          "time": "13:30",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "Bengaluru International Airport",
+          "iata": "BLR",
+          "city": "Bengaluru",
+          "country": "India",
+          "time": "14:45",
+          "terminal": "1"
+        },
+        "duration": "1h 15m",
+        "price": 2200,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "ATR 72-600",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "S5-142",
+        "airline": "Star Air",
+        "iata": "S5",
+        "flight_number": "142",
+        "departure": {
+          "airport": "Kempegowda International Airport",
+          "iata": "BLR",
+          "city": "Bengaluru",
+          "country": "India",
+          "time": "15:00",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "Belgaum Airport",
+          "iata": "IXG",
+          "city": "Belgaum",
+          "country": "India",
+          "time": "16:00",
+          "terminal": "1"
+        },
+        "duration": "1h 00m",
+        "price": 1800,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Embraer E175",
+        "flight_type": "domestic"
+      }
+    ],
+    "DEL-BLR": [
+      {
+        "id": "AI-507",
+        "airline": "Air India",
+        "iata": "AI",
+        "flight_number": "507",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "06:00",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Kempegowda International Airport",
+          "iata": "BLR",
+          "city": "Bengaluru",
+          "country": "India",
+          "time": "08:45",
+          "terminal": "1"
+        },
+        "duration": "2h 45m",
+        "price": 4800,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A321",
+        "flight_type": "domestic"
+      },
+      {
+        "id": "6E-524",
+        "airline": "IndiGo",
+        "iata": "6E",
+        "flight_number": "524",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "08:30",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "Kempegowda International Airport",
+          "iata": "BLR",
+          "city": "Bengaluru",
+          "country": "India",
+          "time": "11:05",
+          "terminal": "1"
+        },
+        "duration": "2h 35m",
+        "price": 4200,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A321neo",
+        "flight_type": "domestic"
+      }
+    ]
+  },
+  "international_routes": {
+    "DEL-DXB": [
+      {
+        "id": "EK-514",
+        "airline": "Emirates",
+        "iata": "EK",
+        "flight_number": "514",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "03:45",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "06:15",
+          "terminal": "3"
+        },
+        "duration": "3h 30m",
+        "price": 15000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 777-300ER",
+        "flight_type": "international"
+      },
+      {
+        "id": "AI-947",
+        "airline": "Air India",
+        "iata": "AI",
+        "flight_number": "947",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "07:30",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "10:15",
+          "terminal": "1"
+        },
+        "duration": "3h 45m",
+        "price": 12000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 787-8",
+        "flight_type": "international"
+      },
+      {
+        "id": "6E-1415",
+        "airline": "IndiGo",
+        "iata": "6E",
+        "flight_number": "1415",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "10:15",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "12:45",
+          "terminal": "1"
+        },
+        "duration": "3h 30m",
+        "price": 8500,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A321neo",
+        "flight_type": "international"
+      }
+    ],
+    "BOM-LHR": [
+      {
+        "id": "AI-131",
+        "airline": "Air India",
+        "iata": "AI",
+        "flight_number": "131",
+        "departure": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "01:15",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "06:45",
+          "terminal": "4"
+        },
+        "duration": "9h 30m",
+        "price": 45000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 777-300ER",
+        "flight_type": "international"
+      },
+      {
+        "id": "BA-138",
+        "airline": "British Airways",
+        "iata": "BA",
+        "flight_number": "138",
+        "departure": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "04:30",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "09:45",
+          "terminal": "5"
+        },
+        "duration": "9h 15m",
+        "price": 48000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 777-200",
+        "flight_type": "international"
+      },
+      {
+        "id": "VS-324",
+        "airline": "Virgin Atlantic",
+        "iata": "VS",
+        "flight_number": "324",
+        "departure": {
+          "airport": "Chhatrapati Shivaji Maharaj International Airport",
+          "iata": "BOM",
+          "city": "Mumbai",
+          "country": "India",
+          "time": "10:45",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "16:15",
+          "terminal": "3"
+        },
+        "duration": "9h 30m",
+        "price": 42000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 787-9",
+        "flight_type": "international"
+      }
+    ],
+    "DEL-SIN": [
+      {
+        "id": "SQ-403",
+        "airline": "Singapore Airlines",
+        "iata": "SQ",
+        "flight_number": "403",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "00:30",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Changi Airport",
+          "iata": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "time": "09:15",
+          "terminal": "3"
+        },
+        "duration": "5h 45m",
+        "price": 28000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A350-900",
+        "flight_type": "international"
+      },
+      {
+        "id": "AI-382",
+        "airline": "Air India",
+        "iata": "AI",
+        "flight_number": "382",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "07:00",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Changi Airport",
+          "iata": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "time": "15:30",
+          "terminal": "2"
+        },
+        "duration": "5h 30m",
+        "price": 22000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 787-8",
+        "flight_type": "international"
+      },
+      {
+        "id": "6E-52",
+        "airline": "IndiGo",
+        "iata": "6E",
+        "flight_number": "52",
+        "departure": {
+          "airport": "Indira Gandhi International Airport",
+          "iata": "DEL",
+          "city": "New Delhi",
+          "country": "India",
+          "time": "10:15",
+          "terminal": "2"
+        },
+        "arrival": {
+          "airport": "Changi Airport",
+          "iata": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "time": "19:00",
+          "terminal": "1"
+        },
+        "duration": "5h 45m",
+        "price": 15000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A321neo",
+        "flight_type": "international"
+      }
+    ]
+  },
+  "global_routes": {
+    "DXB-LHR": [
+      {
+        "id": "EK-9",
+        "airline": "Emirates",
+        "iata": "EK",
+        "flight_number": "9",
+        "departure": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "02:15",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "06:45",
+          "terminal": "4"
+        },
+        "duration": "7h 30m",
+        "price": 35000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A380-800",
+        "flight_type": "international"
+      },
+      {
+        "id": "BA-106",
+        "airline": "British Airways",
+        "iata": "BA",
+        "flight_number": "106",
+        "departure": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "07:45",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "12:30",
+          "terminal": "5"
+        },
+        "duration": "7h 45m",
+        "price": 32000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 777-200",
+        "flight_type": "international"
+      },
+      {
+        "id": "QR-115",
+        "airline": "Qatar Airways",
+        "iata": "QR",
+        "flight_number": "115",
+        "departure": {
+          "airport": "Dubai International Airport",
+          "iata": "DXB",
+          "city": "Dubai",
+          "country": "UAE",
+          "time": "13:30",
+          "terminal": "1"
+        },
+        "arrival": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "18:00",
+          "terminal": "4"
+        },
+        "duration": "7h 30m",
+        "price": 30000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 787-9",
+        "flight_type": "international"
+      }
+    ],
+    "LHR-JFK": [
+      {
+        "id": "BA-117",
+        "airline": "British Airways",
+        "iata": "BA",
+        "flight_number": "117",
+        "departure": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "08:30",
+          "terminal": "5"
+        },
+        "arrival": {
+          "airport": "John F. Kennedy International Airport",
+          "iata": "JFK",
+          "city": "New York",
+          "country": "USA",
+          "time": "11:30",
+          "terminal": "7"
+        },
+        "duration": "8h 00m",
+        "price": 55000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 747-400",
+        "flight_type": "international"
+      },
+      {
+        "id": "VS-3",
+        "airline": "Virgin Atlantic",
+        "iata": "VS",
+        "flight_number": "3",
+        "departure": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "11:15",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "John F. Kennedy International Airport",
+          "iata": "JFK",
+          "city": "New York",
+          "country": "USA",
+          "time": "14:30",
+          "terminal": "4"
+        },
+        "duration": "8h 15m",
+        "price": 52000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A350-1000",
+        "flight_type": "international"
+      },
+      {
+        "id": "AA-106",
+        "airline": "American Airlines",
+        "iata": "AA",
+        "flight_number": "106",
+        "departure": {
+          "airport": "London Heathrow Airport",
+          "iata": "LHR",
+          "city": "London",
+          "country": "UK",
+          "time": "13:45",
+          "terminal": "5"
+        },
+        "arrival": {
+          "airport": "John F. Kennedy International Airport",
+          "iata": "JFK",
+          "city": "New York",
+          "country": "USA",
+          "time": "16:45",
+          "terminal": "8"
+        },
+        "duration": "8h 00m",
+        "price": 48000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Boeing 777-300ER",
+        "flight_type": "international"
+      }
+    ],
+    "SIN-HKG": [
+      {
+        "id": "SQ-880",
+        "airline": "Singapore Airlines",
+        "iata": "SQ",
+        "flight_number": "880",
+        "departure": {
+          "airport": "Changi Airport",
+          "iata": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "time": "08:45",
+          "terminal": "3"
+        },
+        "arrival": {
+          "airport": "Hong Kong International Airport",
+          "iata": "HKG",
+          "city": "Hong Kong",
+          "country": "Hong Kong",
+          "time": "12:40",
+          "terminal": "1"
+        },
+        "duration": "3h 55m",
+        "price": 12000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A350-900",
+        "flight_type": "international"
+      },
+      {
+        "id": "CX-650",
+        "airline": "Cathay Pacific",
+        "iata": "CX",
+        "flight_number": "650",
+        "departure": {
+          "airport": "Changi Airport",
+          "iata": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "time": "11:30",
+          "terminal": "4"
+        },
+        "arrival": {
+          "airport": "Hong Kong International Airport",
+          "iata": "HKG",
+          "city": "Hong Kong",
+          "country": "Hong Kong",
+          "time": "15:30",
+          "terminal": "1"
+        },
+        "duration": "4h 00m",
+        "price": 11000,
+        "currency": "INR",
+        "stops": 0,
+        "aircraft": "Airbus A330-300",
+        "flight_type": "international"
+      }
+    ]
+  },
+  "airports": {
+    "DEL": { "name": "Indira Gandhi International Airport", "city": "New Delhi", "country": "India", "type": "international" },
+    "BOM": { "name": "Chhatrapati Shivaji Maharaj International Airport", "city": "Mumbai", "country": "India", "type": "international" },
+    "BLR": { "name": "Kempegowda International Airport", "city": "Bengaluru", "country": "India", "type": "international" },
+    "HYD": { "name": "Rajiv Gandhi International Airport", "city": "Hyderabad", "country": "India", "type": "international" },
+    "MAA": { "name": "Chennai International Airport", "city": "Chennai", "country": "India", "type": "international" },
+    "COK": { "name": "Cochin International Airport", "city": "Kochi", "country": "India", "type": "international" },
+    "CCU": { "name": "Netaji Subhash Chandra Bose International Airport", "city": "Kolkata", "country": "India", "type": "international" },
+    "AMD": { "name": "Sardar Vallabhbhai Patel International Airport", "city": "Ahmedabad", "country": "India", "type": "international" },
+    "DXB": { "name": "Dubai International Airport", "city": "Dubai", "country": "UAE", "type": "international" },
+    "DOH": { "name": "Hamad International Airport", "city": "Doha", "country": "Qatar", "type": "international" },
+    "AUH": { "name": "Abu Dhabi International Airport", "city": "Abu Dhabi", "country": "UAE", "type": "international" },
+    "LHR": { "name": "London Heathrow Airport", "city": "London", "country": "UK", "type": "international" },
+    "CDG": { "name": "Charles de Gaulle Airport", "city": "Paris", "country": "France", "type": "international" },
+    "FRA": { "name": "Frankfurt Airport", "city": "Frankfurt", "country": "Germany", "type": "international" },
+    "SIN": { "name": "Changi Airport", "city": "Singapore", "country": "Singapore", "type": "international" },
+    "HKG": { "name": "Hong Kong International Airport", "city": "Hong Kong", "country": "Hong Kong", "type": "international" },
+    "NRT": { "name": "Narita International Airport", "city": "Tokyo", "country": "Japan", "type": "international" },
+    "ICN": { "name": "Incheon International Airport", "city": "Seoul", "country": "South Korea", "type": "international" },
+    "JFK": { "name": "John F. Kennedy International Airport", "city": "New York", "country": "USA", "type": "international" },
+    "LAX": { "name": "Los Angeles International Airport", "city": "Los Angeles", "country": "USA", "type": "international" }
+  }
+}

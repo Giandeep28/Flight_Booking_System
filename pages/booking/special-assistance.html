@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Assistance — SkyVoyage</title>
+    <meta name="description" content="Request special assistance for your SkyVoyage flight. Wheelchair, medical, and accessibility support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Special Assistance</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Accessibility First</span>
+                <h1>SPECIAL <span style="color: var(--primary);">ASSISTANCE</span></h1>
+                <p>We're committed to ensuring every passenger has a comfortable journey. Request assistance at least 48 hours before departure.</p>
+            </div>
+
+            <div class="feature-grid" style="margin-bottom: 3rem;">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                    <h3>WHEELCHAIR SERVICE</h3>
+                    <p>Complimentary wheelchair assistance from check-in to boarding and upon arrival at your destination.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-eye"></i></div>
+                    <h3>VISUAL IMPAIRMENT</h3>
+                    <p>Dedicated crew assistance, braille safety cards, and priority boarding for visually impaired travelers.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-medkit"></i></div>
+                    <h3>MEDICAL SUPPORT</h3>
+                    <p>Pre-approval for medical equipment, oxygen supply, and stretcher service on select flights.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-baby-carriage"></i></div>
+                    <h3>UNACCOMPANIED MINOR</h3>
+                    <p>Safe, supervised travel for children aged 5-12 with dedicated crew attention throughout.</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;"><i class="fas fa-phone-alt" style="color: var(--primary); margin-right: 10px;"></i> REQUEST ASSISTANCE</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Booking PNR</span><input type="text" class="input-field" placeholder="e.g. SKY9982"></div>
+                    <div><span class="input-label">Contact Number</span><input type="tel" class="input-field" placeholder="e.g. +91 98765 43210"></div>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Assistance Type</span>
+                    <select class="input-field">
+                        <option>Wheelchair (Gate to Gate)</option>
+                        <option>Wheelchair (Curb to Gate)</option>
+                        <option>Visual Impairment Assistance</option>
+                        <option>Hearing Impairment Assistance</option>
+                        <option>Medical Equipment Clearance</option>
+                        <option>Unaccompanied Minor</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" style="padding: 1rem 3rem;"><i class="fas fa-paper-plane"></i> SUBMIT REQUEST</button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

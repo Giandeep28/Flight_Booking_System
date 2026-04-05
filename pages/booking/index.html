@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Hub — SkyVoyage</title>
+    <meta name="description" content="Manage your SkyVoyage bookings. Check-in online, reschedule flights, add baggage, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Booking Hub</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Travel Management</span>
+                <h1>BOOKING <span style="color: var(--primary);">HUB</span></h1>
+                <p>Your one-stop destination for managing every aspect of your SkyVoyage journey.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem;">
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-manage')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-search"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">CHECK PNR</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Look up your booking status, view itinerary details, and download e-tickets.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">OPEN →</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-checkin')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-user-check"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">ONLINE CHECK-IN</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Check in 48 hours before departure and get your digital boarding pass.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">CHECK IN →</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-reschedule')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-calendar-alt"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">RESCHEDULE</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Change your travel date or time with our hassle-free modification process.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">MODIFY →</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-meals')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-utensils"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">MEAL PREFERENCES</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Pre-select your in-flight meals from our curated dining menu.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">CHOOSE →</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-seats')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-chair"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">SEAT SELECTION</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Pick your preferred seat — window, aisle, or extra legroom.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">SELECT →</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; cursor: pointer;" onclick="openPage('booking-baggage')">
+                    <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-suitcase-rolling"></i></div>
+                    <h3 style="font-weight: 900; margin-bottom: 0.8rem;">ADD BAGGAGE</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Pre-book extra baggage and save up to 40% vs airport counter.</p>
+                    <div style="margin-top: 1.5rem; color: var(--primary); font-weight: 800; font-size: 0.85rem;">ADD →</div>
+                </div>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="glass-card" style="padding: 3rem; text-align: center;">
+                <h3 style="font-weight: 900; margin-bottom: 1rem;">NEED HELP WITH YOUR BOOKING?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Our concierge team is available 24/7 to assist with modifications, cancellations, and special requests.</p>
+                <div style="display: flex; justify-content: center; gap: 2rem;">
+                    <button class="btn btn-primary" style="padding: 1rem 3rem;" onclick="openPage('help')">
+                        <i class="fas fa-headset"></i> CONTACT SUPPORT
+                    </button>
+                    <button class="btn" style="padding: 1rem 3rem; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border);" onclick="openPage('booking-assist')">
+                        <i class="fas fa-wheelchair"></i> SPECIAL ASSISTANCE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

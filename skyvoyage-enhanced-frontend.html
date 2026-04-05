@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyVoyage — Premium Flight Booking Enhanced</title>
+    <meta name="description"
+        content="Experience the world with SkyVoyage. Premium flight booking with real-time tracking, AI assistance, and exclusive deals.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #C5A059;
+            --primary-dark: #A48446;
+            --secondary: #10B981;
+            --accent: #10B981;
+            --dark: #000814;
+            --text: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(5, 13, 28, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glow-gold: 0 0 25px rgba(197, 160, 89, 0.25);
+            --nav-height: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+        /* Enhanced Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 8, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            margin-top: var(--nav-height);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0,8,20,0.8), rgba(197,160,89,0.1));
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Search Portal */
+        .search-portal {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .search-tab.active {
+            color: var(--primary);
+        }
+
+        .search-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+        }
+
+        .autocomplete-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .autocomplete-item {
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .autocomplete-item:hover {
+            background: rgba(197, 160, 89, 0.1);
+        }
+
+        .search-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .search-actions .btn {
+            flex: 1;
+        }
+
+        /* Enhanced Results Section */
+        .results-section {
+            padding: 4rem 0;
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .results-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .filters-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .filter-group select {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .flights-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .flight-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .flight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+            border-color: var(--primary);
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .flight-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .airline-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: var(--dark);
+        }
+
+        .flight-details h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .flight-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .flight-price {
+            text-align: right;
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .flight-route {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .route-point {
+            text-align: center;
+        }
+
+        .route-time {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .route-city {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .route-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .route-line::after {
+            content: '✈️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--dark);
+            padding: 0.5rem;
+        }
+
+        /* Enhanced Chatbot */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 400px;
+            height: 500px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .chatbot-input button {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.05) 50%, var(--border) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .flight-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .flight-price {
+                text-align: left;
+            }
+
+            .chatbot-window {
+                width: 350px;
+                height: 450px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 4rem; }
+        .hidden { display: none; }
+    </style>
+</head>
+
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="nav-wrapper">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-plane"></i>
+                SkyVoyage
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#flights">Flights</a></li>
+                <li><a href="#deals">Deals</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="openAuthModal()">
+                    <i class="fas fa-user"></i>
+                    Sign In
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Support
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Fly to Your Dream Destination</h1>
+                    <p>Experience premium flight booking with real-time pricing, AI assistance, and exclusive deals. Your journey starts here.</p>
+                    <div class="hero-stats">
+                        <div style="display: flex; gap: 2rem;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--primary);">500+</div>
+                                <div style="color: var(--text-muted);">Destinations</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--primary);">24/7</div>
+                                <div style="color: var(--text-muted);">Support</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--primary);">1M+</div>
+                                <div style="color: var(--text-muted);">Happy Travelers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="search-portal">
+                    <div class="search-tabs">
+                        <button class="search-tab active" onclick="switchTab('flights')">Flights</button>
+                        <button class="search-tab" onclick="switchTab('hotels')">Hotels</button>
+                        <button class="search-tab" onclick="switchTab('packages')">Packages</button>
+                    </div>
+                    
+                    <form class="search-form" onsubmit="searchFlights(event)">
+                        <div class="form-group">
+                            <label for="from">From</label>
+                            <input type="text" id="from" placeholder="Departure city or airport" required>
+                            <div class="autocomplete-dropdown" id="from-dropdown"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <input type="text" id="to" placeholder="Arrival city or airport" required>
+                            <div class="autocomplete-dropdown" id="to-dropdown"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="departure">Departure Date</label>
+                            <input type="date" id="departure" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="return">Return Date</label>
+                            <input type="date" id="return">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="passengers">Passengers</label>
+                            <select id="passengers">
+                                <option value="1">1 Passenger</option>
+                                <option value="2">2 Passengers</option>
+                                <option value="3">3 Passengers</option>
+                                <option value="4">4 Passengers</option>
+                                <option value="5">5+ Passengers</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <select id="class">
+                                <option value="economy">Economy</option>
+                                <option value="premium">Premium Economy</option>
+                                <option value="business">Business</option>
+                                <option value="first">First Class</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                                Search Flights
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetSearch()">
+                                <i class="fas fa-redo"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Results Section -->
+    <section class="results-section" id="results">
+        <div class="container">
+            <div class="results-header">
+                <h2>Available Flights</h2>
+                <p id="results-meta">Searching for the best fares...</p>
+            </div>
+            
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sort-flights" onchange="sortFlights()">
+                        <option value="price">Price</option>
+                        <option value="duration">Duration</option>
+                        <option value="departure">Departure Time</option>
+                        <option value="arrival">Arrival Time</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Stops:</label>
+                    <select id="filter-stops" onchange="filterFlights()">
+                        <option value="all">All</option>
+                        <option value="0">Non-stop</option>
+                        <option value="1">1 Stop</option>
+                        <option value="2">2+ Stops</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Price Range:</label>
+                    <select id="filter-price" onchange="filterFlights()">
+                        <option value="all">All</option>
+                        <option value="0-5000">Under ₹5,000</option>
+                        <option value="5000-10000">₹5,000 - ₹10,000</option>
+                        <option value="10000-20000">₹10,000 - ₹20,000</option>
+                        <option value="20000+">Above ₹20,000</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="flights-list" id="flights-list">
+                <!-- Flight results will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Chatbot Widget -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </button>
+        
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i>
+                SkyVoyage Assistant
+            </div>
+            
+            <div class="chatbot-messages" id="chat-messages">
+                <div class="message bot">
+                    <p>Hello! I'm your AI travel assistant. How can I help you today?</p>
+                </div>
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chat-input" placeholder="Ask me about flights, prices, or travel tips..." onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Enhanced State Management
+        const state = {
+            selectedAirports: { from: null, to: null },
+            flights: [],
+            filteredFlights: [],
+            loading: false,
+            chatOpen: false,
+            searchHistory: []
+        };
+
+        // Enhanced Airport Database
+        const airports = {
+            'DEL': { name: 'Indira Gandhi International', city: 'Delhi', country: 'India' },
+            'BOM': { name: 'Chhatrapati Shivaji Maharaj', city: 'Mumbai', country: 'India' },
+            'BLR': { name: 'Kempegowda International', city: 'Bengaluru', country: 'India' },
+            'HYD': { name: 'Rajiv Gandhi International', city: 'Hyderabad', country: 'India' },
+            'CCU': { name: 'Netaji Subhash Chandra Bose', city: 'Kolkata', country: 'India' },
+            'MAA': { name: 'Chennai International', city: 'Chennai', country: 'India' },
+            'JFK': { name: 'John F. Kennedy International', city: 'New York', country: 'USA' },
+            'LAX': { name: 'Los Angeles International', city: 'Los Angeles', country: 'USA' },
+            'LHR': { name: 'London Heathrow', city: 'London', country: 'UK' },
+            'DXB': { name: 'Dubai International', city: 'Dubai', country: 'UAE' },
+            'SIN': { name: 'Singapore Changi', city: 'Singapore', country: 'Singapore' }
+        };
+
+        // Enhanced Airline Database
+        const airlines = [
+            { code: 'AI', name: 'Air India', logo: 'AI' },
+            { code: 'UK', name: 'Vistara', logo: 'UK' },
+            { code: '6E', name: 'IndiGo', logo: '6E' },
+            { code: 'SG', name: 'SpiceJet', logo: 'SG' },
+            { code: 'G8', name: 'GoAir', logo: 'G8' },
+            { code: 'EY', name: 'Etihad Airways', logo: 'EY' },
+            { code: 'EK', name: 'Emirates', logo: 'EK' },
+            { code: 'SQ', name: 'Singapore Airlines', logo: 'SQ' },
+            { code: 'BA', name: 'British Airways', logo: 'BA' },
+            { code: 'AA', name: 'American Airlines', logo: 'AA' }
+        ];
+
+        // Enhanced Autocomplete with Debouncing
+        let autocompleteTimeout;
+        
+        function setupAutocomplete(inputId, dropdownId) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(dropdownId);
+            
+            input.addEventListener('input', function() {
+                clearTimeout(autocompleteTimeout);
+                const query = this.value.toLowerCase().trim();
+                
+                if (query.length < 2) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+                
+                autocompleteTimeout = setTimeout(() => {
+                    showAutocompleteResults(query, dropdown, inputId);
+                }, 300);
+            });
+            
+            input.addEventListener('focus', function() {
+                if (this.value.length >= 2) {
+                    const query = this.value.toLowerCase().trim();
+                    showAutocompleteResults(query, dropdown, inputId);
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+
+        function showAutocompleteResults(query, dropdown, inputId) {
+            const results = [];
+            
+            // Search by code, name, city, or country
+            for (const [code, data] of Object.entries(airports)) {
+                const searchText = `${code} ${data.name} ${data.city} ${data.country}`.toLowerCase();
+                if (searchText.includes(query)) {
+                    results.push({ code, ...data });
+                }
+            }
+            
+            if (results.length === 0) {
+                dropdown.innerHTML = '<div class="autocomplete-item">No airports found</div>';
+            } else {
+                dropdown.innerHTML = results.slice(0, 5).map(airport => `
+                    <div class="autocomplete-item" onclick="selectAirport('${inputId}', '${airport.code}', '${airport.name}')">
+                        <strong>${airport.code}</strong> - ${airport.name}, ${airport.city}
+                    </div>
+                `).join('');
+            }
+            
+            dropdown.style.display = 'block';
+        }
+
+        function selectAirport(inputId, code, name) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(inputId + '-dropdown');
+            
+            input.value = name;
+            dropdown.style.display = 'none';
+            
+            state.selectedAirports[inputId] = { code, name };
+        }
+
+        // Enhanced Flight Search
+        async function searchFlights(event) {
+            event.preventDefault();
+            
+            if (!state.selectedAirports.from || !state.selectedAirports.to) {
+                showNotification('Please select departure and arrival airports', 'error');
+                return;
+            }
+            
+            const departure = document.getElementById('departure').value;
+            if (!departure) {
+                showNotification('Please select departure date', 'error');
+                return;
+            }
+            
+            const today = new Date().toISOString().split('T')[0];
+            if (departure < today) {
+                showNotification('Travel date cannot be in the past', 'error');
+                return;
+            }
+            
+            // Show loading state
+            setLoading(true);
+            
+            // Show results section
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results-meta').textContent = 'Searching for the best fares...';
+            
+            // Simulate API call with enhanced data
+            setTimeout(() => {
+                const flights = generateEnhancedFlights();
+                state.flights = flights;
+                state.filteredFlights = flights;
+                
+                displayFlights(flights);
+                setLoading(false);
+                
+                // Update meta
+                document.getElementById('results-meta').textContent = `${flights.length} flights found from ${state.selectedAirports.from.name} to ${state.selectedAirports.to.name}`;
+                
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+                
+                // Add to search history
+                state.searchHistory.push({
+                    from: state.selectedAirports.from,
+                    to: state.selectedAirports.to,
+                    date: departure,
+                    timestamp: new Date()
+                });
+                
+            }, 2000);
+        }
+
+        function generateEnhancedFlights() {
+            const flights = [];
+            const airlinesCount = airlines.length;
+            const basePrice = 5000;
+            
+            for (let i = 0; i < 8; i++) {
+                const airline = airlines[i % airlinesCount];
+                const departureHour = 6 + (i * 2);
+                const duration = 2 + (i % 3);
+                const stops = i < 3 ? 0 : i < 6 ? 1 : 2;
+                
+                flights.push({
+                    id: `flight_${i}`,
+                    airline: airline,
+                    flightNumber: `${airline.code}${100 + i}`,
+                    departure: `${String(departureHour).padStart(2, '0')}:30`,
+                    arrival: `${String(departureHour + duration).padStart(2, '0')}:30`,
+                    duration: `${duration}h ${30}m`,
+                    stops: stops,
+                    price: basePrice + (i * 1500) + (stops * 2000),
+                    currency: 'INR',
+                    aircraft: stops === 0 ? 'Boeing 737' : 'Airbus A320',
+                    amenities: ['Meal', 'Entertainment', 'WiFi'],
+                    availableSeats: 12 + (i % 8)
+                });
+            }
+            
+            return flights;
+        }
+
+        function displayFlights(flights) {
+            const container = document.getElementById('flights-list');
+            
+            if (flights.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center" style="padding: 3rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                        <h3>No flights found</h3>
+                        <p style="color: var(--text-muted);">Try adjusting your search criteria or dates</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = flights.map(flight => `
+                <div class="flight-card" onclick="selectFlight('${flight.id}')">
+                    <div class="flight-header">
+                        <div class="flight-info">
+                            <div class="airline-logo">${flight.airline.logo}</div>
+                            <div class="flight-details">
+                                <h3>${flight.airline.name}</h3>
+                                <p>${flight.flightNumber} • ${flight.aircraft} • ${flight.availableSeats} seats left</p>
+                            </div>
+                        </div>
+                        <div class="flight-price">
+                            <div class="price-amount">₹${flight.price.toLocaleString()}</div>
+                            <button class="btn btn-primary" onclick="bookFlight(event, '${flight.id}')">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-route">
+                        <div class="route-point">
+                            <div class="route-time">${flight.departure}</div>
+                            <div class="route-city">${state.selectedAirports.from.code}</div>
+                        </div>
+                        <div class="route-line"></div>
+                        <div class="route-point">
+                            <div class="route-time">${flight.arrival}</div>
+                            <div class="route-city">${state.selectedAirports.to.code}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
+                            <i class="fas fa-clock"></i> ${flight.duration}
+                        </span>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
+                            <i class="fas fa-exchange-alt"></i> ${flight.stops} stops
+                        </span>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
+                            <i class="fas fa-utensils"></i> Meal included
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Enhanced Filtering and Sorting
+        function sortFlights() {
+            const sortBy = document.getElementById('sort-flights').value;
+            let sorted = [...state.filteredFlights];
+            
+            switch (sortBy) {
+                case 'price':
+                    sorted.sort((a, b) => a.price - b.price);
+                    break;
+                case 'duration':
+                    sorted.sort((a, b) => {
+                        const durationA = parseInt(a.duration);
+                        const durationB = parseInt(b.duration);
+                        return durationA - durationB;
+                    });
+                    break;
+                case 'departure':
+                    sorted.sort((a, b) => a.departure.localeCompare(b.departure));
+                    break;
+                case 'arrival':
+                    sorted.sort((a, b) => a.arrival.localeCompare(b.arrival));
+                    break;
+            }
+            
+            displayFlights(sorted);
+        }
+
+        function filterFlights() {
+            const stopsFilter = document.getElementById('filter-stops').value;
+            const priceFilter = document.getElementById('filter-price').value;
+            
+            let filtered = [...state.flights];
+            
+            // Filter by stops
+            if (stopsFilter !== 'all') {
+                filtered = filtered.filter(flight => flight.stops == stopsFilter);
+            }
+            
+            // Filter by price
+            if (priceFilter !== 'all') {
+                if (priceFilter === '0-5000') {
+                    filtered = filtered.filter(flight => flight.price <= 5000);
+                } else if (priceFilter === '5000-10000') {
+                    filtered = filtered.filter(flight => flight.price > 5000 && flight.price <= 10000);
+                } else if (priceFilter === '10000-20000') {
+                    filtered = filtered.filter(flight => flight.price > 10000 && flight.price <= 20000);
+                } else if (priceFilter === '20000+') {
+                    filtered = filtered.filter(flight => flight.price > 20000);
+                }
+            }
+            
+            state.filteredFlights = filtered;
+            sortFlights(); // Apply current sorting
+        }
+
+        // Enhanced Chatbot
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot-window');
+            state.chatOpen = !state.chatOpen;
+            chatbot.style.display = state.chatOpen ? 'flex' : 'none';
+            
+            if (state.chatOpen) {
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            // Add user message
+            messagesContainer.innerHTML += `
+                <div class="message user">
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Show typing indicator
+            messagesContainer.innerHTML += `
+                <div class="message bot typing">
+                    <div class="loading"></div>
+                    <span>Thinking...</span>
+                </div>
+            `;
+            
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Simulate AI response
+            setTimeout(() => {
+                // Remove typing indicator
+                const typingIndicator = messagesContainer.querySelector('.typing');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+                
+                // Generate contextual response
+                const response = generateAIResponse(message);
+                
+                messagesContainer.innerHTML += `
+                    <div class="message bot">
+                        <p>${response.text}</p>
+                        ${response.suggestions ? `
+                            <div style="margin-top: 1rem;">
+                                ${response.suggestions.map(suggestion => `
+                                    <button class="btn btn-secondary" style="margin: 0.25rem; padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="sendChatMessage('${suggestion}')">
+                                        ${suggestion}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1500);
+        }
+
+        function generateAIResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('flight') || lowerMessage.includes('search')) {
+                return {
+                    text: "I can help you search for flights! Please use the search form above, or tell me your departure city, destination, and preferred travel date.",
+                    suggestions: ['Search flights from Delhi to Mumbai', 'Find cheapest flights to Bangalore', 'Show direct flights to Dubai']
+                };
+            } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+                return {
+                    text: "Flight prices vary based on season, booking time, and availability. Generally, booking 2-3 weeks in advance offers the best prices. Would you like me to help you find current prices?",
+                    suggestions: ['Show current prices', 'Find cheapest options', 'Price trends']
+                };
+            } else if (lowerMessage.includes('help') || lowerMessage.includes('how')) {
+                return {
+                    text: "I'm here to help! I can assist with flight searches, price comparisons, travel advice, and booking guidance. What specific information do you need?",
+                    suggestions: ['Flight search help', 'Booking process', 'Travel tips']
+                };
+            } else {
+                return {
+                    text: "I'm your AI travel assistant. I can help you search flights, compare prices, find deals, and provide travel advice. What would you like to know?",
+                    suggestions: ['Search flights', 'Check prices', 'Travel tips']
+                };
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        // Utility Functions
+        function setLoading(loading) {
+            state.loading = loading;
+            const submitButton = document.querySelector('.search-form button[type="submit"]');
+            
+            if (loading) {
+                submitButton.innerHTML = '<div class="loading"></div> Searching...';
+                submitButton.disabled = true;
+            } else {
+                submitButton.innerHTML = '<i class="fas fa-search"></i> Search Flights';
+                submitButton.disabled = false;
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background: ${type === 'error' ? '#ef4444' : '#10b981'};
+                color: white;
+                border-radius: 8px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        function switchTab(tab) {
+            // Update active tab
+            document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Here you could switch between different search forms
+            if (tab !== 'flights') {
+                showNotification(`${tab.charAt(0).toUpperCase() + tab.slice(1)} booking coming soon!`, 'info');
+            }
+        }
+
+        function resetSearch() {
+            document.getElementById('from').value = '';
+            document.getElementById('to').value = '';
+            document.getElementById('departure').value = '';
+            document.getElementById('return').value = '';
+            document.getElementById('passengers').value = '1';
+            document.getElementById('class').value = 'economy';
+            
+            state.selectedAirports = { from: null, to: null };
+            
+            // Hide results
+            document.getElementById('results').style.display = 'none';
+        }
+
+        function selectFlight(flightId) {
+            const flight = state.flights.find(f => f.id === flightId);
+            if (flight) {
+                console.log('Selected flight:', flight);
+                // Here you could show flight details or proceed to booking
+            }
+        }
+
+        function bookFlight(event, flightId) {
+            event.stopPropagation();
+            
+            const flight = state.flights.find(f => f.id === flightId);
+            if (flight) {
+                showNotification(`Proceeding to book ${flight.airline.name} flight ${flight.flightNumber}`, 'info');
+                // Here you would navigate to booking page
+            }
+        }
+
+        function openAuthModal() {
+            showNotification('Authentication coming soon!', 'info');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup autocomplete
+            setupAutocomplete('from', 'from-dropdown');
+            setupAutocomplete('to', 'to-dropdown');
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('departure').setAttribute('min', today);
+            document.getElementById('return').setAttribute('min', today);
+            
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Add CSS animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+                .message {
+                    max-width: 80%;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    margin-bottom: 1rem;
+                }
+                .message.user {
+                    align-self: flex-end;
+                    background: var(--primary);
+                    color: var(--dark);
+                }
+                .message.bot {
+                    align-self: flex-start;
+                    background: rgba(255, 255, 255, 0.05);
+                }
+                .message.typing {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #C5A059;
+  --primary-dark: #A48446;
+  --secondary: #10B981;
+  --accent: #10B981;
+  --dark: #000814;
+  --text: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(5, 13, 28, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow-gold: 0 0 25px rgba(197, 160, 89, 0.25);
+  --nav-height: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Glassmorphism Components */
+.glass-card {
+  @apply bg-transparent border border-border rounded-3xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply shadow-2xl;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* Header Styles */
+header {
+  @apply bg-glass-bg backdrop-blur-xl border-b border-border sticky top-0 z-50;
+  height: var(--nav-height);
+}
+
+nav {
+  @apply flex justify-between items-center h-full;
+}
+
+.logo {
+  @apply flex items-center gap-3 text-2xl font-black text-text no-underline tracking-wider;
+}
+
+.logo-icon {
+  @apply w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-2xl shadow-glow-gold;
+}
+
+.nav-links {
+  @apply flex gap-7 list-none h-full items-center;
+}
+
+.nav-item {
+  @apply h-full flex items-center;
+}
+
+.nav-links > li > a {
+  @apply text-text-muted no-underline font-bold text-xs uppercase tracking-wide transition-colors duration-300;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  @apply text-primary;
+}
+
+/* Mega Menu Styles */
+.mega-menu {
+  @apply absolute top-nav-height left-0 w-full bg-white border-t border-gray-200 border-b-4 border-primary shadow-2xl z-50 py-16 opacity-0 invisible transform translate-y-2 transition-all duration-300 ease-out;
+}
+
+.nav-item:hover .mega-menu {
+  @apply opacity-100 visible translate-y-0;
+}
+
+.mega-grid {
+  @apply grid grid-cols-4 gap-12 max-w-6xl mx-auto;
+}
+
+.mega-col h4 {
+  @apply text-xs text-gray-900 uppercase tracking-[2.5px] mb-7 font-black;
+}
+
+.mega-links {
+  @apply list-none flex flex-col gap-2;
+}
+
+.mega-links a {
+  @apply text-gray-800 no-underline text-sm font-bold transition-all duration-300 flex items-center gap-3 py-3 px-4 rounded-xl;
+}
+
+.mega-links a:hover {
+  @apply bg-primary/10 text-primary translate-x-2;
+}
+
+.mega-links i {
+  @apply text-xs text-primary;
+}
+
+/* Button Styles */
+.btn {
+  @apply py-4 px-8 rounded-xl border-none font-black cursor-pointer transition-all duration-300 ease-out no-underline inline-flex items-center gap-2 uppercase text-xs tracking-wide;
+}
+
+.btn-primary {
+  @apply bg-primary text-dark shadow-glow-gold;
+}
+
+.btn-primary:hover {
+  @apply bg-white -translate-y-1;
+}
+
+.btn-outline {
+  @apply border border-border bg-transparent text-text;
+}
+
+.btn-outline:hover {
+  @apply bg-border/10;
+}
+
+/* Form Styles */
+.input-group {
+  @apply relative flex-1;
+}
+
+.input-label {
+  @apply text-xs font-black text-text-muted uppercase tracking-wide mb-2 block;
+}
+
+.input-field {
+  @apply bg-white/5 border border-border py-5 rounded-2xl w-full text-white font-bold text-lg outline-none transition-colors duration-300;
+}
+
+.input-field:focus {
+  @apply border-primary bg-white/10;
+}
+
+/* Airport Dropdown */
+.airport-dropdown {
+  @apply absolute top-[105%] left-0 right-0 bg-[#081225] border border-border rounded-2xl max-h-96 overflow-y-auto z-50 shadow-2xl hidden;
+}
+
+.airport-item {
+  @apply py-5 px-6 border-b border-white/5 cursor-pointer transition-all duration-200 flex justify-between items-center;
+}
+
+.airport-item:hover {
+  @apply bg-primary/10 pl-8;
+}
+
+/* Loader */
+.loader {
+  @apply fixed inset-0 bg-dark z-50 flex items-center justify-center;
+}
+
+.loader-logo {
+  @apply text-5xl text-primary animate-float;
+}
+
+/* Chatbot */
+#chatbot-trigger {
+  @apply fixed bottom-8 right-8 w-16 h-16 bg-primary rounded-full text-dark flex items-center justify-center text-2xl cursor-pointer shadow-2xl z-40;
+}
+
+#chatbot-window {
+  @apply fixed bottom-32 right-8 w-96 h-[600px] bg-[#050d1c] rounded-3xl hidden flex-col z-40 overflow-hidden shadow-2xl;
+}
+
+/* Modal */
+.modal {
+  @apply fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-5;
+}
+
+.modal.active {
+  @apply flex;
+}
+
+/* Section Tag */
+.section-tag {
+  @apply bg-primary/10 text-primary py-1.5 px-4 rounded-lg text-xs font-black uppercase tracking-wide inline-block mb-4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-xl;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+/* Carousel */
+.banner-carousel {
+  @apply relative h-[450px] bg-[#020617] overflow-hidden mb-[-4rem];
+}
+
+.slide {
+  @apply absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center;
+}
+
+.slide.active {
+  @apply opacity-100;
+}
+
+.slide-overlay {
+  @apply absolute inset-0 bg-gradient-to-r from-dark/95 to-transparent flex items-center pl-[10%];
+}
+
+/* View Transitions */
+.view {
+  @apply hidden min-h-screen pt-8 opacity-0 transform translate-y-2 transition-all duration-500;
+}
+
+.view.active {
+  @apply block opacity-100 translate-y-0;
+}

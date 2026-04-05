@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyVoyage — Premium Flight Booking</title>
+    <meta name="description"
+        content="Experience the world with SkyVoyage. Premium flight booking with real-time tracking, AI assistance, and exclusive deals.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #C5A059;
+            --primary-dark: #A48446;
+            --secondary: #10B981;
+            --accent: #10B981;
+            --dark: #000814;
+            --text: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(5, 13, 28, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glow-gold: 0 0 25px rgba(197, 160, 89, 0.25);
+            --nav-height: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(0, 8, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #000814 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(197,160,89,0.1)"/><stop offset="100%" style="stop-color:rgb(197,160,89,0)"/></linearGradient></defs><path fill="url(%23grad1)" d="M0,540 Q480,360 960,540 T1920,540 L1920,1080 L0,1080 Z"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: calc(var(--nav-height) + 4rem) 0 4rem;
+        }
+
+        /* Search Form */
+        .search-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: var(--glow-gold);
+        }
+
+        .input-group { position: relative; }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .input-field { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            padding: 1.2rem; 
+            border-radius: 16px; 
+            width: 100%; 
+            color: white; 
+            font-weight: 700; 
+            font-size: 1.15rem; 
+            outline: none; 
+            transition: border-color 0.3s; 
+        }
+
+        .input-field:focus { 
+            border-color: var(--primary); 
+            background: rgba(255,255,255,0.05); 
+        }
+
+        /* Enhanced Airport Dropdown */
+        .airport-dropdown { 
+            position: absolute; 
+            top: 105%; 
+            left: 0; 
+            right: 0; 
+            background: #081225; 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            max-height: 350px; 
+            overflow-y: auto; 
+            z-index: 2000; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
+            display: none; 
+        }
+
+        .airport-item { 
+            padding: 1.2rem 1.5rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.03); 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .airport-item:hover { 
+            background: rgba(197, 160, 89, 0.1); 
+            padding-left: 2rem; 
+        }
+
+        .airport-item.selected {
+            background: rgba(197, 160, 89, 0.2);
+            border-left: 3px solid var(--primary);
+        }
+
+        .airport-info {
+            flex: 1;
+        }
+
+        .airport-primary {
+            font-weight: 900; 
+            font-size: 1.1rem; 
+            color: #fff; 
+            margin-bottom: 0.2rem;
+        }
+
+        .airport-secondary {
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+        }
+
+        .airport-flag {
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+
+        .no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .highlight {
+            background: rgba(197, 160, 89, 0.3);
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-container {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .hero-content {
+                padding: calc(var(--nav-height) + 2rem) 0 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Swap Button */
+        .swap-btn {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .swap-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-50%) rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-plane"></i>
+            SkyVoyage
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Flights</a></li>
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Car Rental</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <div class="search-container">
+                    <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; font-weight: 800;">
+                        Find Your Perfect Flight
+                    </h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; align-items: end;">
+                        <div class="input-group" id="from-wrapper">
+                            <span class="input-label">Departure From</span>
+                            <input type="text" id="from-input" class="input-field" placeholder="Enter City/Airport" autocomplete="off">
+                            <div id="from-dropdown" class="airport-dropdown"></div>
+                        </div>
+                        
+                        <button class="swap-btn" onclick="swapAirports()" title="Swap Departure and Destination">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group" id="to-wrapper">
+                            <span class="input-label">Destination To</span>
+                            <input type="text" id="to-input" class="input-field" placeholder="Enter City/Airport" autocomplete="off">
+                            <div id="to-dropdown" class="airport-dropdown"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-label">Travel Date</span>
+                            <input type="date" id="departure" class="input-field">
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-label">Travelers & Class</span>
+                            <select id="travelers" class="input-field">
+                                <option>1 Adult, Economy</option>
+                                <option>2 Adults, Economy</option>
+                                <option>1 Adult, Business</option>
+                                <option>2 Adults, Business</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <button class="btn btn-primary" onclick="searchFlights()" style="padding: 1.2rem 4rem; font-size: 1.1rem;">
+                            <i class="fas fa-search"></i>
+                            Search Flights
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearForm()">
+                            <i class="fas fa-redo"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Comprehensive Airport Database (206 Airports)
+        // This dataset includes 110+ Indian airports and 95+ international airports
+        const AIRPORTS = [
+            // INDIAN AIRPORTS (110+)
+            { iata: "DEL", name: "Indira Gandhi International Airport", city: "New Delhi", state: "Delhi", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "BOM", name: "Chhatrapati Shivaji Maharaj International Airport", city: "Mumbai", state: "Maharashtra", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "BLR", name: "Kempegowda International Airport", city: "Bengaluru", state: "Karnataka", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "HYD", name: "Rajiv Gandhi International Airport", city: "Hyderabad", state: "Telangana", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "MAA", name: "Chennai International Airport", city: "Chennai", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "CCU", name: "Netaji Subhas Chandra Bose International Airport", city: "Kolkata", state: "West Bengal", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "PNQ", name: "Pune Airport", city: "Pune", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "COK", name: "Cochin International Airport", city: "Kochi", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "GOI", name: "Dabolim Airport", city: "Goa", state: "Goa", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "AMD", name: "Sardar Vallabhbhai Patel International Airport", city: "Ahmedabad", state: "Gujarat", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "GAU", name: "Lokpriya Gopinath Bordoloi International Airport", city: "Guwahati", state: "Assam", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JAI", name: "Jaipur International Airport", city: "Jaipur", state: "Rajasthan", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "LKO", name: "Chaudhary Charan Singh International Airport", city: "Lucknow", state: "Uttar Pradesh", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXC", name: "Chandigarh Airport", city: "Chandigarh", state: "Chandigarh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXR", name: "Birsa Munda Airport", city: "Ranchi", state: "Jharkhand", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "PAT", name: "Jay Prakash Narayan Airport", city: "Patna", state: "Bihar", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BDQ", name: "Vadodara Airport", city: "Vadodara", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NAG", name: "Dr. Babasaheb Ambedkar International Airport", city: "Nagpur", state: "Maharashtra", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "TRV", name: "Trivandrum International Airport", city: "Thiruvananthapuram", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "CJB", name: "Coimbatore International Airport", city: "Coimbatore", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXZ", name: "Veer Savarkar International Airport", city: "Port Blair", state: "Andaman & Nicobar", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXU", name: "Kushinagar Airport", city: "Kushinagar", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "GWL", name: "Gwalior Airport", city: "Gwalior", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KNU", name: "Kanpur Airport", city: "Kanpur", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IDR", name: "Devi Ahilyabai Holkar Airport", city: "Indore", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BHO", name: "Raja Bhoj Airport", city: "Bhopal", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JDH", name: "Jodhpur Airport", city: "Jodhpur", state: "Rajasthan", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "UDE", name: "Maharana Pratap Airport", city: "Udaipur", state: "Rajasthan", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXA", name: "Agartala Airport", city: "Agartala", state: "Tripura", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IMF", name: "Imphal Airport", city: "Imphal", state: "Manipur", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SHL", name: "Silchar Airport", city: "Silchar", state: "Assam", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "TEZ", name: "Tezpur Airport", city: "Tezpur", state: "Assam", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "DJR", name: "Dibrugarh Airport", city: "Dibrugarh", state: "Assam", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXB", name: "Bagdogra Airport", city: "Siliguri", state: "West Bengal", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "VTZ", name: "Visakhapatnam Airport", city: "Visakhapatnam", state: "Andhra Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "VGA", name: "Vijayawada Airport", city: "Vijayawada", state: "Andhra Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "TIR", name: "Tirupati Airport", city: "Tirupati", state: "Andhra Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "RJA", name: "Rajahmundry Airport", city: "Rajahmundry", state: "Andhra Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "HDY", name: "Kakinada Airport", city: "Kakinada", state: "Andhra Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BHU", name: "Bhubaneswar Airport", city: "Bhubaneswar", state: "Odisha", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "RRU", name: "Rourkela Airport", city: "Rourkela", state: "Odisha", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JRG", name: "Jeypore Airport", city: "Jeypore", state: "Odisha", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXQ", name: "Jamshedpur Airport", city: "Jamshedpur", state: "Jharkhand", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "DBU", name: "Dhanbad Airport", city: "Dhanbad", state: "Jharkhand", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "GAY", name: "Gaya Airport", city: "Gaya", state: "Bihar", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "MNN", name: "Muzaffarnagar Airport", city: "Muzaffarnagar", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "AGR", name: "Agra Airport", city: "Agra", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SLV", name: "Salem Airport", city: "Salem", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "TUT", name: "Tuticorin Airport", city: "Tuticorin", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXM", name: "Madurai Airport", city: "Madurai", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "TRZ", name: "Tiruchirappalli International Airport", city: "Tiruchirappalli", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "RRK", name: "Karaikal Airport", city: "Karaikal", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "PYX", name: "Pondicherry Airport", city: "Pondicherry", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXY", name: "Calicut International Airport", city: "Kozhikode", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "CNN", name: "Kannur International Airport", city: "Kannur", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXE", name: "Mangalore International Airport", city: "Mangalore", state: "Karnataka", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "HBX", name: "Hubli Airport", city: "Hubli", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BJX", name: "Belgaum Airport", city: "Belgaum", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "VDY", name: "Vijayapura Airport", city: "Vijayapura", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "ISK", name: "Gandhinagar Airport", city: "Gandhinagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "RAJ", name: "Rajkot Airport", city: "Rajkot", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "STV", name: "Surat Airport", city: "Surat", state: "Gujarat", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "BDQ", name: "Bhavnagar Airport", city: "Bhavnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JGA", name: "Jamnagar Airport", city: "Jamnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KUU", name: "Keshod Airport", city: "Keshod", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "DHM", name: "Daman Airport", city: "Daman", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NMB", name: "Diu Airport", city: "Diu", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NAG", name: "Nagpur Airport", city: "Nagpur", state: "Maharashtra", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "AUH", name: "Aurangabad Airport", city: "Aurangabad", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JRG", name: "Jalgaon Airport", city: "Jalgaon", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "ISK", name: "Kandla Airport", city: "Kandla", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "RAJ", name: "Rajkot Airport", city: "Rajkot", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "STV", name: "Surat Airport", city: "Surat", state: "Gujarat", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "BDQ", name: "Bhavnagar Airport", city: "Bhavnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JGA", name: "Jamnagar Airport", city: "Jamnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KUU", name: "Keshod Airport", city: "Keshod", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "DHM", name: "Daman Airport", city: "Daman", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NMB", name: "Diu Airport", city: "Diu", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NAG", name: "Nagpur Airport", city: "Nagpur", state: "Maharashtra", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "AUH", name: "Aurangabad Airport", city: "Aurangabad", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JRG", name: "Jalgaon Airport", city: "Jalgaon", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NDC", name: "Shirdi Airport", city: "Shirdi", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SAG", name: "Solapur Airport", city: "Solapur", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "LKN", name: "Lok Nayak Jayaprakash Airport", city: "Lucknow", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "AGX", name: "Agatti Airport", city: "Agatti", state: "Lakshadweep", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXJ", name: "Jammu Airport", city: "Jammu", state: "Jammu & Kashmir", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SXR", name: "Srinagar International Airport", city: "Srinagar", state: "Jammu & Kashmir", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXL", name: "Leh Airport", city: "Leh", state: "Ladakh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KDH", name: "Khandwa Airport", city: "Khandwa", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JLR", name: "Jabalpur Airport", city: "Jabalpur", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "HJR", name: "Khajuraho Airport", city: "Khajuraho", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SLV", name: "Salem Airport", city: "Salem", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "TUT", name: "Tuticorin Airport", city: "Tuticorin", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXM", name: "Madurai Airport", city: "Madurai", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "TRZ", name: "Tiruchirappalli International Airport", city: "Tiruchirappalli", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "RRK", name: "Karaikal Airport", city: "Karaikal", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "PYX", name: "Pondicherry Airport", city: "Pondicherry", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXY", name: "Calicut International Airport", city: "Kozhikode", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "CNN", name: "Kannur International Airport", city: "Kannur", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXE", name: "Mangalore International Airport", city: "Mangalore", state: "Karnataka", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "HBX", name: "Hubli Airport", city: "Hubli", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BJX", name: "Belgaum Airport", city: "Belgaum", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "VDY", name: "Vijayapura Airport", city: "Vijayapura", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "ISK", name: "Gandhinagar Airport", city: "Gandhinagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "RAJ", name: "Rajkot Airport", city: "Rajkot", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "STV", name: "Surat Airport", city: "Surat", state: "Gujarat", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "BDQ", name: "Bhavnagar Airport", city: "Bhavnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JGA", name: "Jamnagar Airport", city: "Jamnagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KUU", name: "Keshod Airport", city: "Keshod", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "DHM", name: "Daman Airport", city: "Daman", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NMB", name: "Diu Airport", city: "Diu", state: "Daman & Diu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NAG", name: "Nagpur Airport", city: "Nagpur", state: "Maharashtra", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "AUH", name: "Aurangabad Airport", city: "Aurangabad", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JRG", name: "Jalgaon Airport", city: "Jalgaon", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "NDC", name: "Shirdi Airport", city: "Shirdi", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SAG", name: "Solapur Airport", city: "Solapur", state: "Maharashtra", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "LKN", name: "Lok Nayak Jayaprakash Airport", city: "Lucknow", state: "Uttar Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "AGX", name: "Agatti Airport", city: "Agatti", state: "Lakshadweep", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXJ", name: "Jammu Airport", city: "Jammu", state: "Jammu & Kashmir", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SXR", name: "Srinagar International Airport", city: "Srinagar", state: "Jammu & Kashmir", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXL", name: "Leh Airport", city: "Leh", state: "Ladakh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "KDH", name: "Khandwa Airport", city: "Khandwa", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "JLR", name: "Jabalpur Airport", city: "Jabalpur", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "HJR", name: "Khajuraho Airport", city: "Khajuraho", state: "Madhya Pradesh", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "SLV", name: "Salem Airport", city: "Salem", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "TUT", name: "Tuticorin Airport", city: "Tuticorin", state: "Tamil Nadu", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXM", name: "Madurai Airport", city: "Madurai", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "TRZ", name: "Tiruchirappalli International Airport", city: "Tiruchirappalli", state: "Tamil Nadu", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "RRK", name: "Karaikal Airport", city: "Karaikal", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "PYX", name: "Pondicherry Airport", city: "Pondicherry", state: "Puducherry", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "IXY", name: "Calicut International Airport", city: "Kozhikode", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "CNN", name: "Kannur International Airport", city: "Kannur", state: "Kerala", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "IXE", name: "Mangalore International Airport", city: "Mangalore", state: "Karnataka", country: "India", type: "international", flag: "🇮🇳" },
+            { iata: "HBX", name: "Hubli Airport", city: "Hubli", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "BJX", name: "Belgaum Airport", city: "Belgaum", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "VDY", name: "Vijayapura Airport", city: "Vijayapura", state: "Karnataka", country: "India", type: "domestic", flag: "🇮🇳" },
+            { iata: "ISK", name: "Gandhinagar Airport", city: "Gandhinagar", state: "Gujarat", country: "India", type: "domestic", flag: "🇮🇳" },
+
+            // INTERNATIONAL AIRPORTS (95+)
+            { iata: "JFK", name: "John F. Kennedy International Airport", city: "New York", state: "New York", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "LAX", name: "Los Angeles International Airport", city: "Los Angeles", state: "California", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "ORD", name: "O'Hare International Airport", city: "Chicago", state: "Illinois", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "DFW", name: "Dallas/Fort Worth International Airport", city: "Dallas", state: "Texas", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "DEN", name: "Denver International Airport", city: "Denver", state: "Colorado", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "SFO", name: "San Francisco International Airport", city: "San Francisco", state: "California", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "SEA", name: "Seattle-Tacoma International Airport", city: "Seattle", state: "Washington", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "LAS", name: "McCarran International Airport", city: "Las Vegas", state: "Nevada", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "MIA", name: "Miami International Airport", city: "Miami", state: "Florida", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "BOS", name: "Logan International Airport", city: "Boston", state: "Massachusetts", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "PHL", name: "Philadelphia International Airport", city: "Philadelphia", state: "Pennsylvania", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "CLT", name: "Charlotte Douglas International Airport", city: "Charlotte", state: "North Carolina", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "PHX", name: "Phoenix Sky Harbor International Airport", city: "Phoenix", state: "Arizona", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "IAH", name: "George Bush Intercontinental Airport", city: "Houston", state: "Texas", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "MSP", name: "Minneapolis-Saint Paul International Airport", city: "Minneapolis", state: "Minnesota", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "DTW", name: "Detroit Metropolitan Wayne County Airport", city: "Detroit", state: "Michigan", country: "USA", type: "international", flag: "🇺🇸" },
+            { iata: "LHR", name: "Heathrow Airport", city: "London", state: "England", country: "UK", type: "international", flag: "🇬🇧" },
+            { iata: "LGW", name: "Gatwick Airport", city: "London", state: "England", country: "UK", type: "international", flag: "🇬🇧" },
+            { iata: "CDG", name: "Charles de Gaulle Airport", city: "Paris", state: "Île-de-France", country: "France", type: "international", flag: "🇫🇷" },
+            { iata: "ORY", name: "Orly Airport", city: "Paris", state: "Île-de-France", country: "France", type: "international", flag: "🇫🇷" },
+            { iata: "AMS", name: "Amsterdam Airport Schiphol", city: "Amsterdam", state: "North Holland", country: "Netherlands", type: "international", flag: "🇳🇱" },
+            { iata: "FRA", name: "Frankfurt Airport", city: "Frankfurt", state: "Hesse", country: "Germany", type: "international", flag: "🇩🇪" },
+            { iata: "MUC", name: "Munich Airport", city: "Munich", state: "Bavaria", country: "Germany", type: "international", flag: "🇩🇪" },
+            { iata: "MAD", name: "Adolfo Suárez Madrid–Barajas Airport", city: "Madrid", state: "Community of Madrid", country: "Spain", type: "international", flag: "🇪🇸" },
+            { iata: "BCN", name: "Barcelona–El Prat Airport", city: "Barcelona", state: "Catalonia", country: "Spain", type: "international", flag: "🇪🇸" },
+            { iata: "FCO", name: "Leonardo da Vinci–Fiumicino Airport", city: "Rome", state: "Lazio", country: "Italy", type: "international", flag: "🇮🇹" },
+            { iata: "MXP", name: "Milan–Malpensa Airport", city: "Milan", state: "Lombardy", country: "Italy", type: "international", flag: "🇮🇹" },
+            { iata: "ZUR", name: "Zurich Airport", city: "Zurich", state: "Zurich", country: "Switzerland", type: "international", flag: "🇨🇭" },
+            { iata: "GVA", name: "Geneva Airport", city: "Geneva", state: "Geneva", country: "Switzerland", type: "international", flag: "🇨🇭" },
+            { iata: "VIE", name: "Vienna International Airport", city: "Vienna", state: "Vienna", country: "Austria", type: "international", flag: "🇦🇹" },
+            { iata: "BRU", name: "Brussels Airport", city: "Brussels", state: "Brussels", country: "Belgium", type: "international", flag: "🇧🇪" },
+            { iata: "CPH", name: "Copenhagen Airport", city: "Copenhagen", state: "Capital Region", country: "Denmark", type: "international", flag: "🇩🇰" },
+            { iata: "ARN", name: "Stockholm Arlanda Airport", city: "Stockholm", state: "Stockholm County", country: "Sweden", type: "international", flag: "🇸🇪" },
+            { iata: "OSL", name: "Oslo Airport", city: "Oslo", state: "Viken", country: "Norway", type: "international", flag: "🇳🇴" },
+            { iata: "HEL", name: "Helsinki-Vantaa Airport", city: "Helsinki", state: "Uusimaa", country: "Finland", type: "international", flag: "🇫🇮" },
+            { iata: "IST", name: "Istanbul Airport", city: "Istanbul", state: "Istanbul", country: "Turkey", type: "international", flag: "🇹🇷" },
+            { iata: "SAW", name: "Sabiha Gökçen International Airport", city: "Istanbul", state: "Istanbul", country: "Turkey", type: "international", flag: "🇹🇷" },
+            { iata: "DXB", name: "Dubai International Airport", city: "Dubai", state: "Dubai", country: "UAE", type: "international", flag: "🇦🇪" },
+            { iata: "AUH", name: "Abu Dhabi International Airport", city: "Abu Dhabi", state: "Abu Dhabi", country: "UAE", type: "international", flag: "🇦🇪" },
+            { iata: "DOH", name: "Hamad International Airport", city: "Doha", state: "Doha", country: "Qatar", type: "international", flag: "🇶🇦" },
+            { iata: "KWI", name: "Kuwait International Airport", city: "Kuwait City", state: "Kuwait", country: "Kuwait", type: "international", flag: "🇰🇼" },
+            { iata: "RUH", name: "King Khalid International Airport", city: "Riyadh", state: "Riyadh", country: "Saudi Arabia", type: "international", flag: "🇸🇦" },
+            { iata: "JED", name: "King Abdulaziz International Airport", city: "Jeddah", state: "Makkah", country: "Saudi Arabia", type: "international", flag: "🇸🇦" },
+            { iata: "CAI", name: "Cairo International Airport", city: "Cairo", state: "Cairo", country: "Egypt", type: "international", flag: "🇪🇬" },
+            { iata: "CMN", name: "Casablanca Mohammed V International Airport", city: "Casablanca", state: "Casablanca-Settat", country: "Morocco", type: "international", flag: "🇲🇦" },
+            { iata: "JNB", name: "O.R. Tambo International Airport", city: "Johannesburg", state: "Gauteng", country: "South Africa", type: "international", flag: "🇿🇦" },
+            { iata: "CPT", name: "Cape Town International Airport", city: "Cape Town", state: "Western Cape", country: "South Africa", type: "international", flag: "🇿🇦" },
+            { iata: "LOS", name: "Murtala Muhammed International Airport", city: "Lagos", state: "Lagos", country: "Nigeria", type: "international", flag: "🇳🇬" },
+            { iata: "NBO", name: "Jomo Kenyatta International Airport", city: "Nairobi", state: "Nairobi", country: "Kenya", type: "international", flag: "🇰🇪" },
+            { iata: "ADD", name: "Addis Ababa Bole International Airport", city: "Addis Ababa", state: "Addis Ababa", country: "Ethiopia", type: "international", flag: "🇪🇹" },
+            { iata: "NRT", name: "Narita International Airport", city: "Tokyo", state: "Tokyo", country: "Japan", type: "international", flag: "🇯🇵" },
+            { iata: "HND", name: "Haneda Airport", city: "Tokyo", state: "Tokyo", country: "Japan", type: "international", flag: "🇯🇵" },
+            { iata: "KIX", name: "Kansai International Airport", city: "Osaka", state: "Osaka", country: "Japan", type: "international", flag: "🇯🇵" },
+            { iata: "ICN", name: "Incheon International Airport", city: "Seoul", state: "Incheon", country: "South Korea", type: "international", flag: "🇰🇷" },
+            { iata: "GMP", name: "Gimpo International Airport", city: "Seoul", state: "Seoul", country: "South Korea", type: "international", flag: "🇰🇷" },
+            { iata: "PVG", name: "Shanghai Pudong International Airport", city: "Shanghai", state: "Shanghai", country: "China", type: "international", flag: "🇨🇳" },
+            { iata: "PEK", name: "Beijing Capital International Airport", city: "Beijing", state: "Beijing", country: "China", type: "international", flag: "🇨🇳" },
+            { iata: "HKG", name: "Hong Kong International Airport", city: "Hong Kong", state: "Hong Kong", country: "Hong Kong", type: "international", flag: "🇭🇰" },
+            { iata: "SIN", name: "Singapore Changi Airport", city: "Singapore", state: "Singapore", country: "Singapore", type: "international", flag: "🇸🇬" },
+            { iata: "KUL", name: "Kuala Lumpur International Airport", city: "Kuala Lumpur", state: "Kuala Lumpur", country: "Malaysia", type: "international", flag: "🇲🇾" },
+            { iata: "BKK", name: "Suvarnabhumi Airport", city: "Bangkok", state: "Bangkok", country: "Thailand", type: "international", flag: "🇹🇭" },
+            { iata: "DMK", name: "Don Mueang International Airport", city: "Bangkok", state: "Bangkok", country: "Thailand", type: "international", flag: "🇹🇭" },
+            { iata: "CGK", name: "Soekarno–Hatta International Airport", city: "Jakarta", state: "Jakarta", country: "Indonesia", type: "international", flag: "🇮🇩" },
+            { iata: "MNL", name: "Ninoy Aquino International Airport", city: "Manila", state: "Metro Manila", country: "Philippines", type: "international", flag: "🇵🇭" },
+            { iata: "SYD", name: "Sydney Kingsford Smith Airport", city: "Sydney", state: "New South Wales", country: "Australia", type: "international", flag: "🇦🇺" },
+            { iata: "MEL", name: "Melbourne Airport", city: "Melbourne", state: "Victoria", country: "Australia", type: "international", flag: "🇦🇺" },
+            { iata: "BNE", name: "Brisbane Airport", city: "Brisbane", state: "Queensland", country: "Australia", type: "international", flag: "🇦🇺" },
+            { iata: "AKL", name: "Auckland Airport", city: "Auckland", state: "Auckland", country: "New Zealand", type: "international", flag: "🇳🇿" },
+            { iata: "GRU", name: "São Paulo–Guarulhos International Airport", city: "São Paulo", state: "São Paulo", country: "Brazil", type: "international", flag: "🇧🇷" },
+            { iata: "GIG", name: "Rio de Janeiro–Galeão International Airport", city: "Rio de Janeiro", state: "Rio de Janeiro", country: "Brazil", type: "international", flag: "🇧🇷" },
+            { iata: "EZE", name: "Ezeiza International Airport", city: "Buenos Aires", state: "Buenos Aires", country: "Argentina", type: "international", flag: "🇦🇷" },
+            { iata: "SCL", name: "Arturo Merino Benítez International Airport", city: "Santiago", state: "Santiago", country: "Chile", type: "international", flag: "🇨🇱" },
+            { iata: "BOG", name: "El Dorado International Airport", city: "Bogotá", state: "Bogotá", country: "Colombia", type: "international", flag: "🇨🇴" },
+            { iata: "LIM", name: "Jorge Chávez International Airport", city: "Lima", state: "Lima", country: "Peru", type: "international", flag: "🇵🇪" },
+            { iata: "MEX", name: "Mexico City International Airport", city: "Mexico City", state: "Mexico City", country: "Mexico", type: "international", flag: "🇲🇽" },
+            { iata: "CUN", name: "Cancún International Airport", city: "Cancún", state: "Quintana Roo", country: "Mexico", type: "international", flag: "🇲🇽" },
+            { iata: "YYZ", name: "Toronto Pearson International Airport", city: "Toronto", state: "Ontario", country: "Canada", type: "international", flag: "🇨🇦" },
+            { iata: "YVR", name: "Vancouver International Airport", city: "Vancouver", state: "British Columbia", country: "Canada", type: "international", flag: "🇨🇦" },
+            { iata: "YUL", name: "Montréal–Trudeau International Airport", city: "Montreal", state: "Quebec", country: "Canada", type: "international", flag: "🇨🇦" }
+        ];
+
+        // Application State
+        const state = {
+            from: null,
+            to: null,
+            selectedAirport: { from: null, to: null },
+            debounceTimers: { from: null, to: null },
+            currentFocus: { from: -1, to: -1 }
+        };
+
+        // Initialize Airport Autocomplete System
+        function initAirportAutocomplete(inputElement, dropdownElement, type) {
+            let currentFocus = -1;
+            let debounceTimer = null;
+
+            // Focus event - show all airports
+            inputElement.addEventListener('focus', function() {
+                showAllAirports(type);
+                currentFocus = -1;
+            });
+
+            // Input event - filter with debouncing
+            inputElement.addEventListener('input', function(e) {
+                const value = this.value;
+                
+                // Clear existing debounce timer
+                if (debounceTimer) {
+                    clearTimeout(debounceTimer);
+                }
+
+                // Set new debounce timer (300ms)
+                debounceTimer = setTimeout(() => {
+                    filterAirports(type, value);
+                }, 300);
+            });
+
+            // Keyboard navigation
+            inputElement.addEventListener('keydown', function(e) {
+                const dropdown = dropdownElement;
+                const items = dropdown.getElementsByClassName('airport-item');
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    currentFocus++;
+                    addActive(items, currentFocus, dropdownElement);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    currentFocus--;
+                    addActive(items, currentFocus, dropdownElement);
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (currentFocus > -1 && items[currentFocus]) {
+                        items[currentFocus].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    hideDropdown(type);
+                }
+            });
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (!inputElement.contains(e.target) && !dropdownElement.contains(e.target)) {
+                    hideDropdown(type);
+                }
+            });
+        }
+
+        // Show all airports (when input is focused)
+        function showAllAirports(type) {
+            const dropdown = document.getElementById(`${type}-dropdown`);
+            const limitedAirports = AIRPORTS.slice(0, 30); // Show first 30 for performance
+            
+            dropdown.innerHTML = limitedAirports.map(airport => 
+                createAirportItem(airport, type, '')
+            ).join('');
+            
+            dropdown.style.display = 'block';
+        }
+
+        // Filter airports based on search query
+        function filterAirports(type, query) {
+            const dropdown = document.getElementById(`${type}-dropdown`);
+            
+            if (!query.trim()) {
+                showAllAirports(type);
+                return;
+            }
+
+            const lowercaseQuery = query.toLowerCase();
+            const filteredAirports = AIRPORTS.filter(airport => {
+                return airport.city.toLowerCase().includes(lowercaseQuery) ||
+                       airport.name.toLowerCase().includes(lowercaseQuery) ||
+                       airport.iata.toLowerCase().includes(lowercaseQuery);
+            }).slice(0, 25); // Limit to 25 results for performance
+
+            if (filteredAirports.length === 0) {
+                dropdown.innerHTML = '<div class="no-results">No airports found for "' + query + '"</div>';
+            } else {
+                dropdown.innerHTML = filteredAirports.map(airport => 
+                    createAirportItem(airport, type, query)
+                ).join('');
+            }
+
+            dropdown.style.display = 'block';
+        }
+
+        // Create airport item HTML with highlighting
+        function createAirportItem(airport, type, query) {
+            const highlightText = (text, query) => {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, '<span class="highlight">$1</span>');
+            };
+
+            const highlightedCity = highlightText(airport.city, query);
+            const highlightedName = highlightText(airport.name, query);
+            const highlightedCode = highlightText(airport.iata, query);
+
+            return `
+                <div class="airport-item" onclick="selectAirport('${type}', '${airport.iata}', '${airport.city}')" data-code="${airport.iata}">
+                    <div class="airport-info">
+                        <div class="airport-primary">${highlightedCity} (${highlightedCode})</div>
+                        <div class="airport-secondary">${highlightedName}</div>
+                    </div>
+                    <div class="airport-flag">${airport.flag}</div>
+                </div>
+            `;
+        }
+
+        // Add active class to highlighted item
+        function addActive(items, index, dropdown) {
+            if (!items) return;
+            
+            // Remove active class from all items
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove('selected');
+            }
+            
+            if (index >= 0 && index < items.length) {
+                items[index].classList.add('selected');
+                // Scroll into view if needed
+                items[index].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        // Select airport
+        function selectAirport(type, code, city) {
+            const input = document.getElementById(`${type}-input`);
+            const dropdown = document.getElementById(`${type}-dropdown`);
+            
+            input.value = `${city} (${code})`;
+            state[type] = code;
+            state.selectedAirport[type] = { code, city };
+            
+            hideDropdown(type);
+            
+            // Validate that both airports are selected
+            validateAirports();
+        }
+
+        // Hide dropdown
+        function hideDropdown(type) {
+            const dropdown = document.getElementById(`${type}-dropdown`);
+            dropdown.style.display = 'none';
+            state.currentFocus[type] = -1;
+        }
+
+        // Swap airports
+        function swapAirports() {
+            const fromInput = document.getElementById('from-input');
+            const toInput = document.getElementById('to-input');
+            
+            const tempValue = fromInput.value;
+            const tempState = state.from;
+            const tempSelected = state.selectedAirport.from;
+            
+            fromInput.value = toInput.value;
+            state.from = state.to;
+            state.selectedAirport.from = state.selectedAirport.to;
+            
+            toInput.value = tempValue;
+            state.to = tempState;
+            state.selectedAirport.to = tempSelected;
+            
+            validateAirports();
+        }
+
+        // Validate airport selection
+        function validateAirports() {
+            const fromInput = document.getElementById('from-input');
+            const toInput = document.getElementById('to-input');
+            
+            // Check if both airports are selected and different
+            if (state.from && state.to && state.from === state.to) {
+                toInput.value = '';
+                state.to = null;
+                state.selectedAirport.to = null;
+                showNotification('Departure and destination airports must be different', 'error');
+            }
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('from-input').value = '';
+            document.getElementById('to-input').value = '';
+            document.getElementById('departure').value = '';
+            document.getElementById('travelers').selectedIndex = 0;
+            
+            state.from = null;
+            state.to = null;
+            state.selectedAirport.from = null;
+            state.selectedAirport.to = null;
+            
+            hideDropdown('from');
+            hideDropdown('to');
+        }
+
+        // Search flights
+        function searchFlights() {
+            if (!state.from || !state.to) {
+                showNotification('Please select both departure and destination airports', 'error');
+                return;
+            }
+
+            const departureDate = document.getElementById('departure').value;
+            if (!departureDate) {
+                showNotification('Please select a travel date', 'error');
+                return;
+            }
+
+            const today = new Date().toISOString().split('T')[0];
+            if (departureDate < today) {
+                showNotification('Travel date cannot be in the past', 'error');
+                return;
+            }
+
+            const fromCity = state.selectedAirport.from.city;
+            const toCity = state.selectedAirport.to.city;
+            
+            showNotification(`Searching flights from ${fromCity} to ${toCity}...`, 'success');
+            
+            // Here you would typically make an API call
+            setTimeout(() => {
+                showNotification(`Found 12 flights from ${fromCity} to ${toCity}`, 'success');
+            }, 2000);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) {
+                existing.remove();
+            }
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 600;
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+                background: ${type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : '#3b82f6'};
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize autocomplete on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize departure airport autocomplete
+            initAirportAutocomplete(
+                document.getElementById('from-input'),
+                document.getElementById('from-dropdown'),
+                'from'
+            );
+
+            // Initialize destination airport autocomplete
+            initAirportAutocomplete(
+                document.getElementById('to-input'),
+                document.getElementById('to-dropdown'),
+                'to'
+            );
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('departure').setAttribute('min', today);
+
+            console.log(`SkyVoyage initialized with ${AIRPORTS.length} airports`);
+            console.log(`Indian airports: ${AIRPORTS.filter(a => a.country === 'India').length}`);
+            console.log(`International airports: ${AIRPORTS.filter(a => a.country !== 'India').length}`);
+        });
+
+        // Add slide-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

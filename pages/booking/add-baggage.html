@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Baggage — SkyVoyage</title>
+    <meta name="description" content="Add extra baggage to your SkyVoyage booking. Pre-book for savings up to 40%.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Add Baggage</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Travel Light or Heavy</span>
+                <h1>ADD EXTRA <span style="color: var(--primary);">BAGGAGE</span></h1>
+                <p>Pre-book extra baggage online and save up to 40% compared to airport counter rates.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Booking PNR</span>
+                    <input type="text" class="input-field" placeholder="e.g. SKY9982">
+                </div>
+                <button class="btn btn-primary" style="padding: 1rem 3rem;"><i class="fas fa-search"></i> LOAD BOOKING</button>
+            </div>
+
+            <h3 style="font-weight: 900; margin-bottom: 2rem; font-size: 1.2rem;">BAGGAGE OPTIONS</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem;">
+                <div class="glass-card" style="padding: 2.5rem; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🧳</div>
+                    <h4 style="font-weight: 900; margin-bottom: 0.5rem;">+5 KG</h4>
+                    <div style="color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">₹499</div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.8rem;">ADD</button>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center; border-color: var(--primary);">
+                    <div style="position: relative;">
+                        <span style="position: absolute; top: -35px; right: -10px; background: var(--primary); color: var(--dark); padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 900;">POPULAR</span>
+                    </div>
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                    <h4 style="font-weight: 900; margin-bottom: 0.5rem;">+10 KG</h4>
+                    <div style="color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">₹899</div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.8rem;">ADD</button>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎒</div>
+                    <h4 style="font-weight: 900; margin-bottom: 0.5rem;">+15 KG</h4>
+                    <div style="color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem;">₹1,299</div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.8rem;">ADD</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

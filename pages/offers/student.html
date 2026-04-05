@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Fare — SkyVoyage</title>
+    <meta name="description" content="Special student fares from SkyVoyage. Up to 25% off and extra baggage for verified students.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('offers'); return false;">Offers</a> <span>›</span>
+                <span style="color: var(--text);">Student Fare</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Academic Travel</span>
+                <h1>STUDENT <span style="color: var(--primary);">FARE</span></h1>
+                <p>Verified students enjoy up to 25% off on domestic and international flights, plus 10kg extra baggage.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">ELIGIBILITY & BENEFITS</h3>
+                <ul style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; list-style: none;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Valid for students aged <strong style="color: var(--text);">16 to 30 years</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Must present valid <strong style="color: var(--text);">student ID or university enrollment proof</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--primary);">25% off</strong> on domestic base fares</li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--primary);">15% off</strong> on international base fares</li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--primary);">+10 KG</strong> extra check-in baggage allowance</li>
+                    <li style="padding: 0.5rem 0;">✓ Free date change (up to 72 hours before departure)</li>
+                </ul>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">BOOK WITH STUDENT FARE</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Student Name</span><input type="text" class="input-field" placeholder="Full name as per ID"></div>
+                    <div><span class="input-label">University / Institution</span><input type="text" class="input-field" placeholder="e.g. IIT Delhi"></div>
+                    <div><span class="input-label">Student ID Number</span><input type="text" class="input-field" placeholder="e.g. 2024CSEB1042"></div>
+                    <div><span class="input-label">Date of Birth</span><input type="date" class="input-field"></div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                    <i class="fas fa-user-graduate"></i> VERIFY & PROCEED
+                </button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('offers');
+    </script>
+</body>
+</html>

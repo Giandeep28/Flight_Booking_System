@@ -1,0 +1,53 @@
+{
+  "indian_airlines": [
+    {
+      "name": "Air India",
+      "iata": "AI",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_AI_350_100_r.png",
+      "type": "full_service",
+      "hub": "Delhi (DEL)"
+    },
+    {
+      "name": "Air India Express",
+      "iata": "IX", 
+      "logo_url": "https://content.airhex.com/content/logos/airlines_IX_350_100_r.png",
+      "type": "low_cost",
+      "hub": "Kochi (COK)"
+    },
+    {
+      "name": "IndiGo",
+      "iata": "6E",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_6E_350_100_r.png", 
+      "type": "low_cost",
+      "hub": "Delhi (DEL)"
+    },
+    {
+      "name": "SpiceJet",
+      "iata": "SG",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_SG_350_100_r.png",
+      "type": "low_cost", 
+      "hub": "Mumbai (BOM)"
+    },
+    {
+      "name": "Akasa Air",
+      "iata": "QP",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_QP_350_100_r.png",
+      "type": "low_cost",
+      "hub": "Mumbai (BOM)"
+    },
+    {
+      "name": "Alliance Air",
+      "iata": "9I",
+      "logo_url": "https://content.airhex.com/content/logos/airlines_9I_350_100_r.png",
+      "type": "regional",
+      "hub": "Delhi (DEL)"
+    },
+    {
+      "name": "Star Air",
+      "iata": "S5", 
+      "logo_url": "https://content.airhex.com/content/logos/airlines_S5_350_100_r.png",
+      "type": "regional",
+      "hub": "Bengaluru (BLR)"
+    }
+  ]
+}
