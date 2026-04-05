@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Status — SkyVoyage</title>
+    <meta name="description" content="Track real-time flight status with SkyVoyage. Get live updates on departures and arrivals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Flight Status</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Live Tracking</span>
+                <h1>FLIGHT <span style="color: var(--primary);">STATUS</span></h1>
+                <p>Real-time departure and arrival information for all SkyVoyage and partner airline flights.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                    <button class="btn btn-primary" style="padding: 0.8rem 2rem;">BY FLIGHT NUMBER</button>
+                    <button class="btn" style="padding: 0.8rem 2rem; background: rgba(255,255,255,0.05); color: var(--text-muted);">BY ROUTE</button>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Flight Number</span><input type="text" class="input-field" placeholder="e.g. SV-1042 or 6E-2045"></div>
+                    <div><span class="input-label">Date</span><input type="date" class="input-field"></div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                    <i class="fas fa-satellite-dish"></i> TRACK FLIGHT
+                </button>
+            </div>
+
+            <!-- Sample Status Display -->
+            <div class="glass-card" style="padding: 2.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div>
+                        <div style="font-weight: 900; font-size: 1.3rem;">SV-1042</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">Air India • Boeing 787 Dreamliner</div>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 8px 20px; border-radius: 30px; font-size: 0.8rem; font-weight: 900;">ON TIME</div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 950;">DEL</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">Delhi • Terminal 3</div>
+                        <div style="color: var(--primary); font-weight: 800; margin-top: 0.5rem;">14:30 IST</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">3h 45m</div>
+                        <div style="width: 150px; height: 2px; background: var(--border); position: relative;">
+                            <div style="position: absolute; top: -4px; left: 60%; width: 10px; height: 10px; background: var(--primary); border-radius: 50%;"></div>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem;">Non-Stop</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 2rem; font-weight: 950;">BOM</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">Mumbai • Terminal 2</div>
+                        <div style="color: var(--primary); font-weight: 800; margin-top: 0.5rem;">18:15 IST</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('flights');
+    </script>
+</body>
+</html>

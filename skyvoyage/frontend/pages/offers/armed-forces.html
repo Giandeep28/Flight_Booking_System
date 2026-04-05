@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armed Forces Discount — SkyVoyage</title>
+    <meta name="description" content="Flat 50% off for active duty and retired armed forces on SkyVoyage flights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('offers'); return false;">Offers</a> <span>›</span>
+                <span style="color: var(--text);">Armed Forces</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">We Salute You</span>
+                <h1>ARMED FORCES <span style="color: var(--primary);">DISCOUNT</span></h1>
+                <p>Honouring our brave defense personnel with exclusive flat 50% off on all domestic base fares.</p>
+            </div>
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">ELIGIBILITY & BENEFITS</h3>
+                <ul style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; list-style: none;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--primary);">50% off</strong> on domestic base fares</li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--primary);">25% off</strong> on international economy fares</li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Valid for <strong style="color: var(--text);">active duty, retired personnel, and dependents</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ <strong style="color: var(--text);">+15 KG</strong> extra baggage allowance</li>
+                    <li style="padding: 0.5rem 0;">✓ <strong style="color: var(--text);">Priority check-in</strong> and lounge access at select airports</li>
+                </ul>
+            </div>
+            <div class="glass-card" style="padding: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">VERIFY & BOOK</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Service Number</span><input type="text" class="input-field" placeholder="e.g. IC-12345"></div>
+                    <div><span class="input-label">Branch</span><select class="input-field"><option>Indian Army</option><option>Indian Navy</option><option>Indian Air Force</option><option>Paramilitary Forces</option></select></div>
+                    <div><span class="input-label">Full Name</span><input type="text" class="input-field" placeholder="As per service record"></div>
+                    <div><span class="input-label">Status</span><select class="input-field"><option>Active Duty</option><option>Retired</option><option>Dependent</option></select></div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                    <i class="fas fa-shield-alt"></i> VERIFY & BOOK
+                </button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>document.getElementById('shared-css').textContent = getSharedCSS(); initPage('offers');</script>
+</body>
+</html>

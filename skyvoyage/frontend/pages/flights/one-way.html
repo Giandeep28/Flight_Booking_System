@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Way Flights — SkyVoyage</title>
+    <meta name="description" content="Book one-way flights with SkyVoyage. Find the best fares across 230+ destinations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a>
+                <span>›</span>
+                <a href="#" onclick="openPage('flights-oneway'); return false;">Flights</a>
+                <span>›</span>
+                <span style="color: var(--text);">One-Way</span>
+            </div>
+
+            <div class="page-hero">
+                <span class="section-tag">Book Direct</span>
+                <h1>ONE-WAY <span style="color: var(--primary);">FLIGHTS</span></h1>
+                <p>Flexible one-way tickets with no return commitment. Perfect for one-directional travel or when your plans are open-ended.</p>
+            </div>
+
+            <!-- Search Card -->
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem; font-size: 1.2rem;"><i class="fas fa-plane-departure" style="color: var(--primary); margin-right: 10px;"></i> SEARCH ONE-WAY FLIGHTS</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div>
+                        <span class="input-label">Departure City</span>
+                        <input type="text" class="input-field" placeholder="e.g. Delhi (DEL)">
+                    </div>
+                    <div>
+                        <span class="input-label">Destination City</span>
+                        <input type="text" class="input-field" placeholder="e.g. Mumbai (BOM)">
+                    </div>
+                    <div>
+                        <span class="input-label">Travel Date</span>
+                        <input type="date" class="input-field">
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;" onclick="openPage('home')">
+                    <i class="fas fa-search"></i> SEARCH FLIGHTS
+                </button>
+            </div>
+
+            <!-- Benefits -->
+            <div class="feature-grid">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-tag"></i></div>
+                    <h3>LOWEST FARE GUARANTEE</h3>
+                    <p>We match any competitor fare or refund double the difference. Book with complete confidence.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <h3>FLEXIBLE BOOKING</h3>
+                    <p>Change your travel date up to 24 hours before departure with minimal rebooking fees.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-suitcase-rolling"></i></div>
+                    <h3>EXTRA BAGGAGE INCLUDED</h3>
+                    <p>All one-way tickets include 15kg check-in baggage and 7kg cabin allowance as standard.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 SUPPORT</h3>
+                    <p>Our concierge team is available around the clock for rebooking, cancellations, and queries.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-slot"></div>
+
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('flights');
+    </script>
+</body>
+</html>

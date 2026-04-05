@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Preferences — SkyVoyage</title>
+    <meta name="description" content="Customize your in-flight meal preferences with SkyVoyage. Choose from premium dining options.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#">Booking Hub</a> <span>›</span>
+                <span style="color: var(--text);">Meal Preferences</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Sky Dining</span>
+                <h1>MEAL <span style="color: var(--primary);">PREFERENCES</span></h1>
+                <p>Pre-select your in-flight meals from our curated menu. Special dietary options available up to 24 hours before departure.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 2rem;">
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Booking PNR</span>
+                    <input type="text" class="input-field" placeholder="e.g. SKY9982">
+                </div>
+                <button class="btn btn-primary" style="padding: 1rem 3rem;"><i class="fas fa-search"></i> LOAD BOOKING</button>
+            </div>
+
+            <div class="feature-grid">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h3>VEGETARIAN</h3>
+                    <p>Fresh, locally-sourced vegetarian meals prepared by certified chefs. Jain options available.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-drumstick-bite"></i></div>
+                    <h3>NON-VEGETARIAN</h3>
+                    <p>Premium chicken, lamb, and seafood options. Halal-certified meals available on request.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-seedling"></i></div>
+                    <h3>VEGAN / GLUTEN-FREE</h3>
+                    <p>Plant-based and gluten-free options for health-conscious travelers. Pre-booking recommended.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-baby"></i></div>
+                    <h3>KIDS MENU</h3>
+                    <p>Fun, nutritious meals designed for young travelers with familiar flavors and portions.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('booking');
+    </script>
+</body>
+</html>

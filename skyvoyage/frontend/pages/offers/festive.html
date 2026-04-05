@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festive Sale — SkyVoyage</title>
+    <meta name="description" content="SkyVoyage Festive Sky Sale. Zero convenience fee and free seat selection during festival seasons.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('offers'); return false;">Offers</a> <span>›</span>
+                <span style="color: var(--text);">Festive Sale</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">🎉 Limited Time</span>
+                <h1>FESTIVE SKY <span style="color: var(--primary);">SALE</span></h1>
+                <p>Celebrate the season with zero convenience fees, free seat selection, and exclusive combo deals across all routes.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; border-color: var(--primary); margin-bottom: 3rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎁</div>
+                    <h2 style="font-weight: 950; font-size: 2rem; color: var(--primary);">ENDS IN</h2>
+                    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                        <div style="text-align: center;"><div style="font-size: 2.5rem; font-weight: 950;">07</div><div style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px;">DAYS</div></div>
+                        <div style="font-size: 2.5rem; color: var(--primary);">:</div>
+                        <div style="text-align: center;"><div style="font-size: 2.5rem; font-weight: 950;">14</div><div style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px;">HOURS</div></div>
+                        <div style="font-size: 2.5rem; color: var(--primary);">:</div>
+                        <div style="text-align: center;"><div style="font-size: 2.5rem; font-weight: 950;">32</div><div style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px;">MINS</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem;">
+                <div class="glass-card" style="padding: 2rem; text-align: center;">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-ban"></i></div>
+                    <h4 style="font-weight: 900;">ZERO FEES</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">No convenience fee on any booking</p>
+                </div>
+                <div class="glass-card" style="padding: 2rem; text-align: center;">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-chair"></i></div>
+                    <h4 style="font-weight: 900;">FREE SEATS</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Complimentary seat selection</p>
+                </div>
+                <div class="glass-card" style="padding: 2rem; text-align: center;">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-suitcase-rolling"></i></div>
+                    <h4 style="font-weight: 900;">+5KG FREE</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Extra baggage on all bookings</p>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn btn-primary" style="padding: 1.5rem 5rem; font-size: 1.2rem;" onclick="openPage('home')">
+                    <i class="fas fa-gift"></i> BOOK NOW & SAVE
+                </button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>document.getElementById('shared-css').textContent = getSharedCSS(); initPage('offers');</script>
+</body>
+</html>

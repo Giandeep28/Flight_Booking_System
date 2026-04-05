@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk — SkyVoyage</title>
+    <meta name="description" content="SkyVoyage Help Desk. Find answers to common queries, contact support, and resolve issues.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Help Desk</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Direct Support</span>
+                <h1>HELP <span style="color: var(--primary);">DESK</span></h1>
+                <p>Find answers, resolve issues, and connect with our dedicated support team.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="feature-grid" style="margin-bottom: 4rem;">
+                <div class="glass-card feature-card" style="cursor: pointer;" onclick="openPage('help-baggage')">
+                    <div class="icon"><i class="fas fa-suitcase"></i></div>
+                    <h3>BAGGAGE INFO</h3>
+                    <p>Allowances, excess baggage fees, restricted items, and lost baggage claims.</p>
+                </div>
+                <div class="glass-card feature-card" style="cursor: pointer;" onclick="openPage('help-refund')">
+                    <div class="icon"><i class="fas fa-undo-alt"></i></div>
+                    <h3>REFUND POLICY</h3>
+                    <p>Cancellation charges, refund timelines, and how to request a refund.</p>
+                </div>
+                <div class="glass-card feature-card" style="cursor: pointer;" onclick="openPage('help-assist')">
+                    <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                    <h3>SPECIAL ASSISTANCE</h3>
+                    <p>Wheelchair, medical support, unaccompanied minors, and accessibility services.</p>
+                </div>
+                <div class="glass-card feature-card" style="cursor: pointer;" onclick="openPage('help-privacy')">
+                    <div class="icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>PRIVACY POLICY</h3>
+                    <p>How we protect your data, cookie policy, and GDPR compliance details.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <h2 style="font-weight: 950; margin-bottom: 2rem;">FREQUENTLY ASKED QUESTIONS</h2>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 4rem;">
+                <div class="glass-card" style="padding: 2rem; cursor: pointer;" onclick="this.querySelector('.faq-answer').classList.toggle('open')">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-weight: 800;">How do I correct a name spelling?</h4>
+                        <i class="fas fa-chevron-down" style="color: var(--primary); transition: transform 0.3s;"></i>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-muted);">
+                        <p style="margin-top: 1rem; line-height: 1.7;">Minor spelling corrections of up to 3 characters can be done via our Support Desk. Major name changes require flight cancellation and rebooking. Contact us at support@skyvoyage.in for assistance.</p>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 2rem; cursor: pointer;" onclick="this.querySelector('.faq-answer').classList.toggle('open')">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-weight: 800;">What is the refund processing time?</h4>
+                        <i class="fas fa-chevron-down" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-muted);">
+                        <p style="margin-top: 1rem; line-height: 1.7;">Refunds are typically processed within 7-10 business days after cancellation. Credits will be sent back to the original payment method. For urgent refunds, contact our premium helpline.</p>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 2rem; cursor: pointer;" onclick="this.querySelector('.faq-answer').classList.toggle('open')">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-weight: 800;">Can I carry musical instruments on board?</h4>
+                        <i class="fas fa-chevron-down" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-muted);">
+                        <p style="margin-top: 1rem; line-height: 1.7;">Small instruments (guitar size and below) can be carried in the cabin if they fit in the overhead bin. Larger instruments may require a purchased seat. Contact us for specific instrument clearance.</p>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 2rem; cursor: pointer;" onclick="this.querySelector('.faq-answer').classList.toggle('open')">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-weight: 800;">How early should I arrive at the airport?</h4>
+                        <i class="fas fa-chevron-down" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-muted);">
+                        <p style="margin-top: 1rem; line-height: 1.7;">For domestic flights, arrive at least 2 hours before departure. For international flights, arrive at least 3 hours prior. Premium passengers with SkyPriority enjoy expedited processing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="glass-card" style="padding: 3rem; text-align: center;">
+                <h3 style="font-weight: 900; margin-bottom: 1rem;">STILL NEED HELP?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Our premium concierge team is available 24/7</p>
+                <div style="display: flex; justify-content: center; gap: 3rem;">
+                    <div><div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-phone"></i></div><div style="font-weight: 800;">1800-SKY-HELP</div></div>
+                    <div><div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i></div><div style="font-weight: 800;">support@skyvoyage.in</div></div>
+                    <div><div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-comments"></i></div><div style="font-weight: 800;">Live Chat</div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS() + `
+            .faq-answer.open { max-height: 200px !important; }
+        `;
+        initPage('help');
+    </script>
+</body>
+</html>

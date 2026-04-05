@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Services — SkyVoyage</title>
+    <meta name="description" content="SkyVoyage cargo and freight services. Domestic and international air cargo solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Cargo Services</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">SkyCargo</span>
+                <h1>CARGO <span style="color: var(--primary);">SERVICES</span></h1>
+                <p>Fast, reliable air cargo solutions for businesses and individuals. Domestic and international freight forwarding.</p>
+            </div>
+
+            <div class="feature-grid" style="margin-bottom: 4rem;">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-box"></i></div>
+                    <h3>GENERAL CARGO</h3>
+                    <p>Standard freight for non-perishable goods. Competitive rates with next-day delivery on domestic routes.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-snowflake"></i></div>
+                    <h3>COLD CHAIN</h3>
+                    <p>Temperature-controlled transport for pharmaceuticals, perishables, and sensitive materials.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>EXPRESS DELIVERY</h3>
+                    <p>Same-day and priority shipments with guaranteed delivery windows and real-time tracking.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-paw"></i></div>
+                    <h3>LIVE ANIMALS</h3>
+                    <p>IATA LAR-compliant transport for pets and live animals with veterinary clearance support.</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">REQUEST CARGO QUOTE</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Company Name</span><input type="text" class="input-field" placeholder="e.g. Acme Corp"></div>
+                    <div><span class="input-label">Contact Email</span><input type="email" class="input-field" placeholder="e.g. logistics@acme.com"></div>
+                    <div><span class="input-label">Origin</span><input type="text" class="input-field" placeholder="e.g. Mumbai (BOM)"></div>
+                    <div><span class="input-label">Destination</span><input type="text" class="input-field" placeholder="e.g. London (LHR)"></div>
+                    <div><span class="input-label">Cargo Type</span><select class="input-field"><option>General Cargo</option><option>Cold Chain</option><option>Express</option><option>Dangerous Goods</option><option>Live Animals</option></select></div>
+                    <div><span class="input-label">Weight (KG)</span><input type="number" class="input-field" placeholder="e.g. 500" min="1"></div>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                    <i class="fas fa-paper-plane"></i> GET QUOTE
+                </button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>document.getElementById('shared-css').textContent = getSharedCSS(); initPage('flights');</script>
+</body>
+</html>

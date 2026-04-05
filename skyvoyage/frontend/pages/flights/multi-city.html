@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-City Routes — SkyVoyage</title>
+    <meta name="description" content="Plan complex multi-city itineraries with SkyVoyage. Visit multiple destinations in one trip.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('flights-oneway'); return false;">Flights</a> <span>›</span>
+                <span style="color: var(--text);">Multi-City</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Complex Itineraries</span>
+                <h1>MULTI-CITY <span style="color: var(--primary);">ROUTES</span></h1>
+                <p>Build your dream itinerary with up to 6 stops. Visit multiple destinations in a single booking with optimized connections.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem; font-size: 1.2rem;"><i class="fas fa-random" style="color: var(--primary); margin-right: 10px;"></i> BUILD YOUR ITINERARY</h3>
+                
+                <div id="legs-container">
+                    <div class="leg" style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 1.5rem; margin-bottom: 1.5rem; align-items: end;">
+                        <div><span class="input-label">Leg 1 — From</span><input type="text" class="input-field" placeholder="e.g. Delhi (DEL)"></div>
+                        <div><span class="input-label">To</span><input type="text" class="input-field" placeholder="e.g. Dubai (DXB)"></div>
+                        <div><span class="input-label">Date</span><input type="date" class="input-field"></div>
+                        <div style="padding-bottom: 5px;"><i class="fas fa-grip-lines" style="color: var(--text-muted); font-size: 1.2rem;"></i></div>
+                    </div>
+                    <div class="leg" style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 1.5rem; margin-bottom: 1.5rem; align-items: end;">
+                        <div><span class="input-label">Leg 2 — From</span><input type="text" class="input-field" placeholder="e.g. Dubai (DXB)"></div>
+                        <div><span class="input-label">To</span><input type="text" class="input-field" placeholder="e.g. London (LHR)"></div>
+                        <div><span class="input-label">Date</span><input type="date" class="input-field"></div>
+                        <div style="padding-bottom: 5px;"><i class="fas fa-times" style="color: #ef4444; cursor: pointer; font-size: 1.2rem;"></i></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+                    <button class="btn" style="padding: 0.8rem 2rem; background: rgba(255,255,255,0.05); color: var(--primary); border: 1px solid var(--border);">
+                        <i class="fas fa-plus"></i> ADD LEG
+                    </button>
+                    <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;" onclick="openPage('home')">
+                        <i class="fas fa-search"></i> SEARCH MULTI-CITY
+                    </button>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-route"></i></div>
+                    <h3>UP TO 6 STOPS</h3>
+                    <p>Add up to 6 separate flight legs to create your perfect trip across continents.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-coins"></i></div>
+                    <h3>OPTIMIZED PRICING</h3>
+                    <p>Our engine finds the best combo fares, often cheaper than booking legs separately.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-suitcase"></i></div>
+                    <h3>SINGLE PNR</h3>
+                    <p>Manage all your flight legs under one booking reference for seamless travel management.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('flights');
+    </script>
+</body>
+</html>

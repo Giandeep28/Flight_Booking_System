@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Assistance — SkyVoyage Help</title>
+    <meta name="description" content="Request special assistance for SkyVoyage flights. Accessibility and medical support information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('help'); return false;">Help</a> <span>›</span>
+                <span style="color: var(--text);">Special Assistance</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Everyone Flies</span>
+                <h1>SPECIAL <span style="color: var(--primary);">ASSISTANCE</span></h1>
+                <p>SkyVoyage is committed to making air travel accessible for everyone. Request assistance at least 48 hours before your flight.</p>
+            </div>
+
+            <div class="feature-grid" style="margin-bottom: 3rem;">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                    <h3>WHEELCHAIR</h3>
+                    <p>Gate-to-gate and curb-to-gate wheelchair service at no extra charge.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-eye"></i></div>
+                    <h3>VISUAL IMPAIRMENT</h3>
+                    <p>Dedicated crew support, braille cards, and audio announcements.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-deaf"></i></div>
+                    <h3>HEARING IMPAIRMENT</h3>
+                    <p>Visual alerts, sign language trained crew on select routes.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-medkit"></i></div>
+                    <h3>MEDICAL SUPPORT</h3>
+                    <p>Oxygen, stretcher facilities, and medical equipment clearance.</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; text-align: center;">
+                <h3 style="font-weight: 900; margin-bottom: 1rem;">CONTACT ACCESSIBILITY TEAM</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Our dedicated accessibility helpline is available 24/7</p>
+                <div style="font-size: 1.8rem; font-weight: 950; color: var(--primary); margin-bottom: 1rem;">1800-SKY-CARE</div>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">accessibility@skyvoyage.in</p>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>document.getElementById('shared-css').textContent = getSharedCSS(); initPage('help');</script>
+</body>
+</html>

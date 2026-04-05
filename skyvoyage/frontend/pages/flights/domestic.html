@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domestic Hubs — SkyVoyage</title>
+    <meta name="description" content="Explore SkyVoyage domestic flight routes across 110+ Indian cities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <span style="color: var(--text);">Domestic Hubs</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Pan-India Network</span>
+                <h1>DOMESTIC <span style="color: var(--primary);">HUBS</span></h1>
+                <p>110+ airports across India. From metros to tier-2 cities, SkyVoyage connects every corner of the nation.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem;">
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Delhi → Mumbai</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">DEL → BOM • Most Popular</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹3,499</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 2h 10m • 80+ daily flights</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Bengaluru → Delhi</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">BLR → DEL • Business Corridor</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹3,899</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 2h 45m • 60+ daily flights</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Mumbai → Goa</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">BOM → GOI • Leisure Favourite</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹2,499</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 1h 15m • 35+ daily flights</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Chennai → Kolkata</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">MAA → CCU • Cross-Country</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹4,299</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 2h 30m • 25+ daily flights</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Hyderabad → Pune</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">HYD → PNQ • IT Hub Express</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹2,999</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 1h 20m • 20+ daily flights</div>
+                </div>
+                <div class="glass-card" style="padding: 2.5rem;">
+                    <h3 style="font-weight: 900; margin-bottom: 0.5rem;">Delhi → Jaipur</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">DEL → JAI • Heritage Route</div>
+                    <div style="color: var(--primary); font-weight: 900; font-size: 1.3rem; margin-bottom: 1rem;">FROM ₹1,999</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock" style="color: var(--primary); margin-right: 4px;"></i> 0h 55m • 18+ daily flights</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('flights');
+    </script>
+</body>
+</html>

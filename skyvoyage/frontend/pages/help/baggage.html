@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baggage Info — SkyVoyage</title>
+    <meta name="description" content="SkyVoyage baggage allowances, fees, and restrictions for domestic and international flights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container" style="max-width: 900px;">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('help'); return false;">Help</a> <span>›</span>
+                <span style="color: var(--text);">Baggage Info</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Travel Smart</span>
+                <h1>BAGGAGE <span style="color: var(--primary);">INFORMATION</span></h1>
+                <p>Everything you need to know about baggage allowances, fees, and restrictions.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 2rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">STANDARD ALLOWANCES</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
+                    <div style="padding: 1.5rem; background: rgba(197,160,89,0.1); font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">CLASS</div>
+                    <div style="padding: 1.5rem; background: rgba(197,160,89,0.1); font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">CABIN BAG</div>
+                    <div style="padding: 1.5rem; background: rgba(197,160,89,0.1); font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">CHECK-IN</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border);">Economy</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">7 KG</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">15 KG</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border);">Premium Economy</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">10 KG</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">25 KG</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border);">Business</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">12 KG</div>
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 800;">35 KG</div>
+                    <div style="padding: 1.5rem;">First Class</div>
+                    <div style="padding: 1.5rem; color: var(--primary); font-weight: 800;">15 KG</div>
+                    <div style="padding: 1.5rem; color: var(--primary); font-weight: 800;">50 KG</div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 2rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem;">RESTRICTED ITEMS</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h4 style="color: #ef4444; font-weight: 800; margin-bottom: 1rem;"><i class="fas fa-ban" style="margin-right: 8px;"></i>NOT ALLOWED IN CABIN</h4>
+                        <ul style="color: var(--text-muted); line-height: 2; list-style: none; font-size: 0.9rem;">
+                            <li>✕ Sharp objects (knives, scissors &gt;6cm)</li>
+                            <li>✕ Liquids &gt;100ml per container</li>
+                            <li>✕ Flammable materials</li>
+                            <li>✕ Firearms & ammunition</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #10B981; font-weight: 800; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="margin-right: 8px;"></i>ALLOWED IN CABIN</h4>
+                        <ul style="color: var(--text-muted); line-height: 2; list-style: none; font-size: 0.9rem;">
+                            <li>✓ Laptops & tablets</li>
+                            <li>✓ Medications (with prescription)</li>
+                            <li>✓ Baby food & milk</li>
+                            <li>✓ Small musical instruments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn btn-primary" style="padding: 1rem 3rem;" onclick="openPage('booking-baggage')">
+                    <i class="fas fa-plus"></i> ADD EXTRA BAGGAGE TO BOOKING
+                </button>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>document.getElementById('shared-css').textContent = getSharedCSS(); initPage('help');</script>
+</body>
+</html>

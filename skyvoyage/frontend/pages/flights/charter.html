@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charter Flights — SkyVoyage</title>
+    <meta name="description" content="Book private charter flights with SkyVoyage. Luxury travel on your schedule.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="shared-css"></style>
+    <script src="/pages/shared/page-template.js"></script>
+</head>
+<body>
+    <div id="navbar-slot"></div>
+    <main class="page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/skyvoyage-complete.html">Home</a> <span>›</span>
+                <a href="#" onclick="openPage('flights-oneway'); return false;">Flights</a> <span>›</span>
+                <span style="color: var(--text);">Charter Special</span>
+            </div>
+            <div class="page-hero">
+                <span class="section-tag">Exclusive Access</span>
+                <h1>CHARTER <span style="color: var(--primary);">SPECIAL</span></h1>
+                <p>Fly on your terms. Private charter flights for groups, corporates, and VIP travel with fully customizable itineraries.</p>
+            </div>
+
+            <div class="glass-card" style="padding: 3rem; margin-bottom: 3rem;">
+                <h3 style="font-weight: 900; margin-bottom: 2rem; font-size: 1.2rem;"><i class="fas fa-crown" style="color: var(--primary); margin-right: 10px;"></i> REQUEST A CHARTER QUOTE</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div><span class="input-label">Full Name</span><input type="text" class="input-field" placeholder="e.g. Rajesh Khanna"></div>
+                    <div><span class="input-label">Contact Email</span><input type="email" class="input-field" placeholder="e.g. rajesh@company.com"></div>
+                    <div><span class="input-label">Departure Airport</span><input type="text" class="input-field" placeholder="e.g. Delhi (DEL)"></div>
+                    <div><span class="input-label">Destination Airport</span><input type="text" class="input-field" placeholder="e.g. Goa (GOI)"></div>
+                    <div><span class="input-label">Preferred Date</span><input type="date" class="input-field"></div>
+                    <div><span class="input-label">Number of Passengers</span><input type="number" class="input-field" placeholder="e.g. 12" min="1" max="200"></div>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span class="input-label">Special Requirements</span>
+                    <textarea class="input-field" rows="3" placeholder="e.g. Catering preferences, medical equipment, pet transport..." style="resize: vertical; min-height: 100px;"></textarea>
+                </div>
+                <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1rem;">
+                    <i class="fas fa-paper-plane"></i> REQUEST QUOTE
+                </button>
+            </div>
+
+            <div class="feature-grid">
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-plane"></i></div>
+                    <h3>FLEET SELECTION</h3>
+                    <p>Choose from turboprops, light jets, midsize jets, or wide-body aircraft based on your group size.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-concierge-bell"></i></div>
+                    <h3>VIP SERVICES</h3>
+                    <p>Red-carpet boarding, gourmet catering, and dedicated ground staff at every touchpoint.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="icon"><i class="fas fa-lock"></i></div>
+                    <h3>PRIVATE TERMINALS</h3>
+                    <p>Skip the crowds with access to private FBOs and exclusive terminal facilities.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-slot"></div>
+    <script>
+        document.getElementById('shared-css').textContent = getSharedCSS();
+        initPage('flights');
+    </script>
+</body>
+</html>
