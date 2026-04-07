@@ -38,11 +38,11 @@ export default function NotificationCenter() {
     <div className="relative">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center text-text-muted hover:text-primary transition-all relative group"
+        className="w-11 h-11 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:text-primary transition-all relative group shadow-sm hover:shadow-md"
       >
         <i className="fas fa-bell"></i>
         {unreadCount > 0 && (
-          <span className="absolute top-2 right-2 w-4 h-4 bg-primary text-dark text-[0.6rem] font-black rounded-full flex items-center justify-center border-2 border-dark shadow-glow-gold">
+          <span className="absolute top-2 right-2 w-4 h-4 bg-primary text-[#000814] text-[0.6rem] font-black rounded-full flex items-center justify-center border-2 border-white shadow-sm">
             {unreadCount}
           </span>
         )}
@@ -59,10 +59,10 @@ export default function NotificationCenter() {
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              className="absolute top-[120%] right-0 w-80 md:w-96 bg-dark/95 backdrop-blur-2xl border border-white/10 rounded-[32px] shadow-2xl z-[1100] overflow-hidden"
+              className="absolute top-[120%] right-0 w-80 md:w-96 bg-white border border-black/5 rounded-[32px] shadow-[0_30px_60px_rgba(0,0,0,0.15)] z-[1100] overflow-hidden"
             >
-              <div className="p-6 border-b border-white/5 flex justify-between items-center">
-                <h3 className="text-sm font-black text-white uppercase tracking-[2px]">Notifications</h3>
+              <div className="p-6 border-b border-black/5 flex justify-between items-center">
+                <h3 className="text-sm font-black text-[#000814] uppercase tracking-[2px]">Notifications</h3>
                 <button className="text-[0.6rem] font-black text-primary uppercase tracking-widest hover:underline">Mark all read</button>
               </div>
 
@@ -70,7 +70,7 @@ export default function NotificationCenter() {
                 {notifications.map((n) => (
                   <div 
                     key={n.id} 
-                    className={`p-6 border-b border-white/5 flex gap-4 hover:bg-white/5 transition-all cursor-pointer ${n.unread ? 'bg-primary/5' : ''}`}
+                    className={`p-6 border-b border-black/5 flex gap-4 hover:bg-slate-50 transition-all cursor-pointer ${n.unread ? 'bg-primary/5' : ''}`}
                   >
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm shrink-0 ${
                       n.type === 'alert' ? 'bg-red-500/10 text-red-500' :
@@ -85,17 +85,17 @@ export default function NotificationCenter() {
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs font-black text-white uppercase tracking-wider">{n.title}</span>
-                        <span className="text-[0.6rem] font-bold text-text-muted uppercase tracking-tighter">{n.time}</span>
+                        <span className="text-xs font-black text-[#000814] uppercase tracking-wider">{n.title}</span>
+                        <span className="text-[0.6rem] font-bold text-slate-400 uppercase tracking-tighter">{n.time}</span>
                       </div>
-                      <p className="text-[0.75rem] text-text-muted leading-relaxed font-semibold">{n.message}</p>
+                      <p className="text-[0.75rem] text-slate-500 leading-relaxed font-semibold">{n.message}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="p-4 bg-white/5 text-center">
-                <button className="text-[0.65rem] font-black text-white uppercase tracking-widest hover:text-primary transition-colors">See all alerts</button>
+              <div className="p-4 bg-slate-50 text-center">
+                <button className="text-[0.65rem] font-black text-[#000814] uppercase tracking-widest hover:text-primary transition-colors">See all alerts</button>
               </div>
             </motion.div>
           </>

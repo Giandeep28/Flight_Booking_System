@@ -127,7 +127,7 @@ function renderNavbar(activePage) {
                                     <li><a href="#" onclick="openPage('flights-intl'); return false;"><i class="fas fa-globe"></i> New York JFK</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col" style="background: rgba(197, 160, 89, 0.05); padding: 2rem; border-radius: 16px;">
+                            <div class="mega-col" style="background: #ffffff; padding: 2rem; border-radius: 16px; border: 1px solid rgba(197, 160, 89, 0.1);">
                                 <h4>SKYPRIORITY</h4>
                                 <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 1.5rem;">Unlock premium lounge access and priority boarding with our loyalty tier.</p>
                                 <button class="btn btn-primary" style="width: 100%;" onclick="openPage('coming-soon')">UPGRADE NOW</button>
@@ -185,9 +185,9 @@ function renderNavbar(activePage) {
     
     <!-- Universal Auth Modal -->
     <div id="auth-modal" class="modal">
-        <div class="glass-card" style="padding: 4rem; width: 480px; position: relative; background: rgba(5, 13, 28, 0.95); backdrop-filter: blur(20px);">
+        <div class="glass-card" style="padding: 4rem; width: 480px; position: relative; background: #ffffff; box-shadow: 0 40px 100px rgba(0,0,0,0.2);">
             <i class="fas fa-times" style="position: absolute; top: 2rem; right: 2rem; cursor: pointer; color: var(--text-muted);" onclick="closeAuthModal()"></i>
-            <h2 style="font-weight: 950; font-size: 2.2rem; margin-bottom: 1rem;">SIGN IN</h2>
+            <h2 style="font-weight: 950; font-size: 2.2rem; margin-bottom: 1rem; color: #000814;">SIGN IN</h2>
             <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 0.95rem;">Access your personalized travel dashboard.</p>
             <div style="margin-bottom: 1.5rem;">
                 <span class="input-label">Email Address</span>
@@ -291,29 +291,58 @@ function getSharedCSS() {
 
     /* Modal */
     .modal { 
-        position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); 
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6); 
         display: none; align-items: center; justify-content: center; z-index: 5000; padding: 20px;
     }
     .modal.active { display: flex; animation: modalFadeIn 0.3s ease; }
     @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* Header */
-    header { background: rgba(5, 13, 28, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1100; height: var(--nav-height); }
+    header { background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1100; height: var(--nav-height); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-    .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: 1.5px; }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 900; color: #000814; text-decoration: none; letter-spacing: 1.5px; }
     .logo-icon { width: 45px; height: 45px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--glow-gold); }
     .nav-links { display: flex; gap: 2.8rem; list-style: none; height: 100%; align-items: center; }
     .nav-item { height: 100%; display: flex; align-items: center; position: relative; cursor: pointer; }
-    .nav-links>li>a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; padding: 10px 0; }
+    .nav-links>li>a { color: #1e293b; text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; padding: 10px 0; }
     .nav-links>li>a:hover, .nav-links>li>a.active { color: var(--primary); }
 
     /* Mega Menu - Floating Cards */
-    .mega-menu {
-        position: absolute; top: var(--nav-height); left: 50%; transform: translateX(-50%) translateY(10px);
-        width: 1000px; background: transparent; border: none; box-shadow: none;
-        z-index: 9999; padding: 3rem; opacity: 0; visibility: hidden;
-        transition: opacity 0.15s ease, transform 0.15s ease; border-radius: 0;
+    .mega-menu,
+    .main-menu,
+    .dropdown-menu,
+    .submenu,
+    .nav-dropdown {
+        position: absolute !important;
+        top: var(--nav-height);
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: 1000px;
+        z-index: 9999 !important;
+        padding: 3rem;
+        opacity: 0;
+        visibility: hidden;
+        background-color: #ffffff !important;
+        opacity: 1 !important;
+        backdrop-filter: none !important;
+        filter: none !important;
+        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+        transition: all 0.2s ease; border-radius: 12px !important;
     }
+
+    .navbar,
+    .header,
+    .menu-wrapper {
+        opacity: 1 !important;
+        background: #ffffff !important;
+    }
+
+    .mega-menu *,
+    .dropdown-menu * {
+        color: #222222 !important;
+    }
+
     .nav-item:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
     .mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; }
     .mega-col h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; color: #1f2937; margin-bottom: 1.5rem; font-weight: 900; }
@@ -328,10 +357,10 @@ function getSharedCSS() {
 
     .section-tag { background: rgba(197, 160, 89, 0.1); color: var(--primary); padding: 5px 14px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem; }
 
-    .glass-card { background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border); border-radius: 24px; transition: all 0.4s ease; }
+    .glass-card { background: #ffffff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; transition: all 0.4s ease; }
     .glass-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
 
-    .input-field { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 16px; width: 100%; color: white; font-weight: 700; font-size: 1.15rem; outline: none; transition: border-color 0.3s; font-family: 'Inter', sans-serif; }
+    .input-field { background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.2rem; border-radius: 16px; width: 100%; color: #000814; font-weight: 700; font-size: 1.15rem; outline: none; transition: border-color 0.3s; font-family: 'Inter', sans-serif; }
     .input-field:focus { border-color: var(--primary); background: rgba(255,255,255,0.05); }
     .input-label { font-size: 0.65rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; display: block; }
 

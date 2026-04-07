@@ -2,7 +2,7 @@
 <html lang="en">
 <script>
     // Aggressive immediate loader removal
-    (function() {
+    (function () {
         const check = setInterval(() => {
             const loader = document.getElementById('loader');
             if (loader) {
@@ -34,7 +34,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #C5A059;
             --primary-dark: #A48446;
@@ -58,136 +63,476 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-
-        /* Mega Menu - Floating Cards */
-        .mega-menu {
-            position: absolute;
-            top: var(--nav-height);
-            left: 0;
-            width: 100%;
-            background: transparent;
-            z-index: 9999;
-            padding: 4rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.15s ease, transform 0.15s ease;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .nav-item:hover .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .nav-item.active .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        
-        /* Mega-menu overlay to block background */
-        .mega-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 9998;
-            opacity: 0;
+        /* ============================================
+           SKYVOYAGE - Global Dropdown Fix
+           Applies to: Flights, Booking Hub, 
+                       Member Offers, Help Desk
+           ============================================ */
+
+        /* Navbar positioning context — needed for centering */
+        nav,
+        header,
+        .navbar {
+            position: relative !important;
+        }
+
+        /* Main dropdown container */
+        .dropdown-menu,
+        .mega-menu,
+        .nav-dropdown,
+        [class*="dropdown"],
+        [class*="mega-menu"],
+        [class*="submenu"] {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            opacity: 0 !important;
             visibility: hidden;
-            transition: all 0.3s ease;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            isolation: isolate !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+            border-top: 3px solid #b8972e !important;
+            /* gold accent line */
+
+            /* Centering the dropdown relative to the navbar */
+            left: 50% !important;
+            right: auto !important;
+            position: absolute !important;
+            top: var(--nav-height) !important;
+            transform: translateX(-50%) translateY(10px) !important;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999 !important;
+
+            width: 100vw !important;
+            max-width: 1200px !important;
+            padding: 40px 60px !important;
+            border-radius: 0 0 12px 12px !important;
+            pointer-events: none;
         }
-        
-        .nav-item.active .mega-menu-overlay {
-            opacity: 1;
-            visibility: visible;
+
+        /* Show/hide logic */
+        .nav-item:hover .mega-menu,
+        .nav-item:hover .dropdown-menu,
+        .nav-item.active .mega-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateX(-50%) translateY(0) !important;
+            pointer-events: auto !important;
         }
-        .mega-grid { display: flex; justify-content: center; align-items: flex-start; gap: 50px; width: 100%; max-width: 1200px; margin: 0 auto; }
-        .mega-col { background: #ffffff; border-radius: 16px; padding: 35px 30px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.3) inset; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
-        .mega-col::after { content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px; background: linear-gradient(135deg, rgba(197, 160, 89, 0.1), transparent); border-radius: 16px; z-index: -1; opacity: 0; transition: opacity 0.3s ease; }
-        .mega-col:hover::after { opacity: 1; }
-        .mega-col:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .mega-col.mega-col-highlight { background: linear-gradient(135deg, #ffffff, #f8f5ef); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.15); transition: all 0.3s ease; }
-        .mega-col.mega-col-highlight:hover { transform: translateY(-5px); box-shadow: 0 25px 60px rgba(0,0,0,0.25); }
-        .mega-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2.5px; color: #1f2937; margin-bottom: 1.8rem; font-weight: 900; }
-        .mega-links { list-style: none; display: flex; flex-direction: column; gap: 0; align-items: stretch; width: 100%; }
-        .mega-links a { color: #1f2937; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: flex-start; gap: 12px; padding: 18px 20px; border-radius: 0; width: 100%; background: #ffffff; border: none; margin: 0; box-sizing: border-box; position: relative; overflow: hidden; }
-        .mega-links a::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.05), transparent); transition: left 0.3s ease; }
-        .mega-links a:hover::before { left: 100%; }
-        .mega-links a:hover { background: #ffffff; color: var(--primary); transform: translateY(-1px) scale(1.01); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .mega-col.mega-col-highlight .btn-primary { background: linear-gradient(135deg, #c9a55c, #a8843e); color: black; padding: 14px 28px; border-radius: 12px; font-weight: bold; letter-spacing: 1px; transition: all 0.3s ease; border: none; }
-        .mega-col.mega-col-highlight .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(201, 165, 92, 0.4); }
-        .mega-links i { color: #c9a55c; font-size: 18px; transition: all 0.3s ease; }
-        .mega-links a:hover i { transform: translateX(3px); color: #a8843e; }
+
+        /* Ensure dropdown grid columns are evenly spaced */
+        .dropdown-menu .columns-wrapper,
+        .mega-menu .columns-wrapper,
+        .mega-menu .mega-grid,
+        [class*="dropdown"]>div,
+        [class*="mega-menu"]>div {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 40px !important;
+            align-items: start !important;
+        }
+
+        /* Section headings like "FLIGHT SERVICES" */
+        .dropdown-menu h3,
+        .dropdown-menu h4,
+        .mega-menu h3,
+        .mega-menu h4,
+        [class*="dropdown"] h3,
+        [class*="dropdown"] h4,
+        .mega-col h4 {
+            color: #1a1a2e !important;
+            font-size: 11px !important;
+            letter-spacing: 2px !important;
+            font-weight: 700 !important;
+            margin-bottom: 20px !important;
+            text-transform: uppercase !important;
+            text-align: left !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* Menu item links */
+        .dropdown-menu a,
+        .mega-menu a,
+        [class*="dropdown"] a,
+        .mega-links a {
+            color: #1a1a2e !important;
+            font-size: 15px !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 10px 0 !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+            background: transparent !important;
+            border: none !important;
+            width: auto !important;
+            justify-content: flex-start !important;
+        }
+
+        .dropdown-menu a:hover,
+        .mega-menu a:hover,
+        [class*="dropdown"] a:hover,
+        .mega-links a:hover {
+            color: #b8972e !important;
+            transform: translateX(5px) !important;
+        }
+
+        /* Icons next to links */
+        .dropdown-menu a svg,
+        .dropdown-menu a img,
+        .dropdown-menu a i,
+        .mega-menu a svg,
+        .mega-menu a img,
+        .mega-menu a i,
+        .mega-links i {
+            color: #b8972e !important;
+            width: 18px !important;
+            height: 18px !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        /* SkyPriority card — fix to top-right column */
+        .skypriority-card,
+        .mega-col-highlight,
+        [class*="skypriority"],
+        [class*="priority-card"] {
+            background-color: #f5f0e8 !important;
+            border-radius: 10px !important;
+            padding: 24px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            align-self: start !important;
+            /* stays at top, not stretched */
+            text-align: left !important;
+            align-items: flex-start !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .skypriority-card h4,
+        .mega-col-highlight h4,
+        [class*="skypriority"] h4 {
+            color: #1a1a2e !important;
+            font-size: 11px !important;
+            letter-spacing: 2px !important;
+            font-weight: 700 !important;
+            margin-bottom: 5px !important;
+        }
+
+        .skypriority-card p,
+        .mega-col-highlight p,
+        [class*="skypriority"] p {
+            color: #6b6b6b !important;
+            font-size: 13px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 10px !important;
+        }
+
+        /* "UPGRADE NOW" button */
+        .skypriority-card button,
+        .skypriority-card .btn,
+        .mega-col-highlight .btn,
+        [class*="skypriority"] button,
+        [class*="skypriority"] .btn {
+            background-color: #b8972e !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 14px 20px !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            letter-spacing: 1.5px !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            width: 100% !important;
+            display: block !important;
+            text-transform: uppercase !important;
+        }
+
+        /* Overlay dimming of page content below */
+        body.menu-open::after {
+            content: "" !important;
+            position: fixed !important;
+            inset: 0 !important;
+            background: rgba(0, 0, 0, 0.3) !important;
+            z-index: 99 !important;
+            pointer-events: none !important;
+        }
+
 
         /* Banner Carousel */
-        .banner-carousel { position: relative; height: 450px; background: #020617; overflow: hidden; margin-bottom: -4rem; }
-        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; background-size: cover; background-position: center; }
-        .slide.active { opacity: 1; }
-        .slide-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,8,20,0.95) 0%, transparent 70%); display: flex; align-items: center; padding-left: 10%; }
+        .banner-carousel {
+            position: relative;
+            height: 450px;
+            background: #020617;
+            overflow: hidden;
+            margin-bottom: -4rem;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0, 8, 20, 0.95) 0%, transparent 70%);
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
 
         /* View Content */
-        .view { display: none; min-height: 100vh; padding-top: 2rem; opacity: 0; transform: translateY(10px); transition: all 0.5s ease; }
-        .view.active { display: block; opacity: 1; transform: translateY(0); }
+        .view {
+            display: none;
+            min-height: 100vh;
+            padding-top: 2rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+
+        .view.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Glassmorphism - Removed translucent background */
-        .glass-card { background: transparent; border-radius: 24px; transition: all 0.4s ease; }
-        .glass-card:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+        .glass-card {
+            background: transparent;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
 
         /* Header */
-        header { background: rgba(5, 13, 28, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1100; height: var(--nav-height); }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: 1.5px; }
-        .logo-icon { width: 45px; height: 45px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--glow-gold); }
-        .nav-links { display: flex; gap: 2.8rem; list-style: none; height: 100%; align-items: center; }
-        .nav-item { height: 100%; display: flex; align-items: center; }
-        .nav-links>li>a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; cursor: pointer; padding: 10px 0; }
-        .nav-links>li>a:hover, .nav-links>li>a.active { color: var(--primary); }
+        header {
+            background: rgba(5, 13, 28, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky !important;
+            top: 0;
+            z-index: 1100 !important;
+            height: var(--nav-height);
+        }
 
-        /* Enhanced hover effects for footer links */
-        footer ul li a:hover { color: var(--primary) !important; padding-left: 6px; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1.5px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--glow-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+            list-style: none;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-item {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: static !important;
+        }
+
+        .nav-links>li>a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            cursor: pointer;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-links>li>a:hover,
+        .nav-links>li>a.active {
+            color: var(--primary);
+        }
 
         /* Active nav highlight bar */
-        .nav-links>li>a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--primary); border-radius: 3px 3px 0 0; }
-        .nav-item { position: relative; }
+        .nav-links>li>a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
 
-        .btn { padding: 1rem 2rem; border-radius: 14px; border: none; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-        .btn-primary { background: var(--primary); color: var(--dark); box-shadow: var(--glow-gold); }
-        .btn-primary:hover { background: white; transform: translateY(-3px); }
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
 
         /* Search Card */
-        .search-portal { padding: 2.5rem; margin-top: 4rem; position: relative; z-index: 10; width: 100%; }
-        .search-tab { background: transparent; border: none; padding: 0.5rem 0; color: var(--text-muted); font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s; font-size: 0.9rem; }
-        .search-tab.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 900; }
+        .search-portal {
+            padding: 2.5rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
 
-        .input-group { position: relative; flex: 1; }
-        .input-label { font-size: 0.65rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; display: block; }
-        .input-field { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 16px; width: 100%; color: white; font-weight: 700; font-size: 1.15rem; outline: none; transition: border-color 0.3s; }
-        .input-field:focus { border-color: var(--primary); background: rgba(255,255,255,0.05); }
+        .search-tab {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .search-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            font-weight: 900;
+        }
+
+        .input-group {
+            position: relative;
+            flex: 1;
+        }
+
+        .input-label {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.2rem;
+            border-radius: 16px;
+            width: 100%;
+            color: white;
+            font-weight: 700;
+            font-size: 1.15rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         /* Enhanced Airport Dropdown */
-        .airport-dropdown { 
-            position: absolute; 
-            top: 105%; 
-            left: 0; 
-            right: 0; 
-            background: #081225; 
-            border: 1px solid var(--border); 
-            border-radius: 16px; 
-            max-height: 350px; 
-            overflow-y: auto; 
-            z-index: 2000; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
-            display: none; 
+        .airport-dropdown {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            background: #081225;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-height: 350px;
+            overflow-y: auto;
+            z-index: 2000;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            display: none;
         }
 
-        .airport-item { 
-            padding: 1.2rem 1.5rem; 
-            border-bottom: 1px solid rgba(255,255,255,0.03); 
-            cursor: pointer; 
-            transition: all 0.2s; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+        .airport-item {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .airport-item:hover { 
-            background: rgba(197, 160, 89, 0.1); 
-            padding-left: 2rem; 
+        .airport-item:hover {
+            background: rgba(197, 160, 89, 0.1);
+            padding-left: 2rem;
         }
 
         .airport-item.selected {
@@ -200,15 +545,15 @@
         }
 
         .airport-primary {
-            font-weight: 900; 
-            font-size: 1.1rem; 
-            color: #fff; 
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #fff;
             margin-bottom: 0.2rem;
         }
 
         .airport-secondary {
-            font-size: 0.75rem; 
-            color: var(--text-muted); 
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         .airport-flag {
@@ -267,42 +612,184 @@
             animation: slideIn 0.3s ease;
         }
 
-        .notification.error { background: #ef4444; }
-        .notification.success { background: #10b981; }
-        .notification.info { background: #3b82f6; }
+        .notification.error {
+            background: #ef4444;
+        }
+
+        .notification.success {
+            background: #10b981;
+        }
+
+        .notification.info {
+            background: #3b82f6;
+        }
 
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
 
-        .section-tag { background: rgba(197, 160, 89, 0.1); color: var(--primary); padding: 5px 14px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem; }
+        .section-tag {
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--primary);
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
 
         /* Loader */
-        .loader { position: fixed; inset: 0; background: var(--dark); z-index: 9999; display: flex; align-items: center; justify-content: center; }
-        .loader-logo { font-size: 50px; color: var(--primary); animation: float 3s infinite ease-in-out; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-logo {
+            font-size: 50px;
+            color: var(--primary);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
         /* Chatbot */
-        #chatbot-trigger { position: fixed; bottom: 30px; right: 30px; width: 68px; height: 68px; background: var(--primary); border-radius: 50%; color: var(--dark); display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 15px 40px rgba(0,0,0,0.6); z-index: 1000; }
-        #chatbot-window { position: fixed; bottom: 120px; right: 30px; width: 400px; height: 550px; background: #050d1c; border-radius: 28px; display: none; flex-direction: column; z-index: 1000; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.9); }
+        #chatbot-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 68px;
+            height: 68px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        #chatbot-window {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 400px;
+            height: 550px;
+            background: #050d1c;
+            border-radius: 28px;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px 18px 18px 0;
+            width: fit-content;
+            margin-bottom: 1.2rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-8px);
+            }
+        }
+
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-        .modal { 
-            position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); 
-            display: none; align-items: center; justify-content: center; z-index: 5000; padding: 20px;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .modal.active { display: flex; }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 5000;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -311,7 +798,9 @@
     <div class="loader" id="loader">
         <div style="text-align: center;">
             <div class="loader-logo">✈️</div>
-            <div style="font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; color: var(--text-muted); margin-top: 2rem;">PREPARING SKYVOYAGE</div>
+            <div
+                style="font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; color: var(--text-muted); margin-top: 2rem;">
+                PREPARING SKYVOYAGE</div>
         </div>
     </div>
 
@@ -321,123 +810,212 @@
                 <div class="logo-icon">✈️</div>
                 <span>SKYVOYAGE</span>
             </a>
-            
+
             <ul class="nav-links">
                 <li class="nav-item">
-                    <a href="#" class="active">Flights <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 5px;"></i></a>
+                    <a href="#" class="active">Flights <i class="fas fa-chevron-down"
+                            style="font-size: 0.6rem; margin-left: 5px;"></i></a>
                     <div class="mega-menu">
-                        <div class="mega-grid">
+                        <div class="columns-wrapper">
                             <div class="mega-col">
                                 <h4>Flight Services</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('flights-oneway'); return false;"><i class="fas fa-plane-departure"></i> One-Way Flights</a></li>
-                                    <li><a href="#" onclick="openPage('flights-roundtrip'); return false;"><i class="fas fa-sync-alt"></i> Round-Trip Flights</a></li>
-                                    <li><a href="#" onclick="openPage('flights-multicity'); return false;"><i class="fas fa-random"></i> Multi-City Routes</a></li>
-                                    <li><a href="#" onclick="openPage('flights-charter'); return false;"><i class="fas fa-users-viewfinder"></i> Charter Special</a></li>
+                                    <li><a href="#" onclick="openPage('flights-oneway'); return false;"><i
+                                                class="fas fa-plane-departure"></i> One-Way Flights</a></li>
+                                    <li><a href="#" onclick="openPage('flights-roundtrip'); return false;"><i
+                                                class="fas fa-sync-alt"></i> Round-Trip Flights</a></li>
+                                    <li><a href="#" onclick="openPage('flights-multicity'); return false;"><i
+                                                class="fas fa-random"></i> Multi-City Routes</a></li>
+                                    <li><a href="#" onclick="openPage('flights-charter'); return false;"><i
+                                                class="fas fa-users-viewfinder"></i> Charter Special</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>Domestic Routes</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i class="fas fa-city"></i> Delhi to Mumbai</a></li>
-                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i class="fas fa-city"></i> Bengaluru to Delhi</a></li>
-                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i class="fas fa-city"></i> Mumbai to Goa</a></li>
-                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i class="fas fa-city"></i> Chennai to Kolkata</a></li>
+                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i
+                                                class="fas fa-city"></i> Delhi to Mumbai</a></li>
+                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i
+                                                class="fas fa-city"></i> Bengaluru to Delhi</a></li>
+                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i
+                                                class="fas fa-city"></i> Mumbai to Goa</a></li>
+                                    <li><a href="#" onclick="openPage('flights-domestic'); return false;"><i
+                                                class="fas fa-city"></i> Chennai to Kolkata</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>International Hubs</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i class="fas fa-globe"></i> London Heathrow</a></li>
-                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i class="fas fa-globe"></i> Dubai International</a></li>
-                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i class="fas fa-globe"></i> Singapore Changi</a></li>
-                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i class="fas fa-globe"></i> New York JFK</a></li>
+                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i
+                                                class="fas fa-globe"></i> London Heathrow</a></li>
+                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i
+                                                class="fas fa-globe"></i> Dubai International</a></li>
+                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i
+                                                class="fas fa-globe"></i> Singapore Changi</a></li>
+                                    <li><a href="#" onclick="openPage('flights-intl'); return false;"><i
+                                                class="fas fa-globe"></i> New York JFK</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col mega-col-highlight">
+                            <div class="skypriority-card">
                                 <h4>SKYPRIORITY</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">Unlock premium lounge access and priority boarding with our loyalty tier.</p>
-                                <button class="btn btn-primary" style="width: 100%;" onclick="openPage('coming-soon')">UPGRADE NOW</button>
+                                <p>Unlock premium lounge access and priority boarding with our loyalty tier.</p>
+                                <button class="btn btn-primary" onclick="openPage('coming-soon')">UPGRADE NOW</button>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Booking Hub <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 5px;"></i></a>
+                    <a href="#">Booking Hub <i class="fas fa-chevron-down"
+                            style="font-size: 0.6rem; margin-left: 5px;"></i></a>
                     <div class="mega-menu">
-                        <div class="mega-grid">
+                        <div class="columns-wrapper">
                             <div class="mega-col">
                                 <h4>Manage Travel</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('booking-manage'); return false;"><i class="fas fa-search"></i> Check Booking PNR</a></li>
-                                    <li><a href="#" onclick="openPage('booking-checkin'); return false;"><i class="fas fa-user-check"></i> Online Check-In</a></li>
-                                    <li><a href="#" onclick="openPage('booking-reschedule'); return false;"><i class="fas fa-calendar-alt"></i> Reschedule Flight</a></li>
+                                    <li><a href="#" onclick="openPage('booking-manage'); return false;"><i
+                                                class="fas fa-search"></i> Check Booking PNR</a></li>
+                                    <li><a href="#" onclick="openPage('booking-checkin'); return false;"><i
+                                                class="fas fa-user-check"></i> Online Check-In</a></li>
+                                    <li><a href="#" onclick="openPage('booking-reschedule'); return false;"><i
+                                                class="fas fa-calendar-alt"></i> Reschedule Flight</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>Service Requests</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('booking-meals'); return false;"><i class="fas fa-utensils"></i> Meal Preferences</a></li>
-                                    <li><a href="#" onclick="openPage('booking-assist'); return false;"><i class="fas fa-wheelchair"></i> Special Assistance</a></li>
-                                    <li><a href="#" onclick="openPage('booking-baggage'); return false;"><i class="fas fa-suitcase"></i> Add Baggage</a></li>
+                                    <li><a href="#" onclick="openPage('booking-meals'); return false;"><i
+                                                class="fas fa-utensils"></i> Meal Preferences</a></li>
+                                    <li><a href="#" onclick="openPage('booking-assist'); return false;"><i
+                                                class="fas fa-wheelchair"></i> Special Assistance</a></li>
+                                    <li><a href="#" onclick="openPage('booking-baggage'); return false;"><i
+                                                class="fas fa-suitcase"></i> Add Baggage</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>Quick Services</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('booking-seats'); return false;"><i class="fas fa-chair"></i> Seat Selection</a></li>
-                                    <li><a href="#" onclick="openPage('help-baggage'); return false;"><i class="fas fa-luggage-cart"></i> Baggage Info</a></li>
-                                    <li><a href="#" onclick="openPage('help-refund'); return false;"><i class="fas fa-money-bill"></i> Refund Status</a></li>
+                                    <li><a href="#" onclick="openPage('booking-seats'); return false;"><i
+                                                class="fas fa-chair"></i> Seat Selection</a></li>
+                                    <li><a href="#" onclick="openPage('help-baggage'); return false;"><i
+                                                class="fas fa-luggage-cart"></i> Baggage Info</a></li>
+                                    <li><a href="#" onclick="openPage('help-refund'); return false;"><i
+                                                class="fas fa-money-bill"></i> Refund Status</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col mega-col-highlight">
+                            <div class="skypriority-card">
                                 <h4>BOOKING PLUS</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">Manage all your bookings in one place with premium support.</p>
-                                <button class="btn btn-primary" style="width: 100%;" onclick="openPage('coming-soon')">MANAGE BOOKINGS</button>
+                                <p>Manage all your bookings in one place with premium support.</p>
+                                <button class="btn btn-primary" onclick="openPage('coming-soon')">MANAGE
+                                    BOOKINGS</button>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Member Offers <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 5px;"></i></a>
+                    <a href="#">Member Offers <i class="fas fa-chevron-down"
+                            style="font-size: 0.6rem; margin-left: 5px;"></i></a>
                     <div class="mega-menu">
-                        <div class="mega-grid">
+                        <div class="columns-wrapper">
                             <div class="mega-col">
                                 <h4>Special Discounts</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('offers-student'); return false;"><i class="fas fa-user-graduate"></i> Student Fare</a></li>
-                                    <li><a href="#" onclick="openPage('offers-senior'); return false;"><i class="fas fa-user-friends"></i> Senior Citizen</a></li>
-                                    <li><a href="#" onclick="openPage('offers-armed'); return false;"><i class="fas fa-shield-alt"></i> Armed Forces</a></li>
-                                    <li><a href="#" onclick="openPage('offers-festive'); return false;"><i class="fas fa-gift"></i> Festive Sale</a></li>
+                                    <li><a href="#" onclick="openPage('offers-student'); return false;"><i
+                                                class="fas fa-user-graduate"></i> Student Fare</a></li>
+                                    <li><a href="#" onclick="openPage('offers-senior'); return false;"><i
+                                                class="fas fa-user-friends"></i> Senior Citizen</a></li>
+                                    <li><a href="#" onclick="openPage('offers-armed'); return false;"><i
+                                                class="fas fa-shield-alt"></i> Armed Forces</a></li>
+                                    <li><a href="#" onclick="openPage('offers-festive'); return false;"><i
+                                                class="fas fa-gift"></i> Festive Sale</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>Seasonal Offers</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-umbrella-beach"></i> Summer Special</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-snowflake"></i> Winter Deals</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-cherry-blossom"></i> Spring Getaway</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-leaf"></i> Monsoon Packages</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-umbrella-beach"></i> Summer Special</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-snowflake"></i> Winter Deals</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-cherry-blossom"></i> Spring Getaway</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-leaf"></i> Monsoon Packages</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col">
                                 <h4>Partner Benefits</h4>
                                 <ul class="mega-links">
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-credit-card"></i> Bank Offers</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-mobile-alt"></i> App Exclusive</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-users"></i> Group Discounts</a></li>
-                                    <li><a href="#" onclick="openPage('offers'); return false;"><i class="fas fa-briefcase"></i> Corporate Travel</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-credit-card"></i> Bank Offers</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-mobile-alt"></i> App Exclusive</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-users"></i> Group Discounts</a></li>
+                                    <li><a href="#" onclick="openPage('offers'); return false;"><i
+                                                class="fas fa-briefcase"></i> Corporate Travel</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col mega-col-highlight">
+                            <div class="skypriority-card">
                                 <h4>REWARDS CLUB</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">Join our exclusive rewards program and earn miles on every flight.</p>
-                                <button class="btn btn-primary" style="width: 100%;" onclick="openPage('coming-soon')">JOIN NOW</button>
+                                <p>Join our exclusive rewards program and earn miles on every flight.</p>
+                                <button class="btn btn-primary" onclick="openPage('coming-soon')">JOIN NOW</button>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li><a href="#" onclick="openPage('help'); return false;">Help Desk</a></li>
+                <li class="nav-item">
+                    <a href="#">Help Desk <i class="fas fa-chevron-down"
+                            style="font-size: 0.6rem; margin-left: 5px;"></i></a>
+                    <div class="mega-menu">
+                        <div class="columns-wrapper">
+                            <div class="mega-col">
+                                <h4>Customer Support</h4>
+                                <ul class="mega-links">
+                                    <li><a href="#" onclick="openPage('help'); return false;"><i
+                                                class="fas fa-headset"></i> Contact Support</a></li>
+                                    <li><a href="#" onclick="openPage('help'); return false;"><i
+                                                class="fas fa-comment-dots"></i> Live Chat</a></li>
+                                    <li><a href="#" onclick="openPage('help'); return false;"><i
+                                                class="fas fa-phone"></i> Call Center</a></li>
+                                    <li><a href="#" onclick="openPage('help'); return false;"><i
+                                                class="fas fa-envelope"></i> Email Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Baggage & Refunds</h4>
+                                <ul class="mega-links">
+                                    <li><a href="#" onclick="openPage('help-baggage'); return false;"><i
+                                                class="fas fa-suitcase-rolling"></i> Track Baggage</a></li>
+                                    <li><a href="#" onclick="openPage('help-refund'); return false;"><i
+                                                class="fas fa-undo"></i> Claim Refund</a></li>
+                                    <li><a href="#" onclick="openPage('help-baggage'); return false;"><i
+                                                class="fas fa-weight-hanging"></i> Allowance Info</a></li>
+                                    <li><a href="#" onclick="openPage('help-refund'); return false;"><i
+                                                class="fas fa-file-invoice-dollar"></i> Policy Guide</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Travel Assistance</h4>
+                                <ul class="mega-links">
+                                    <li><a href="#" onclick="openPage('help-assist'); return false;"><i
+                                                class="fas fa-wheelchair"></i> Special Services</a></li>
+                                    <li><a href="#" onclick="openPage('help-assist'); return false;"><i
+                                                class="fas fa-child"></i> Minor Travels</a></li>
+                                    <li><a href="#" onclick="openPage('help-assist'); return false;"><i
+                                                class="fas fa-paw"></i> Pet Policies</a></li>
+                                    <li><a href="#" onclick="openPage('help-assist'); return false;"><i
+                                                class="fas fa-briefcase-medical"></i> Medical Help</a></li>
+                                </ul>
+                            </div>
+                            <div class="skypriority-card">
+                                <h4>SKYCARE CENTER</h4>
+                                <p>Access our comprehensive help center for all your travel concerns and quick
+                                    resolutions.</p>
+                                <button class="btn btn-primary" onclick="openPage('help')">VISIT HELP CENTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
 
             <div class="nav-actions">
@@ -451,23 +1029,34 @@
         <section id="view-home" class="view active">
             <!-- Hero Carousel -->
             <div class="banner-carousel">
-                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?auto=format&fit=crop&w=1600&q=82')">
+                <div class="slide active"
+                    style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?auto=format&fit=crop&w=1600&q=82')">
                     <div class="slide-overlay">
                         <div class="container">
                             <span class="section-tag">Premium Launch</span>
-                            <h1 style="font-size: 4.2rem; font-weight: 950; line-height: 1.1; margin-bottom: 2rem;">ELEGANCE IN<br><span style="color: var(--primary);">THE SKIES.</span></h1>
-                            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">Experience the most luxurious cabin fleet in modern aviation. Book your dream destination today.</p>
-                            <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">EXPLORE ROUTES</button>
+                            <h1 style="font-size: 4.2rem; font-weight: 950; line-height: 1.1; margin-bottom: 2rem;">
+                                ELEGANCE IN<br><span style="color: var(--primary);">THE SKIES.</span></h1>
+                            <p
+                                style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">
+                                Experience the most luxurious cabin fleet in modern aviation. Book your dream
+                                destination today.</p>
+                            <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">EXPLORE
+                                ROUTES</button>
                         </div>
                     </div>
                 </div>
-                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542332213-9b5a5a3fab35?auto=format&fit=crop&w=1600&q=82')">
+                <div class="slide"
+                    style="background-image: url('https://images.unsplash.com/photo-1542332213-9b5a5a3fab35?auto=format&fit=crop&w=1600&q=82')">
                     <div class="slide-overlay">
                         <div class="container">
                             <span class="section-tag">Global Rewards</span>
-                            <h1 style="font-size: 4.2rem; font-weight: 950; line-height: 1.1; margin-bottom: 2rem;">BEYOND<br><span style="color: var(--primary);">BOUNDARIES.</span></h1>
-                            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">Connecting 150+ international hubs with seamless transfers and premium comfort.</p>
-                            <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">JOIN REWARDS</button>
+                            <h1 style="font-size: 4.2rem; font-weight: 950; line-height: 1.1; margin-bottom: 2rem;">
+                                BEYOND<br><span style="color: var(--primary);">BOUNDARIES.</span></h1>
+                            <p
+                                style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">
+                                Connecting 150+ international hubs with seamless transfers and premium comfort.</p>
+                            <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">JOIN
+                                REWARDS</button>
                         </div>
                     </div>
                 </div>
@@ -475,17 +1064,24 @@
 
             <!-- Search Portal -->
             <div class="container">
-                <div class="glass-card search-portal" style="background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                    <div style="display: flex; gap: 3rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem;">
-                        <button class="search-tab active" data-type="oneway" onclick="setSearchType('oneway')">ONE WAY</button>
-                        <button class="search-tab" data-type="round" onclick="setSearchType('round')">ROUND TRIP</button>
-                        <button class="search-tab" data-type="multi" onclick="setSearchType('multi')">MULTI CITY</button>
+                <div class="glass-card search-portal"
+                    style="background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                    <div
+                        style="display: flex; gap: 3rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem;">
+                        <button class="search-tab active" data-type="oneway" onclick="setSearchType('oneway')">ONE
+                            WAY</button>
+                        <button class="search-tab" data-type="round" onclick="setSearchType('round')">ROUND
+                            TRIP</button>
+                        <button class="search-tab" data-type="multi" onclick="setSearchType('multi')">MULTI
+                            CITY</button>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 0.8fr 0.8fr; gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr 0.8fr 0.8fr; gap: 1.5rem; margin-bottom: 2.5rem;">
                         <div class="input-group" id="from-wrapper">
                             <span class="input-label">Departure From</span>
-                            <input type="text" id="from-input" class="input-field" placeholder="Enter City/Airport" autocomplete="off">
+                            <input type="text" id="from-input" class="input-field" placeholder="Enter City/Airport"
+                                autocomplete="off">
                             <div id="from-dropdown" class="airport-dropdown"></div>
                             <button class="swap-btn" onclick="swapAirports()" title="Swap Departure and Destination">
                                 <i class="fas fa-exchange-alt"></i>
@@ -493,7 +1089,8 @@
                         </div>
                         <div class="input-group" id="to-wrapper">
                             <span class="input-label">Destination To</span>
-                            <input type="text" id="to-input" class="input-field" placeholder="Enter City/Airport" autocomplete="off">
+                            <input type="text" id="to-input" class="input-field" placeholder="Enter City/Airport"
+                                autocomplete="off">
                             <div id="to-dropdown" class="airport-dropdown"></div>
                         </div>
                         <div class="input-group">
@@ -513,79 +1110,120 @@
 
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div style="display: flex; gap: 2.5rem;">
-                            <label style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
-                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Special Student Fares
+                            <label
+                                style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                Special Student Fares
                             </label>
-                            <label style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
-                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Armed Forces
+                            <label
+                                style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                Armed Forces
                             </label>
-                            <label style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
-                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);"> Senior Citizen
+                            <label
+                                style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--text-muted);">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                Senior Citizen
                             </label>
                         </div>
-                        <button class="btn btn-primary" style="padding: 1.5rem 5rem; font-size: 1.2rem;" onclick="searchFlights()">SEARCH FLIGHTS</button>
+                        <button class="btn btn-primary" style="padding: 1.5rem 5rem; font-size: 1.2rem;"
+                            onclick="searchFlights()">SEARCH FLIGHTS</button>
                     </div>
                 </div>
 
                 <!-- Features (already there, just formatting) -->
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin: 8rem 0 4rem;">
-                    <div class="glass-card" style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i class="fas fa-shield-alt"></i></div>
+                    <div class="glass-card"
+                        style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i
+                                class="fas fa-shield-alt"></i></div>
                         <h4 style="font-weight: 900; margin-bottom: 1rem;">SECURE BOOKING</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Your transactions are protected by industry-leading 256-bit encryption.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Your transactions are
+                            protected by industry-leading 256-bit encryption.</p>
                     </div>
-                    <div class="glass-card" style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i class="fas fa-check-circle"></i></div>
+                    <div class="glass-card"
+                        style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i
+                                class="fas fa-check-circle"></i></div>
                         <h4 style="font-weight: 900; margin-bottom: 1rem;">BEST FARE POLICY</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">We guarantee the lowest fares, or we'll refund the double difference.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">We guarantee the
+                            lowest fares, or we'll refund the double difference.</p>
                     </div>
-                    <div class="glass-card" style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i class="fas fa-plane"></i></div>
+                    <div class="glass-card"
+                        style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i
+                                class="fas fa-plane"></i></div>
                         <h4 style="font-weight: 900; margin-bottom: 1rem;">PREMIUM FLEET</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Fly on the newest Dreamliners and A350s for maximum comfort.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Fly on the newest
+                            Dreamliners and A350s for maximum comfort.</p>
                     </div>
-                    <div class="glass-card" style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i class="fas fa-user-shield"></i></div>
+                    <div class="glass-card"
+                        style="padding: 3rem 2rem; text-align: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;"><i
+                                class="fas fa-user-shield"></i></div>
                         <h4 style="font-weight: 900; margin-bottom: 1rem;">24/7 CONCIERGE</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Get personalized assistance for any travel changes, anytime.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Get personalized
+                            assistance for any travel changes, anytime.</p>
                     </div>
                 </div>
 
                 <!-- Trending Destinations -->
                 <div style="margin-bottom: 10rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
                         <div>
                             <span class="section-tag">Global Inspiration</span>
                             <h2 style="font-size: 2.8rem; font-weight: 950;">TRENDING EXPERIENCES</h2>
                         </div>
-                        <button class="btn btn-outline" style="border: 1px solid var(--border); padding:0.8rem 2rem; border-radius:12px;">EXPLORE ALL</button>
+                        <button class="btn btn-outline"
+                            style="border: 1px solid var(--border); padding:0.8rem 2rem; border-radius:12px;">EXPLORE
+                            ALL</button>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
-                        <div class="glass-card" style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
-                            <div style="height: 420px; background: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=82') center/cover; position: relative;">
-                                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.9), transparent);"></div>
+                        <div class="glass-card"
+                            style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
+                            <div
+                                style="height: 420px; background: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=82') center/cover; position: relative;">
+                                <div
+                                    style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.9), transparent);">
+                                </div>
                                 <div style="position: absolute; bottom: 2.5rem; left: 2.5rem;">
-                                    <h3 style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px;">Santorini, GR</h3>
-                                    <span style="color: var(--primary); font-weight: 900; font-size: 1.2rem;">FROM ₹54,999</span>
+                                    <h3 style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px;">
+                                        Santorini, GR</h3>
+                                    <span style="color: var(--primary); font-weight: 900; font-size: 1.2rem;">FROM
+                                        ₹54,999</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="glass-card" style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
-                            <div style="height: 420px; background: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=90') center/cover; position: relative;" 
-                             onerror="this.style.background='url(https://images.unsplash.com/photo-1542051841856-8f9accb5d7c4?auto=format&fit=crop&w=1200&q=90) center/cover'; console.log('Tokyo image fallback loaded');">
-                                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.8), transparent);"></div>
+                        <div class="glass-card"
+                            style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
+                            <div style="height: 420px; background: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=90') center/cover; position: relative;"
+                                onerror="this.style.background='url(https://images.unsplash.com/photo-1542051841856-8f9accb5d7c4?auto=format&fit=crop&w=1200&q=90) center/cover'; console.log('Tokyo image fallback loaded');">
+                                <div
+                                    style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.8), transparent);">
+                                </div>
                                 <div style="position: absolute; bottom: 2.5rem; left: 2.5rem;">
-                                    <h3 style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Tokyo, JP</h3>
-                                    <span style="color: var(--primary); font-weight: 900; font-size: 1.2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.6);">FROM ₹82,499</span>
+                                    <h3
+                                        style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                                        Tokyo, JP</h3>
+                                    <span
+                                        style="color: var(--primary); font-weight: 900; font-size: 1.2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.6);">FROM
+                                        ₹82,499</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="glass-card" style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
-                            <div style="height: 420px; background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=82') center/cover; position: relative;">
-                                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.9), transparent);"></div>
+                        <div class="glass-card"
+                            style="overflow: hidden; border-radius: 28px; border: none; cursor: pointer;">
+                            <div
+                                style="height: 420px; background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=82') center/cover; position: relative;">
+                                <div
+                                    style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,8,20,0.9), transparent);">
+                                </div>
                                 <div style="position: absolute; bottom: 2.5rem; left: 2.5rem;">
-                                    <h3 style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px;">Maui, US</h3>
-                                    <span style="color: var(--primary); font-weight: 900; font-size: 1.2rem;">FROM ₹76,999</span>
+                                    <h3 style="font-size: 2rem; font-weight: 950; color: #fff; margin-bottom: 5px;">
+                                        Maui, US</h3>
+                                    <span style="color: var(--primary); font-weight: 900; font-size: 1.2rem;">FROM
+                                        ₹76,999</span>
                                 </div>
                             </div>
                         </div>
@@ -600,48 +1238,68 @@
                 <div style="text-align: center; margin-bottom: 6rem;">
                     <span class="section-tag" id="offer-tag">Global Deals</span>
                     <h1 style="font-size: 3.5rem; font-weight: 950;" id="offer-title">EXCLUSIVE FLIGHT OFFERS</h1>
-                    <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 1rem;">Unlock premium discounts for your next journey.</p>
+                    <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 1rem;">Unlock premium discounts
+                        for your next journey.</p>
                 </div>
-                
+
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
+                    <div class="glass-card"
+                        style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div
+                            style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
                             <i class="fas fa-user-graduate"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Student Fare Special</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Get up to 25% off and extra 10kg baggage allowance. Verification required.</p>
-                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">BOOK WITH ID</button>
+                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Student Fare Special
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Get up to
+                                25% off and extra 10kg baggage allowance. Verification required.</p>
+                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">BOOK
+                                WITH ID</button>
                         </div>
                     </div>
-                    <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
+                    <div class="glass-card"
+                        style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div
+                            style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
                             <i class="fas fa-briefcase"></i>
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Business Elite</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Exclusive corporate rates and dedicated check-in lanes for frequent flyers.</p>
-                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">CLAIM RATE</button>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Exclusive
+                                corporate rates and dedicated check-in lanes for frequent flyers.</p>
+                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">CLAIM
+                                RATE</button>
                         </div>
                     </div>
-                    <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
+                    <div class="glass-card"
+                        style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div
+                            style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Defense Personnel</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Flat 50% off on base fares for active duty and retired armed forces.</p>
-                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">VERIFY & BOOK</button>
+                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Defense Personnel
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Flat 50% off
+                                on base fares for active duty and retired armed forces.</p>
+                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">VERIFY
+                                & BOOK</button>
                         </div>
                     </div>
-                    <div class="glass-card" style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
-                        <div style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
+                    <div class="glass-card"
+                        style="padding: 3rem; display: flex; gap: 2rem; align-items: center; background: rgba(5, 13, 28, 0.8); border: 1px solid var(--border);">
+                        <div
+                            style="width: 100px; height: 100px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary);">
                             <i class="fas fa-gift"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Festive Sky Sale</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Celebrate the season with zero convenience fee and free seat selection.</p>
-                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">GET GIFT</button>
+                            <h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem;">Festive Sky Sale
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Celebrate
+                                the season with zero convenience fee and free seat selection.</p>
+                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; border-radius: 10px;">GET
+                                GIFT</button>
                         </div>
                     </div>
                 </div>
@@ -657,24 +1315,31 @@
                         <div style="margin-bottom: 2.5rem;">
                             <span class="input-label">Stops Count</span>
                             <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
-                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input type="checkbox"> Non-Stop</label>
-                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input type="checkbox"> 1+ Stop</label>
+                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input
+                                        type="checkbox"> Non-Stop</label>
+                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input
+                                        type="checkbox"> 1+ Stop</label>
                             </div>
                         </div>
                         <div>
                             <span class="input-label">Airlines</span>
-                            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;" id="airline-filters">
-                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input type="checkbox"> IndiGo</label>
-                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input type="checkbox"> Air India</label>
-                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input type="checkbox"> Vistara</label>
+                            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;"
+                                id="airline-filters">
+                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input
+                                        type="checkbox"> IndiGo</label>
+                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input
+                                        type="checkbox"> Air India</label>
+                                <label style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem;"><input
+                                        type="checkbox"> Vistara</label>
                             </div>
                         </div>
                     </div>
                 </aside>
-                
+
                 <div style="width: 100%;">
                     <div class="glass-card" style="margin-bottom: 2rem; padding: 1.5rem 3rem;">
-                        <div id="results-meta" style="font-weight: 800; font-size: 1.1rem; color: var(--primary);">SEARCHING FOR BEST FARES...</div>
+                        <div id="results-meta" style="font-weight: 800; font-size: 1.1rem; color: var(--primary);">
+                            SEARCHING FOR BEST FARES...</div>
                     </div>
                     <div id="results-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
                 </div>
@@ -686,8 +1351,9 @@
             <div class="container" style="max-width: 650px; text-align: center; padding: 6rem 0;">
                 <span class="section-tag" style="margin: 0 auto 1.5rem;">Secure Access</span>
                 <h1 style="font-size: 3.2rem; font-weight: 950; margin-bottom: 2rem;">MANAGE YOUR TRIP</h1>
-                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 4rem;">View/Modify your booking. Check flight status and manage your rewards.</p>
-                
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 4rem;">View/Modify your booking.
+                    Check flight status and manage your rewards.</p>
+
                 <div class="glass-card" style="padding: 4rem; text-align: left;">
                     <div style="margin-bottom: 2rem;">
                         <span class="input-label">Booking PNR / Transaction ID</span>
@@ -697,7 +1363,8 @@
                         <span class="input-label">Pax Last Name</span>
                         <input type="text" class="input-field" placeholder="e.g. Malhotra">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%; height: 65px; font-size: 1.1rem;">FIND BOOKING</button>
+                    <button class="btn btn-primary" style="width: 100%; height: 65px; font-size: 1.1rem;">FIND
+                        BOOKING</button>
                 </div>
             </div>
         </section>
@@ -709,15 +1376,18 @@
                     <span class="section-tag">Direct Support</span>
                     <h1 style="font-size: 3.5rem; font-weight: 950;">COMMON QUERIES</h1>
                 </div>
-                
+
                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                     <div class="glass-card" style="padding: 2.5rem; cursor: pointer;" onclick="toggleFAQ(this)">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h3 style="font-size: 1.25rem; font-weight: 900;">How do I correct a name spelling?</h3>
                             <i class="fas fa-chevron-down" style="transition: transform 0.3s;"></i>
                         </div>
-                        <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-muted); padding-top: 0;">
-                            <p style="margin-top: 1.5rem; line-height: 1.7;">Minor spelling corrections of up to 3 characters can be done via our Support Desk. Major name changes require flight cancellation and rebooking.</p>
+                        <div class="faq-content"
+                            style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-muted); padding-top: 0;">
+                            <p style="margin-top: 1.5rem; line-height: 1.7;">Minor spelling corrections of up to 3
+                                characters can be done via our Support Desk. Major name changes require flight
+                                cancellation and rebooking.</p>
                         </div>
                     </div>
                     <div class="glass-card" style="padding: 2.5rem; cursor: pointer;" onclick="toggleFAQ(this)">
@@ -725,71 +1395,119 @@
                             <h3 style="font-size: 1.25rem; font-weight: 900;">What is the refund processing time?</h3>
                             <i class="fas fa-chevron-down" style="transition: transform 0.3s;"></i>
                         </div>
-                        <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-muted); padding-top: 0;">
-                            <p style="margin-top: 1.5rem; line-height: 1.7;">Refunds are typically processed within 7-10 business days after cancellation success. Credits will be sent back to the original payment method.</p>
+                        <div class="faq-content"
+                            style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-muted); padding-top: 0;">
+                            <p style="margin-top: 1.5rem; line-height: 1.7;">Refunds are typically processed within 7-10
+                                business days after cancellation success. Credits will be sent back to the original
+                                payment method.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        </main>
+    </main>
 
     <!-- Professional Footer -->
     <footer style="background: #01040a; padding: 6rem 0 3rem; border-top: 1px solid var(--border); margin-top: 4rem;">
-        <div class="container" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 4rem; margin-bottom: 4rem;">
+        <div class="container"
+            style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 4rem; margin-bottom: 4rem;">
             <div>
                 <a href="#" class="logo" style="margin-bottom: 2rem; display: flex;">
                     <div class="logo-icon">✈️</div>
-                    <span style="font-size: 1.8rem; margin-left: 12px; font-weight: 950; letter-spacing: 2px;">SKYVOYAGE</span>
+                    <span
+                        style="font-size: 1.8rem; margin-left: 12px; font-weight: 950; letter-spacing: 2px;">SKYVOYAGE</span>
                 </a>
-                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">Redefining the art of air travel with premium comfort and global connectivity. Fly the skies with elegance.</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Redefining the art of air travel with premium comfort and global connectivity. Fly the skies with
+                    elegance.</p>
                 <div style="display: flex; gap: 15px;">
-                    <a href="#" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"
+                        style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#"
+                        style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); transition: background 0.3s;"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div>
-                <h4 style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">FLIGHT SERVICES</h4>
+                <h4
+                    style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">
+                    FLIGHT SERVICES</h4>
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
-                    <li><a href="#" onclick="openPage('svc-intl'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">International Routes</a></li>
-                    <li><a href="#" onclick="openPage('svc-domestic'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Domestic Hubs</a></li>
-                    <li><a href="#" onclick="openPage('svc-status'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Flight Status</a></li>
-                    <li><a href="#" onclick="openPage('svc-checkin'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Online Check-in</a></li>
-                    <li><a href="#" onclick="openPage('svc-cargo'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Cargo Services</a></li>
+                    <li><a href="#" onclick="openPage('svc-intl'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">International
+                            Routes</a></li>
+                    <li><a href="#" onclick="openPage('svc-domestic'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Domestic
+                            Hubs</a></li>
+                    <li><a href="#" onclick="openPage('svc-status'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Flight
+                            Status</a></li>
+                    <li><a href="#" onclick="openPage('svc-checkin'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Online
+                            Check-in</a></li>
+                    <li><a href="#" onclick="openPage('svc-cargo'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Cargo
+                            Services</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">SUPPORT & HELP</h4>
+                <h4
+                    style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">
+                    SUPPORT & HELP</h4>
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
-                    <li><a href="#" onclick="openPage('help'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Help Desk</a></li>
-                    <li><a href="#" onclick="openPage('help-baggage'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Baggage Info</a></li>
-                    <li><a href="#" onclick="openPage('help-refund'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Refund Policy</a></li>
-                    <li><a href="#" onclick="openPage('help-assist'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Special Assistance</a></li>
-                    <li><a href="#" onclick="openPage('help-privacy'); return false;" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Privacy Policy</a></li>
+                    <li><a href="#" onclick="openPage('help'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Help
+                            Desk</a></li>
+                    <li><a href="#" onclick="openPage('help-baggage'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Baggage
+                            Info</a></li>
+                    <li><a href="#" onclick="openPage('help-refund'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Refund
+                            Policy</a></li>
+                    <li><a href="#" onclick="openPage('help-assist'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Special
+                            Assistance</a></li>
+                    <li><a href="#" onclick="openPage('help-privacy'); return false;"
+                            style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; cursor: pointer;">Privacy
+                            Policy</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">SKY NEWSLETTER</h4>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Join our elite list for early bird offers and member-only news.</p>
+                <h4
+                    style="font-weight: 900; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">
+                    SKY NEWSLETTER</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Join our elite list for
+                    early bird offers and member-only news.</p>
                 <div style="display: flex; gap: 10px;">
-                    <input type="email" placeholder="Email" style="flex:1; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 10px; color: white;">
-                    <button class="btn btn-primary" style="padding: 0.7rem 1.2rem; border-radius: 10px;"><i class="fas fa-paper-plane"></i></button>
+                    <input type="email" placeholder="Email"
+                        style="flex:1; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 10px; color: white;">
+                    <button class="btn btn-primary" style="padding: 0.7rem 1.2rem; border-radius: 10px;"><i
+                            class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
         <div class="container" style="padding-top: 3rem; border-top: 1px solid var(--border); text-align: center;">
-            <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">© 2026 SKYVOYAGE AIRLINES. ALL RIGHTS RESERVED. DESIGNED FOR EXCELLENCE.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">© 2026 SKYVOYAGE AIRLINES. ALL
+                RIGHTS RESERVED. DESIGNED FOR EXCELLENCE.</p>
         </div>
     </footer>
 
     <!-- Chatbot Overlay -->
     <div id="chatbot-trigger" onclick="toggleChatbot()"><i class="fas fa-robot"></i></div>
     <div id="chatbot-window">
-        <div style="background: var(--primary); padding: 1.8rem; color: var(--dark); display: flex; align-items: center; justify-content: space-between;">
+        <div
+            style="background: var(--primary); padding: 1.8rem; color: var(--dark); display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 38px; height: 38px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🕊️</div>
+                <div
+                    style="width: 38px; height: 38px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    🕊️</div>
                 <div>
                     <div style="font-weight: 950; font-size: 1rem; letter-spacing: 0.5px;">SKYBOT</div>
                     <div style="font-size: 0.7rem; font-weight: 800; opacity: 0.8;">Active Assistance</div>
@@ -797,21 +1515,30 @@
             </div>
             <i class="fas fa-times" style="cursor: pointer;" onclick="toggleChatbot()"></i>
         </div>
-        <div id="chat-messages" style="flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; background: #01040a;">
-            <div style="background: rgba(255,255,255,0.04); padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5;">Welcome to SkyVoyage. I am your premium travel assistant. How may I guide your journey today?</div>
+        <div id="chat-messages"
+            style="flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; background: #1a1a2e;">
+            <div
+                style="background: rgba(255,255,255,0.04); padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5;">
+                Welcome to SkyVoyage. I am your premium travel assistant. How may I guide your journey today?</div>
         </div>
-        <div style="padding: 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 12px; background: #050d1c;">
-            <input type="text" id="chat-input" placeholder="Enter your query..." style="flex: 1; background: transparent; border: none; border-bottom: 1px solid var(--border); color: white; padding-bottom: 8px; outline: none;">
-            <button class="btn btn-primary" style="padding: 0.6rem 1.2rem; border-radius: 10px;" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+        <div
+            style="padding: 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 12px; background: #050d1c;">
+            <input type="text" id="chat-input" placeholder="Enter your query..."
+                style="flex: 1; background: transparent; border: none; border-bottom: 1px solid var(--border); color: white; padding-bottom: 8px; outline: none;">
+            <button class="btn btn-primary" style="padding: 0.6rem 1.2rem; border-radius: 10px;"
+                onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
     <!-- Auth Modal -->
     <div id="auth-modal" class="modal">
         <div class="glass-card" style="padding: 4rem; width: 480px; position: relative;">
-            <i class="fas fa-times" style="position: absolute; top: 2rem; right: 2rem; cursor: pointer; color: var(--text-muted);" onclick="closeAuthModal()"></i>
+            <i class="fas fa-times"
+                style="position: absolute; top: 2rem; right: 2rem; cursor: pointer; color: var(--text-muted);"
+                onclick="closeAuthModal()"></i>
             <h2 style="font-weight: 950; font-size: 2.2rem; margin-bottom: 1rem;">SIGN IN</h2>
-            <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 0.95rem;">Access your personalized travel dashboard.</p>
+            <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 0.95rem;">Access your personalized
+                travel dashboard.</p>
             <div style="margin-bottom: 1.5rem;">
                 <span class="input-label">Email Address</span>
                 <input type="email" placeholder="john@skyvoyage.com" class="input-field">
@@ -820,7 +1547,8 @@
                 <span class="input-label">Security Password</span>
                 <input type="password" placeholder="••••••••" class="input-field">
             </div>
-            <button class="btn btn-primary" style="width: 100%; height: 60px; font-size: 1.1rem;" onclick="closeAuthModal()">CONTINUE ACCESS</button>
+            <button class="btn btn-primary" style="width: 100%; height: 60px; font-size: 1.1rem;"
+                onclick="closeAuthModal()">CONTINUE ACCESS</button>
         </div>
     </div>
 
@@ -832,38 +1560,38 @@
 
         // Route Map: Single source of truth for all navigation
         const ROUTES = {
-            'home':              '/skyvoyage-complete.html',
-            'flights-oneway':    '/pages/flights/one-way.html',
+            'home': '/skyvoyage-complete.html',
+            'flights-oneway': '/pages/flights/one-way.html',
             'flights-roundtrip': '/pages/flights/round-trip.html',
             'flights-multicity': '/pages/flights/multi-city.html',
-            'flights-charter':   '/pages/flights/charter.html',
-            'flights-status':    '/pages/flights/status.html',
-            'flights-intl':      '/pages/flights/international.html',
-            'flights-domestic':  '/pages/flights/domestic.html',
-            'booking':           '/pages/booking/index.html',
-            'booking-manage':    '/pages/booking/manage.html',
-            'booking-checkin':   '/pages/booking/check-in.html',
-            'booking-reschedule':'/pages/booking/reschedule.html',
-            'booking-meals':     '/pages/booking/meals.html',
-            'booking-assist':    '/pages/booking/special-assistance.html',
-            'booking-baggage':   '/pages/booking/add-baggage.html',
-            'booking-seats':     '/pages/booking/seats.html',
-            'offers':            '/pages/offers/index.html',
-            'offers-student':    '/pages/offers/student.html',
-            'offers-senior':     '/pages/offers/senior.html',
-            'offers-armed':      '/pages/offers/armed-forces.html',
-            'offers-festive':    '/pages/offers/festive.html',
-            'help':              '/pages/help/index.html',
-            'help-baggage':      '/pages/help/baggage.html',
-            'help-refund':       '/pages/help/refund.html',
-            'help-assist':       '/pages/help/special-assistance.html',
-            'help-privacy':      '/pages/help/privacy.html',
-            'svc-intl':          '/pages/flights/international.html',
-            'svc-domestic':      '/pages/flights/domestic.html',
-            'svc-status':        '/pages/flights/status.html',
-            'svc-checkin':       '/pages/booking/check-in.html',
-            'svc-cargo':         '/pages/services/cargo.html',
-            'coming-soon':       '/pages/coming-soon.html'
+            'flights-charter': '/pages/flights/charter.html',
+            'flights-status': '/pages/flights/status.html',
+            'flights-intl': '/pages/flights/international.html',
+            'flights-domestic': '/pages/flights/domestic.html',
+            'booking': '/pages/booking/index.html',
+            'booking-manage': '/pages/booking/manage.html',
+            'booking-checkin': '/pages/booking/check-in.html',
+            'booking-reschedule': '/pages/booking/reschedule.html',
+            'booking-meals': '/pages/booking/meals.html',
+            'booking-assist': '/pages/booking/special-assistance.html',
+            'booking-baggage': '/pages/booking/add-baggage.html',
+            'booking-seats': '/pages/booking/seats.html',
+            'offers': '/pages/offers/index.html',
+            'offers-student': '/pages/offers/student.html',
+            'offers-senior': '/pages/offers/senior.html',
+            'offers-armed': '/pages/offers/armed-forces.html',
+            'offers-festive': '/pages/offers/festive.html',
+            'help': '/pages/help/index.html',
+            'help-baggage': '/pages/help/baggage.html',
+            'help-refund': '/pages/help/refund.html',
+            'help-assist': '/pages/help/special-assistance.html',
+            'help-privacy': '/pages/help/privacy.html',
+            'svc-intl': '/pages/flights/international.html',
+            'svc-domestic': '/pages/flights/domestic.html',
+            'svc-status': '/pages/flights/status.html',
+            'svc-checkin': '/pages/booking/check-in.html',
+            'svc-cargo': '/pages/services/cargo.html',
+            'coming-soon': '/pages/coming-soon.html'
         };
 
         // Debounce state for rapid-click protection
@@ -935,124 +1663,124 @@
 
         // Production Grade Airport DB (Restored & Expanded to 230+ Destinations)
         const AIRPORTS = [
-            {"code": "AMD", "name": "Sardar Vallabhbhai Patel International", "city": "Ahmedabad", "country": "India"},
-            {"code": "AKD", "name": "Akola Airport", "city": "Akola", "country": "India"},
-            {"code": "IXU", "name": "Aurangabad Airport", "city": "Aurangabad", "country": "India"},
-            {"code": "BOM", "name": "Chhatrapati Shivaji International", "city": "Mumbai", "country": "India"},
-            {"code": "PAB", "name": "Bilaspur Airport", "city": "Bilaspur", "country": "India"},
-            {"code": "BHJ", "name": "Bhuj Airport", "city": "Bhuj", "country": "India"},
-            {"code": "IXG", "name": "Belgaum Airport", "city": "Belgaum", "country": "India"},
-            {"code": "BDQ", "name": "Vadodara Airport", "city": "Baroda", "country": "India"},
-            {"code": "BHO", "name": "Raja Bhoj International", "city": "Bhopal", "country": "India"},
-            {"code": "BHU", "name": "Bhavnagar Airport", "city": "Bhaunagar", "country": "India"},
-            {"code": "NMB", "name": "Daman Airport", "city": "Daman", "country": "India"},
-            {"code": "GUX", "name": "Guna Airport", "city": "Guna", "country": "India"},
-            {"code": "GOI", "name": "Dabolim Airport", "city": "Goa", "country": "India"},
-            {"code": "IDR", "name": "Devi Ahilyabai Holkar Airport", "city": "Indore", "country": "India"},
-            {"code": "JLR", "name": "Jabalpur Airport", "city": "Jabalpur", "country": "India"},
-            {"code": "JGA", "name": "Jamnagar Airport", "city": "Jamnagar", "country": "India"},
-            {"code": "IXY", "name": "Kandla Airport", "city": "Kandla", "country": "India"},
-            {"code": "HJR", "name": "Khajuraho Airport", "city": "Khajuraho", "country": "India"},
-            {"code": "KLH", "name": "Kolhapur Airport", "city": "Kolhapur", "country": "India"},
-            {"code": "IXK", "name": "Keshod Airport", "city": "Keshod", "country": "India"},
-            {"code": "NAG", "name": "Dr. Babasaheb Ambedkar International", "city": "Nagpur", "country": "India"},
-            {"code": "ISK", "name": "Nashik Airport", "city": "Nasik Road", "country": "India"},
-            {"code": "PNQ", "name": "Pune Airport", "city": "Pune", "country": "India"},
-            {"code": "PBD", "name": "Porbandar Airport", "city": "Porbandar", "country": "India"},
-            {"code": "RAJ", "name": "Rajkot Airport", "city": "Rajkot", "country": "India"},
-            {"code": "RPR", "name": "Raipur Airport", "city": "Raipur", "country": "India"},
-            {"code": "SSE", "name": "Solapur Airport", "city": "Sholapur", "country": "India"},
-            {"code": "STV", "name": "Surat Airport", "city": "Surat", "country": "India"},
-            {"code": "UDR", "name": "Maharana Pratap Airport", "city": "Udaipur", "country": "India"},
-            {"code": "IXV", "name": "Along Airport", "city": "Along", "country": "India"},
-            {"code": "IXA", "name": "Agartala Airport", "city": "Agartala", "country": "India"},
-            {"code": "AJL", "name": "Lengpui Airport", "city": "Aizwal", "country": "India"},
-            {"code": "IXB", "name": "Bagdogra Airport", "city": "Baghdogra", "country": "India"},
-            {"code": "BBI", "name": "Biju Patnaik Airport", "city": "Bhubaneswar", "country": "India"},
-            {"code": "CCU", "name": "Netaji Subhash Chandra Bose International", "city": "Kolkata", "country": "India"},
-            {"code": "COH", "name": "Cooch Behar Airport", "city": "Cooch-behar", "country": "India"},
-            {"code": "DBD", "name": "Dhanbad Airport", "city": "Dhanbad", "country": "India"},
-            {"code": "GAY", "name": "Gaya Airport", "city": "Gaya", "country": "India"},
-            {"code": "IMF", "name": "Imphal Airport", "city": "Imphal", "country": "India"},
-            {"code": "IXW", "name": "Sonari Airport", "city": "Jamshedpur", "country": "India"},
-            {"code": "JRH", "name": "Jorhat Airport", "city": "Jorhat", "country": "India"},
-            {"code": "IXH", "name": "Kailashahar Airport", "city": "Kailashahar", "country": "India"},
-            {"code": "IXS", "name": "Silchar Airport", "city": "Silchar", "country": "India"},
-            {"code": "IXI", "name": "North Lakhimpur Airport", "city": "Lilabari", "country": "India"},
-            {"code": "DIB", "name": "Dibrugarh Airport", "city": "Mohanbari", "country": "India"},
-            {"code": "MZU", "name": "Muzaffarpur Airport", "city": "Mazuffarpur", "country": "India"},
-            {"code": "PAT", "name": "Lok Nayak Jayaprakash Airport", "city": "Patina", "country": "India"},
-            {"code": "IXR", "name": "Birsa Munda Airport", "city": "Ranchi", "country": "India"},
-            {"code": "RRK", "name": "Rourkela Airport", "city": "Rourkela", "country": "India"},
-            {"code": "VTZ", "name": "Vishakhapatnam Airport", "city": "Vishakhapatnam", "country": "India"},
-            {"code": "ZER", "name": "Ziro Airport", "city": "Zero", "country": "India"},
-            {"code": "AGR", "name": "Agra Airport", "city": "Agra", "country": "India"},
-            {"code": "IXD", "name": "Allahabad Airport", "city": "Allahabad", "country": "India"},
-            {"code": "ATQ", "name": "Sri Guru Ram Dass Jee International", "city": "Amritsar", "country": "India"},
-            {"code": "BKB", "name": "Nal Airport", "city": "Bikaner", "country": "India"},
-            {"code": "VNS", "name": "Lal Bahadur Shastri Airport", "city": "Varanasi", "country": "India"},
-            {"code": "KUU", "name": "Kullu Manali Airport", "city": "Kulu", "country": "India"},
-            {"code": "BUP", "name": "Bhatinda Air Force Station", "city": "Bhatinda", "country": "India"},
-            {"code": "BEK", "name": "Bareilly Air Force Station", "city": "Bareilly", "country": "India"},
-            {"code": "IXC", "name": "Chandigarh Airport", "city": "Chandigarh", "country": "India"},
-            {"code": "KNU", "name": "Kanpur Airport", "city": "Kanpur", "country": "India"},
-            {"code": "DED", "name": "Dehradun Airport", "city": "Dehra Dun", "country": "India"},
-            {"code": "DEL", "name": "Indira Gandhi International", "city": "Delhi", "country": "India"},
-            {"code": "GWL", "name": "Gwalior Airport", "city": "Gwalior", "country": "India"},
-            {"code": "HSS", "name": "Hissar Airport", "city": "Hissar", "country": "India"},
-            {"code": "JDH", "name": "Jodhpur Airport", "city": "Jodhpur", "country": "India"},
-            {"code": "JAI", "name": "Jaipur International", "city": "Jaipur", "country": "India"},
-            {"code": "JSA", "name": "Jaisalmer Airport", "city": "Jaisalmer", "country": "India"},
-            {"code": "IXJ", "name": "Jammu Airport", "city": "Jammu", "country": "India"},
-            {"code": "KTU", "name": "Kota Airport", "city": "Kota", "country": "India"},
-            {"code": "LUH", "name": "Ludhiana Airport", "city": "Ludhiaha", "country": "India"},
-            {"code": "IXL", "name": "Leh Kushok Bakula Rimpochee", "city": "Leh", "country": "India"},
-            {"code": "LKO", "name": "Chaudhary Charan Singh International", "city": "Lucknow", "country": "India"},
-            {"code": "IXP", "name": "Pathankot Airport", "city": "Pathankot", "country": "India"},
-            {"code": "PGH", "name": "Pantnagar Airport", "city": "Nainital", "country": "India"},
-            {"code": "SXR", "name": "Sheikh ul Alam Airport", "city": "Srinagar", "country": "India"},
-            {"code": "TNI", "name": "Satna Airport", "city": "Satna", "country": "India"},
-            {"code": "AGX", "name": "Agatti Airport", "city": "Agatti Island", "country": "India"},
-            {"code": "BLR", "name": "Kempegowda International", "city": "Bangalore", "country": "India"},
-            {"code": "BEP", "name": "Bellary Airport", "city": "Bellary", "country": "India"},
-            {"code": "VGA", "name": "Vijayawada Airport", "city": "Vijayawada", "country": "India"},
-            {"code": "CJB", "name": "Coimbatore International", "city": "Coimbatore", "country": "India"},
-            {"code": "COK", "name": "Cochin International", "city": "Kochi", "country": "India"},
-            {"code": "CCJ", "name": "Calicut International", "city": "Calicut", "country": "India"},
-            {"code": "CDP", "name": "Kadapa Airport", "city": "Cuddapah", "country": "India"},
-            {"code": "CBD", "name": "Car Nicobar Air Force Station", "city": "Carnicobar", "country": "India"},
-            {"code": "BPM", "name": "Begumpet Airport", "city": "Hyderabad", "country": "India"},
-            {"code": "IXM", "name": "Madurai Airport", "city": "Madurai", "country": "India"},
-            {"code": "IXE", "name": "Mangalore International", "city": "Mangalore", "country": "India"},
-            {"code": "MAA", "name": "Chennai International", "city": "Madras", "country": "India"},
-            {"code": "IXZ", "name": "Vir Savarkar International", "city": "Port Blair", "country": "India"},
-            {"code": "PNY", "name": "Pondicherry Airport", "city": "Pendicherry", "country": "India"},
-            {"code": "RJA", "name": "Rajahmundry Airport", "city": "Rajahmundry", "country": "India"},
-            {"code": "SXV", "name": "Salem Airport", "city": "Salem", "country": "India"},
-            {"code": "TJV", "name": "Tanjore Air Force Base", "city": "Tanjore", "country": "India"},
-            {"code": "TIR", "name": "Tirupati Airport", "city": "Tirupeti", "country": "India"},
-            {"code": "TRZ", "name": "Tiruchirapally Civil Airport", "city": "Tiruchirappalli", "country": "India"},
-            {"code": "TRV", "name": "Trivandrum International", "city": "Trivandrum", "country": "India"},
-            {"code": "DIU", "name": "Diu Airport", "city": "Diu", "country": "India"},
-            {"code": "HBX", "name": "Hubli Airport", "city": "Hubli", "country": "India"},
-            {"code": "SHL", "name": "Shillong Airport", "city": "Shillong", "country": "India"},
-            {"code": "GAU", "name": "Lokpriya Gopinath Bordoloi International", "city": "Guwahati", "country": "India"},
-            {"code": "DMU", "name": "Dimapur Airport", "city": "Dimapur", "country": "India"},
-            {"code": "TEZ", "name": "Tezpur Airport", "city": "Tezpur", "country": "India"},
-            {"code": "GOP", "name": "Gorakhpur Airport", "city": "Gorakhpur", "country": "India"},
-            {"code": "DHM", "name": "Kangra Airport", "city": "Kangra", "country": "India"},
-            {"code": "NDC", "name": "Nanded Airport", "city": "Nanded", "country": "India"},
-            {"code": "SLV", "name": "Shimla Airport", "city": "Shimla", "country": "India"},
-            {"code": "MYQ", "name": "Mysore Airport", "city": "Mysore", "country": "India"},
-            {"code": "IXT", "name": "Pasighat Airport", "city": "Pasighat", "country": "India"},
-            {"code": "RTC", "name": "Ratnagiri Airport", "city": "Ratnagiri Airport", "country": "India"},
-            {"code": "RDP", "name": "Kazi Nazrul Islam Airport", "city": "Durgapur", "country": "India"},
-            {"code": "PUT", "name": "Sri Sathya Sai Airport", "city": "Puttaparthi", "country": "India"},
-            {"code": "HYD", "name": "Rajiv Gandhi International", "city": "Hyderabad", "country": "India"},
-            {"code": "DXB", "name": "Dubai International", "city": "Dubai", "country": "UAE"},
-            {"code": "LHR", "name": "Heathrow Airport", "city": "London", "country": "UK"},
-            {"code": "SIN", "name": "Changi Airport", "city": "Singapore", "country": "Singapore"},
-            {"code": "JFK", "name": "John F. Kennedy", "city": "New York", "country": "USA"},
+            { "code": "AMD", "name": "Sardar Vallabhbhai Patel International", "city": "Ahmedabad", "country": "India" },
+            { "code": "AKD", "name": "Akola Airport", "city": "Akola", "country": "India" },
+            { "code": "IXU", "name": "Aurangabad Airport", "city": "Aurangabad", "country": "India" },
+            { "code": "BOM", "name": "Chhatrapati Shivaji International", "city": "Mumbai", "country": "India" },
+            { "code": "PAB", "name": "Bilaspur Airport", "city": "Bilaspur", "country": "India" },
+            { "code": "BHJ", "name": "Bhuj Airport", "city": "Bhuj", "country": "India" },
+            { "code": "IXG", "name": "Belgaum Airport", "city": "Belgaum", "country": "India" },
+            { "code": "BDQ", "name": "Vadodara Airport", "city": "Baroda", "country": "India" },
+            { "code": "BHO", "name": "Raja Bhoj International", "city": "Bhopal", "country": "India" },
+            { "code": "BHU", "name": "Bhavnagar Airport", "city": "Bhaunagar", "country": "India" },
+            { "code": "NMB", "name": "Daman Airport", "city": "Daman", "country": "India" },
+            { "code": "GUX", "name": "Guna Airport", "city": "Guna", "country": "India" },
+            { "code": "GOI", "name": "Dabolim Airport", "city": "Goa", "country": "India" },
+            { "code": "IDR", "name": "Devi Ahilyabai Holkar Airport", "city": "Indore", "country": "India" },
+            { "code": "JLR", "name": "Jabalpur Airport", "city": "Jabalpur", "country": "India" },
+            { "code": "JGA", "name": "Jamnagar Airport", "city": "Jamnagar", "country": "India" },
+            { "code": "IXY", "name": "Kandla Airport", "city": "Kandla", "country": "India" },
+            { "code": "HJR", "name": "Khajuraho Airport", "city": "Khajuraho", "country": "India" },
+            { "code": "KLH", "name": "Kolhapur Airport", "city": "Kolhapur", "country": "India" },
+            { "code": "IXK", "name": "Keshod Airport", "city": "Keshod", "country": "India" },
+            { "code": "NAG", "name": "Dr. Babasaheb Ambedkar International", "city": "Nagpur", "country": "India" },
+            { "code": "ISK", "name": "Nashik Airport", "city": "Nasik Road", "country": "India" },
+            { "code": "PNQ", "name": "Pune Airport", "city": "Pune", "country": "India" },
+            { "code": "PBD", "name": "Porbandar Airport", "city": "Porbandar", "country": "India" },
+            { "code": "RAJ", "name": "Rajkot Airport", "city": "Rajkot", "country": "India" },
+            { "code": "RPR", "name": "Raipur Airport", "city": "Raipur", "country": "India" },
+            { "code": "SSE", "name": "Solapur Airport", "city": "Sholapur", "country": "India" },
+            { "code": "STV", "name": "Surat Airport", "city": "Surat", "country": "India" },
+            { "code": "UDR", "name": "Maharana Pratap Airport", "city": "Udaipur", "country": "India" },
+            { "code": "IXV", "name": "Along Airport", "city": "Along", "country": "India" },
+            { "code": "IXA", "name": "Agartala Airport", "city": "Agartala", "country": "India" },
+            { "code": "AJL", "name": "Lengpui Airport", "city": "Aizwal", "country": "India" },
+            { "code": "IXB", "name": "Bagdogra Airport", "city": "Baghdogra", "country": "India" },
+            { "code": "BBI", "name": "Biju Patnaik Airport", "city": "Bhubaneswar", "country": "India" },
+            { "code": "CCU", "name": "Netaji Subhash Chandra Bose International", "city": "Kolkata", "country": "India" },
+            { "code": "COH", "name": "Cooch Behar Airport", "city": "Cooch-behar", "country": "India" },
+            { "code": "DBD", "name": "Dhanbad Airport", "city": "Dhanbad", "country": "India" },
+            { "code": "GAY", "name": "Gaya Airport", "city": "Gaya", "country": "India" },
+            { "code": "IMF", "name": "Imphal Airport", "city": "Imphal", "country": "India" },
+            { "code": "IXW", "name": "Sonari Airport", "city": "Jamshedpur", "country": "India" },
+            { "code": "JRH", "name": "Jorhat Airport", "city": "Jorhat", "country": "India" },
+            { "code": "IXH", "name": "Kailashahar Airport", "city": "Kailashahar", "country": "India" },
+            { "code": "IXS", "name": "Silchar Airport", "city": "Silchar", "country": "India" },
+            { "code": "IXI", "name": "North Lakhimpur Airport", "city": "Lilabari", "country": "India" },
+            { "code": "DIB", "name": "Dibrugarh Airport", "city": "Mohanbari", "country": "India" },
+            { "code": "MZU", "name": "Muzaffarpur Airport", "city": "Mazuffarpur", "country": "India" },
+            { "code": "PAT", "name": "Lok Nayak Jayaprakash Airport", "city": "Patina", "country": "India" },
+            { "code": "IXR", "name": "Birsa Munda Airport", "city": "Ranchi", "country": "India" },
+            { "code": "RRK", "name": "Rourkela Airport", "city": "Rourkela", "country": "India" },
+            { "code": "VTZ", "name": "Vishakhapatnam Airport", "city": "Vishakhapatnam", "country": "India" },
+            { "code": "ZER", "name": "Ziro Airport", "city": "Zero", "country": "India" },
+            { "code": "AGR", "name": "Agra Airport", "city": "Agra", "country": "India" },
+            { "code": "IXD", "name": "Allahabad Airport", "city": "Allahabad", "country": "India" },
+            { "code": "ATQ", "name": "Sri Guru Ram Dass Jee International", "city": "Amritsar", "country": "India" },
+            { "code": "BKB", "name": "Nal Airport", "city": "Bikaner", "country": "India" },
+            { "code": "VNS", "name": "Lal Bahadur Shastri Airport", "city": "Varanasi", "country": "India" },
+            { "code": "KUU", "name": "Kullu Manali Airport", "city": "Kulu", "country": "India" },
+            { "code": "BUP", "name": "Bhatinda Air Force Station", "city": "Bhatinda", "country": "India" },
+            { "code": "BEK", "name": "Bareilly Air Force Station", "city": "Bareilly", "country": "India" },
+            { "code": "IXC", "name": "Chandigarh Airport", "city": "Chandigarh", "country": "India" },
+            { "code": "KNU", "name": "Kanpur Airport", "city": "Kanpur", "country": "India" },
+            { "code": "DED", "name": "Dehradun Airport", "city": "Dehra Dun", "country": "India" },
+            { "code": "DEL", "name": "Indira Gandhi International", "city": "Delhi", "country": "India" },
+            { "code": "GWL", "name": "Gwalior Airport", "city": "Gwalior", "country": "India" },
+            { "code": "HSS", "name": "Hissar Airport", "city": "Hissar", "country": "India" },
+            { "code": "JDH", "name": "Jodhpur Airport", "city": "Jodhpur", "country": "India" },
+            { "code": "JAI", "name": "Jaipur International", "city": "Jaipur", "country": "India" },
+            { "code": "JSA", "name": "Jaisalmer Airport", "city": "Jaisalmer", "country": "India" },
+            { "code": "IXJ", "name": "Jammu Airport", "city": "Jammu", "country": "India" },
+            { "code": "KTU", "name": "Kota Airport", "city": "Kota", "country": "India" },
+            { "code": "LUH", "name": "Ludhiana Airport", "city": "Ludhiaha", "country": "India" },
+            { "code": "IXL", "name": "Leh Kushok Bakula Rimpochee", "city": "Leh", "country": "India" },
+            { "code": "LKO", "name": "Chaudhary Charan Singh International", "city": "Lucknow", "country": "India" },
+            { "code": "IXP", "name": "Pathankot Airport", "city": "Pathankot", "country": "India" },
+            { "code": "PGH", "name": "Pantnagar Airport", "city": "Nainital", "country": "India" },
+            { "code": "SXR", "name": "Sheikh ul Alam Airport", "city": "Srinagar", "country": "India" },
+            { "code": "TNI", "name": "Satna Airport", "city": "Satna", "country": "India" },
+            { "code": "AGX", "name": "Agatti Airport", "city": "Agatti Island", "country": "India" },
+            { "code": "BLR", "name": "Kempegowda International", "city": "Bangalore", "country": "India" },
+            { "code": "BEP", "name": "Bellary Airport", "city": "Bellary", "country": "India" },
+            { "code": "VGA", "name": "Vijayawada Airport", "city": "Vijayawada", "country": "India" },
+            { "code": "CJB", "name": "Coimbatore International", "city": "Coimbatore", "country": "India" },
+            { "code": "COK", "name": "Cochin International", "city": "Kochi", "country": "India" },
+            { "code": "CCJ", "name": "Calicut International", "city": "Calicut", "country": "India" },
+            { "code": "CDP", "name": "Kadapa Airport", "city": "Cuddapah", "country": "India" },
+            { "code": "CBD", "name": "Car Nicobar Air Force Station", "city": "Carnicobar", "country": "India" },
+            { "code": "BPM", "name": "Begumpet Airport", "city": "Hyderabad", "country": "India" },
+            { "code": "IXM", "name": "Madurai Airport", "city": "Madurai", "country": "India" },
+            { "code": "IXE", "name": "Mangalore International", "city": "Mangalore", "country": "India" },
+            { "code": "MAA", "name": "Chennai International", "city": "Madras", "country": "India" },
+            { "code": "IXZ", "name": "Vir Savarkar International", "city": "Port Blair", "country": "India" },
+            { "code": "PNY", "name": "Pondicherry Airport", "city": "Pendicherry", "country": "India" },
+            { "code": "RJA", "name": "Rajahmundry Airport", "city": "Rajahmundry", "country": "India" },
+            { "code": "SXV", "name": "Salem Airport", "city": "Salem", "country": "India" },
+            { "code": "TJV", "name": "Tanjore Air Force Base", "city": "Tanjore", "country": "India" },
+            { "code": "TIR", "name": "Tirupati Airport", "city": "Tirupeti", "country": "India" },
+            { "code": "TRZ", "name": "Tiruchirapally Civil Airport", "city": "Tiruchirappalli", "country": "India" },
+            { "code": "TRV", "name": "Trivandrum International", "city": "Trivandrum", "country": "India" },
+            { "code": "DIU", "name": "Diu Airport", "city": "Diu", "country": "India" },
+            { "code": "HBX", "name": "Hubli Airport", "city": "Hubli", "country": "India" },
+            { "code": "SHL", "name": "Shillong Airport", "city": "Shillong", "country": "India" },
+            { "code": "GAU", "name": "Lokpriya Gopinath Bordoloi International", "city": "Guwahati", "country": "India" },
+            { "code": "DMU", "name": "Dimapur Airport", "city": "Dimapur", "country": "India" },
+            { "code": "TEZ", "name": "Tezpur Airport", "city": "Tezpur", "country": "India" },
+            { "code": "GOP", "name": "Gorakhpur Airport", "city": "Gorakhpur", "country": "India" },
+            { "code": "DHM", "name": "Kangra Airport", "city": "Kangra", "country": "India" },
+            { "code": "NDC", "name": "Nanded Airport", "city": "Nanded", "country": "India" },
+            { "code": "SLV", "name": "Shimla Airport", "city": "Shimla", "country": "India" },
+            { "code": "MYQ", "name": "Mysore Airport", "city": "Mysore", "country": "India" },
+            { "code": "IXT", "name": "Pasighat Airport", "city": "Pasighat", "country": "India" },
+            { "code": "RTC", "name": "Ratnagiri Airport", "city": "Ratnagiri Airport", "country": "India" },
+            { "code": "RDP", "name": "Kazi Nazrul Islam Airport", "city": "Durgapur", "country": "India" },
+            { "code": "PUT", "name": "Sri Sathya Sai Airport", "city": "Puttaparthi", "country": "India" },
+            { "code": "HYD", "name": "Rajiv Gandhi International", "city": "Hyderabad", "country": "India" },
+            { "code": "DXB", "name": "Dubai International", "city": "Dubai", "country": "UAE" },
+            { "code": "LHR", "name": "Heathrow Airport", "city": "London", "country": "UK" },
+            { "code": "SIN", "name": "Changi Airport", "city": "Singapore", "country": "Singapore" },
+            { "code": "JFK", "name": "John F. Kennedy", "city": "New York", "country": "USA" },
         ];
 
         const AIRLINES = [
@@ -1077,21 +1805,25 @@
             trip: 'oneway'
         };
 
+        // Chatbot history
+        let chatMessages = [];
+
+
         // Initialize Airport Autocomplete System
         function initAirportAutocomplete(inputElement, dropdownElement, type) {
             let currentFocus = -1;
             let debounceTimer = null;
 
             // Focus event - show all airports
-            inputElement.addEventListener('focus', function() {
+            inputElement.addEventListener('focus', function () {
                 showAllAirports(type);
                 currentFocus = -1;
             });
 
             // Input event - filter with debouncing
-            inputElement.addEventListener('input', function(e) {
+            inputElement.addEventListener('input', function (e) {
                 const value = this.value;
-                
+
                 // Clear existing debounce timer
                 if (debounceTimer) {
                     clearTimeout(debounceTimer);
@@ -1104,7 +1836,7 @@
             });
 
             // Keyboard navigation
-            inputElement.addEventListener('keydown', function(e) {
+            inputElement.addEventListener('keydown', function (e) {
                 const dropdown = dropdownElement;
                 const items = dropdown.getElementsByClassName('airport-item');
 
@@ -1127,7 +1859,7 @@
             });
 
             // Click outside to close
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!inputElement.contains(e.target) && !dropdownElement.contains(e.target)) {
                     hideDropdown(type);
                 }
@@ -1138,18 +1870,18 @@
         function showAllAirports(type) {
             const dropdown = document.getElementById(`${type}-dropdown`);
             const limitedAirports = AIRPORTS.slice(0, 30); // Show first 30 for performance
-            
-            dropdown.innerHTML = limitedAirports.map(airport => 
+
+            dropdown.innerHTML = limitedAirports.map(airport =>
                 createAirportItem(airport, type, '')
             ).join('');
-            
+
             dropdown.style.display = 'block';
         }
 
         // Filter airports based on search query
         function filterAirports(type, query) {
             const dropdown = document.getElementById(`${type}-dropdown`);
-            
+
             if (!query.trim()) {
                 showAllAirports(type);
                 return;
@@ -1158,14 +1890,14 @@
             const lowercaseQuery = query.toLowerCase();
             const filteredAirports = AIRPORTS.filter(airport => {
                 return airport.city.toLowerCase().includes(lowercaseQuery) ||
-                       airport.name.toLowerCase().includes(lowercaseQuery) ||
-                       airport.code.toLowerCase().includes(lowercaseQuery);
+                    airport.name.toLowerCase().includes(lowercaseQuery) ||
+                    airport.code.toLowerCase().includes(lowercaseQuery);
             }).slice(0, 25); // Limit to 25 results for performance
 
             if (filteredAirports.length === 0) {
                 dropdown.innerHTML = '<div class="no-results">No airports found for "' + query + '"</div>';
             } else {
-                dropdown.innerHTML = filteredAirports.map(airport => 
+                dropdown.innerHTML = filteredAirports.map(airport =>
                     createAirportItem(airport, type, query)
                 ).join('');
             }
@@ -1200,12 +1932,12 @@
         // Add active class to highlighted item
         function addActive(items, index, dropdown) {
             if (!items) return;
-            
+
             // Remove active class from all items
             for (let i = 0; i < items.length; i++) {
                 items[i].classList.remove('selected');
             }
-            
+
             if (index >= 0 && index < items.length) {
                 items[index].classList.add('selected');
                 // Scroll into view if needed
@@ -1217,13 +1949,13 @@
         function selectAirport(type, code, city) {
             const input = document.getElementById(`${type}-input`);
             const dropdown = document.getElementById(`${type}-dropdown`);
-            
+
             input.value = `${city} (${code})`;
             state[type] = code;
             state.selectedAirport[type] = { code, city };
-            
+
             hideDropdown(type);
-            
+
             // Validate that both airports are selected
             validateAirports();
         }
@@ -1239,19 +1971,19 @@
         function swapAirports() {
             const fromInput = document.getElementById('from-input');
             const toInput = document.getElementById('to-input');
-            
+
             const tempValue = fromInput.value;
             const tempState = state.from;
             const tempSelected = state.selectedAirport.from;
-            
+
             fromInput.value = toInput.value;
             state.from = state.to;
             state.selectedAirport.from = state.selectedAirport.to;
-            
+
             toInput.value = tempValue;
             state.to = tempState;
             state.selectedAirport.to = tempSelected;
-            
+
             validateAirports();
         }
 
@@ -1259,7 +1991,7 @@
         function validateAirports() {
             const fromInput = document.getElementById('from-input');
             const toInput = document.getElementById('to-input');
-            
+
             // Check if both airports are selected and different
             if (state.from && state.to && state.from === state.to) {
                 toInput.value = '';
@@ -1275,12 +2007,12 @@
             document.getElementById('to-input').value = '';
             document.getElementById('departure').value = '';
             document.getElementById('passengers').selectedIndex = 0;
-            
+
             state.from = null;
             state.to = null;
             state.selectedAirport.from = null;
             state.selectedAirport.to = null;
-            
+
             hideDropdown('from');
             hideDropdown('to');
         }
@@ -1306,26 +2038,26 @@
 
             const fromCity = state.selectedAirport.from.city;
             const toCity = state.selectedAirport.to.city;
-            
+
             navigateTo('view-results');
             const meta = document.getElementById('results-meta');
             meta.innerText = `SEARCHING FOR BEST FARES FROM ${fromCity} TO ${toCity}...`;
-            
+
             setTimeout(() => {
                 const list = document.getElementById('results-list');
                 const results = [];
-                for(let i=0; i<6; i++) {
+                for (let i = 0; i < 6; i++) {
                     const airline = AIRLINES[Math.floor(Math.random() * AIRLINES.length)];
                     const hour = 10 + i;
                     results.push({
                         id: Math.random().toString(36).substr(2, 9).toUpperCase(),
                         airline: airline,
                         time: `${hour}:15`,
-                        duration: `${3+i}h 10m`,
+                        duration: `${3 + i}h 10m`,
                         price: 3500 + Math.floor(Math.random() * 12000)
                     });
                 }
-                
+
                 let html = `
                     <div class="glass-card" style="padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(197, 160, 89, 0.05); margin-bottom: 2rem;">
                         <div style="font-weight: 800; font-size: 0.9rem;">${results.length} Flights available</div>
@@ -1336,7 +2068,7 @@
                         </div>
                     </div>
                 `;
-                
+
                 results.forEach(r => {
                     html += `
                         <div class="glass-card" style="padding: 2rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02);">
@@ -1356,7 +2088,7 @@
                         </div>
                     `;
                 });
-                
+
                 meta.innerText = `${results.length} PREMIUM FLIGHTS FOUND`;
                 list.innerHTML = html;
             }, 1800);
@@ -1367,20 +2099,107 @@
             win.style.display = win.style.display === 'none' ? 'flex' : 'none';
         }
 
-        function sendChatMessage() {
+        async function sendChatMessage() {
             const input = document.getElementById('chat-input');
             const list = document.getElementById('chat-messages');
-            if(!input.value) return;
-            
-            list.innerHTML += `<div style="align-self: flex-end; background: var(--primary); color: var(--dark); padding: 1.2rem; border-radius: 18px 18px 0 18px; max-width: 85%; font-size: 0.9rem; font-weight: 800;">${input.value}</div>`;
-            const userMsg = input.value;
+            const btn = document.querySelector('#chatbot-window button');
+            const userMsg = input.value.trim();
+            if (!userMsg) return;
+
+            // Add user message to UI
+            list.innerHTML += `<div style="align-self: flex-end; background: #b8972e; color: var(--dark); padding: 1.2rem; border-radius: 18px 18px 0 18px; max-width: 85%; font-size: 0.9rem; font-weight: 800;">${userMsg}</div>`;
             input.value = '';
-            
-            setTimeout(() => {
-                list.innerHTML += `<div style="background: rgba(255,255,255,0.04); padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5;">Tracking details for "${userMsg}"... our agents are on it.</div>`;
+            list.scrollTop = list.scrollHeight;
+
+            // Add to history
+            chatMessages.push({ role: "user", content: userMsg });
+
+            // Disable UI
+            input.disabled = true;
+            btn.disabled = true;
+
+            // Show typing indicator
+            const typingId = "typing-" + Date.now();
+            list.innerHTML += `
+                <div id="${typingId}" class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>`;
+            list.scrollTop = list.scrollHeight;
+
+            try {
+                // Expert-Level Gateway Failover Logic
+                const probeGateways = [
+                    '/api/chatbot/message',
+                    'http://localhost:3001/api/chatbot/message',
+                    'http://localhost:4000/api/chatbot/message'
+                ];
+
+                let success = false;
+                let lastError = "";
+
+                for (const gateway of probeGateways) {
+                    if (success) break;
+                    try {
+                        const response = await fetch(gateway, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                model: "claude-sonnet-4-20250514",
+                                system: "You are SkyBot, the official AI travel assistant for SkyVoyage, a premium flight booking platform. You help users with: flight searches (one-way, round-trip, multi-city), booking queries, cancellations, baggage policies, check-in, seat upgrades, SkyPriority membership, domestic routes (Delhi-Mumbai, Bengaluru-Delhi, Mumbai-Goa, Chennai-Kolkata) and international hubs (London Heathrow, Dubai, Singapore Changi, New York JFK). Always respond in the same language the user writes in — including Hinglish (Hindi-English mix), Hindi, or any other language. Keep responses concise, helpful, and warm. If asked about specific real-time flight prices or live schedules, politely say those require checking the booking section. If the user tries to confuse you, correctly identifies you as an AI, or asks non-travel questions, politely steer them back to SkyVoyage assistance.",
+                                messages: chatMessages
+                            })
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            const aiResponse = (data.content && data.content[0] && data.content[0].text) 
+                                               || data.response 
+                                               || "I am your SkyBot assistant, ready to help.";
+
+                            const indicator = document.getElementById(typingId);
+                            if (indicator) indicator.remove();
+
+                            chatMessages.push({ role: "assistant", content: aiResponse });
+                            list.innerHTML += `<div style="background: rgba(255,255,255,0.04); padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5; color: white;">${aiResponse}</div>`;
+                            list.scrollTop = list.scrollHeight;
+                            success = true;
+                        } else {
+                            lastError = `Gateway returned ${response.status}`;
+                        }
+                    } catch (e) {
+                        lastError = e.message;
+                    }
+                }
+
+                if (!success) {
+                    const indicator = document.getElementById(typingId);
+                    if (indicator) indicator.remove();
+                    list.innerHTML += `<div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5;">Connectivity issue (${lastError}). Please ensure your local Gateway (Port 3001/4000) is running.</div>`;
+                }
+            } catch (error) {
+                const indicator = document.getElementById(typingId);
+                if (indicator) indicator.remove();
+                list.innerHTML += `<div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 1.2rem; border-radius: 18px 18px 18px 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5;">Critical connection error. Please refresh and try again.</div>`;
+            } finally {
+                input.disabled = false;
+                btn.disabled = false;
+                input.focus();
                 list.scrollTop = list.scrollHeight;
-            }, 1000);
+            }
         }
+
+
+
+        // Add Enter key support
+        document.getElementById('chat-input').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+
 
         function toggleFAQ(item) {
             const content = item.querySelector('.faq-content');
@@ -1394,13 +2213,13 @@
         function openAuthModal() { document.getElementById('auth-modal').classList.add('active'); }
 
         document.addEventListener('click', (e) => {
-            if(!e.target.closest('#from-wrapper')) {
+            if (!e.target.closest('#from-wrapper')) {
                 const drop = document.getElementById('from-dropdown');
-                if(drop) drop.style.display = 'none';
+                if (drop) drop.style.display = 'none';
             }
-            if(!e.target.closest('#to-wrapper')) {
+            if (!e.target.closest('#to-wrapper')) {
                 const drop = document.getElementById('to-dropdown');
-                if(drop) drop.style.display = 'none';
+                if (drop) drop.style.display = 'none';
             }
         });
 
@@ -1440,22 +2259,22 @@
         }
 
         // Mega-menu click functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const navItems = document.querySelectorAll('.nav-item');
-            
+
             // Create overlay element
             const overlay = document.createElement('div');
             overlay.className = 'mega-menu-overlay';
             document.body.appendChild(overlay);
-            
+
             navItems.forEach(item => {
                 const link = item.querySelector('a');
                 const megaMenu = item.querySelector('.mega-menu');
-                
+
                 if (link && megaMenu) {
-                    link.addEventListener('click', function(e) {
+                    link.addEventListener('click', function (e) {
                         e.preventDefault();
-                        
+
                         // Instantly hide all other mega-menus
                         navItems.forEach(otherItem => {
                             if (otherItem !== item) {
@@ -1468,26 +2287,26 @@
                                 otherItem.classList.remove('active');
                             }
                         });
-                        
+
                         // Show current mega-menu instantly
                         megaMenu.style.display = 'block';
                         item.classList.add('active');
-                        
+
                         // Trigger animation
                         setTimeout(() => {
                             megaMenu.style.opacity = '1';
                             megaMenu.style.visibility = 'visible';
                             megaMenu.style.transform = 'translateY(0)';
                         }, 10);
-                        
+
                         // Toggle overlay
                         overlay.classList.add('active');
                     });
                 }
             });
-            
+
             // Close mega-menus and overlay when clicking outside
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!e.target.closest('.nav-item')) {
                     navItems.forEach(item => {
                         const megaMenu = item.querySelector('.mega-menu');
@@ -1504,7 +2323,7 @@
         });
 
         // Initialize airport autocomplete on DOM ready
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const fromInput = document.getElementById('from-input');
             const fromDropdown = document.getElementById('from-dropdown');
             const toInput = document.getElementById('to-input');
@@ -1521,19 +2340,25 @@
         // Force remove loader after 3 seconds as a fallback
         setTimeout(() => {
             const loader = document.getElementById('loader');
-            if(loader) {
+            if (loader) {
                 loader.style.opacity = '0';
                 setTimeout(() => loader.remove(), 800);
             }
         }, 3000);
     </script>
 
-    <div id="loader" style="position: fixed; inset: 0; background: #000814; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease;">
+    <div id="loader"
+        style="position: fixed; inset: 0; background: #000814; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease;">
         <div class="loader-icon" style="font-size: 4rem; margin-bottom: 2rem; animation: pulse 1.5s infinite;">✈️</div>
-        <div style="font-weight: 900; letter-spacing: 10px; color: var(--primary); font-size: 1.2rem;">PREPARING SKYVOYAGE</div>
-        <div style="margin-top: 2rem; width: 200px; height: 2px; background: rgba(255,255,255,0.05); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; background: var(--primary); animation: slide 2s infinite ease-in-out;"></div>
+        <div style="font-weight: 900; letter-spacing: 10px; color: var(--primary); font-size: 1.2rem;">PREPARING
+            SKYVOYAGE</div>
+        <div
+            style="margin-top: 2rem; width: 200px; height: 2px; background: rgba(255,255,255,0.05); position: relative; overflow: hidden;">
+            <div
+                style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; background: var(--primary); animation: slide 2s infinite ease-in-out;">
+            </div>
         </div>
     </div>
 </body>
+
 </html>

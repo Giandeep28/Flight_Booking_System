@@ -380,9 +380,82 @@ app.use('/api/bookings', (req, res) => {
   proxyRequest(req, res, FLIGHT_SERVICE_URL, req.originalUrl);
 });
 
+// AI Chatbot Intelligence - Multi-Model Resilience (Claude + Gemini)
+app.post('/api/chatbot/message', async (req, res) => {
+    const { message, messages, system, model } = req.body;
+    const conversation = messages || [{ role: 'user', content: message }];
+
+    try {
+        // Step 1: Try Claude
+        const response = await axios.post('https://api.anthropic.com/v1/messages', {
+            model: model || "claude-3-5-sonnet-20240620",
+            max_tokens: 1024,
+            system: system || "You are SkyBot, the official travel assistant for SkyVoyage.",
+            messages: conversation
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'anthropic-version': '2023-06-01',
+                'x-api-key': process.env.ANTHROPIC_API_KEY || 'antigravity-proxy-authorized'
+            }
+        });
+        return res.json(response.data);
+    } catch (e) {
+        console.warn('[AI-Gateway] Claude unavailable, falling back to Gemini...');
+    }
+
+    try {
+        // Step 2: Try Gemini
+        const geminiKey = process.env.GEMINI_API_KEY || 'antigravity-proxy-authorized';
+        const geminiMessages = conversation.map(m => ({
+            role: m.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: m.content }]
+        }));
+
+        const gResp = await axios.post(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
+            contents: geminiMessages,
+            system_instruction: { parts: [{ text: system || "You are SkyBot." }] }
+        });
+
+        const aiText = gResp.data.candidates?.[0]?.content?.parts?.[0]?.text || "I am your SkyBot.";
+        
+        // Return Claude-compatible format
+        res.json({
+            content: [{ type: 'text', text: aiText }],
+            model: "gemini-1.5-flash"
+        });
+    } catch (err) {
+        console.error('[AI-Gateway] All AI systems failed:', err.message);
+        res.status(502).json({ success: false, message: 'AI services temporarily offline.' });
+    }
+});
+
+
+app.post('/api/chatbot/claude', async (req, res) => {
+    // Legacy support for auto-discovery
+    try {
+        const { messages, system, model } = req.body;
+        const response = await axios.post('https://api.anthropic.com/v1/messages', {
+            model: model || "claude-3-5-sonnet-20240620",
+            max_tokens: 1024,
+            system: system,
+            messages: messages
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'anthropic-version': '2023-06-01',
+                'x-api-key': process.env.ANTHROPIC_API_KEY || 'antigravity-proxy-authorized'
+            }
+        });
+        res.json(response.data);
+    } catch (e) { res.status(500).json({ success: false }); }
+});
+
 app.use('/api/chatbot', (req, res) => {
   proxyRequest(req, res, FLIGHT_SERVICE_URL, req.originalUrl);
 });
+
+
 
 // Java Booking Engine Proxy
 app.post('/api/booking-engine/lock-seat', verifyToken, async (req, res) => {

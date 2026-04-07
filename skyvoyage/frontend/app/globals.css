@@ -19,19 +19,174 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* ============================================
+  SKYVOYAGE - Global Dropdown Fix
+   ============================================ */
+
+.dropdown-menu,
+.mega-menu,
+.nav-dropdown,
+[class*="dropdown"],
+[class*="mega-menu"],
+[class*="submenu"] {
+  position: absolute !important;
+  top: 80px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) translateY(10px) !important;
+  width: 100vw !important;
+  max-width: 1200px !important;
+  padding: 40px 60px !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  opacity: 0 !important;
+  visibility: hidden;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: isolate !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  border-top: 3px solid #b8972e !important;
+  border-radius: 0 0 12px 12px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+.nav-item:hover .mega-menu,
+.nav-item:hover .dropdown-menu,
+[class*="nav-item"]:hover [class*="menu"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.dropdown-menu .columns-wrapper,
+.mega-menu .columns-wrapper,
+[class*="dropdown"]>div,
+[class*="mega-menu"]>div {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 40px !important;
+  align-items: start !important;
+}
+
+.dropdown-menu h3,
+.dropdown-menu h4,
+.mega-menu h3,
+.mega-menu h4,
+[class*="dropdown"] h3,
+[class*="dropdown"] h4 {
+  color: #1a1a2e !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+}
+
+.dropdown-menu a,
+.mega-menu a,
+[class*="dropdown"] a {
+  color: #1a1a2e !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 10px 0 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.dropdown-menu a:hover,
+.mega-menu a:hover,
+[class*="dropdown"] a:hover {
+  color: #b8972e !important;
+  transform: translateX(5px);
+}
+
+.dropdown-menu a svg,
+.dropdown-menu a img,
+.dropdown-menu a i,
+.mega-menu a svg,
+.mega-menu a img,
+.mega-menu a i {
+  color: #b8972e !important;
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.skypriority-card,
+[class*="skypriority"] {
+  background-color: #f5f0e8 !important;
+  border-radius: 10px !important;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-self: start !important;
+}
+
+.skypriority-card h4,
+[class*="skypriority"] h4 {
+  color: #1a1a2e !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+}
+
+.skypriority-card p,
+[class*="skypriority"] p {
+  color: #6b6b6b !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.skypriority-card button,
+.skypriority-card a,
+[class*="skypriority"] button,
+[class*="skypriority"] a {
+  background-color: #b8972e !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 14px 20px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  letter-spacing: 1.5px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.navbar,
+.header,
+.menu-wrapper {
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+.nav-item {
+  position: static !important;
+}
+
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .search-portal {
-  background: rgba(5, 13, 28, 0.85);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 3rem;
   border-radius: 32px;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+  color: #000814;
 }
 
 .btn-primary {
@@ -51,12 +206,12 @@ body {
 }
 
 .input-field {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   padding: 1rem;
   border-radius: 16px;
   width: 100%;
-  color: white;
+  color: #000814;
   outline: none;
   transition: border-color 0.3s;
 }

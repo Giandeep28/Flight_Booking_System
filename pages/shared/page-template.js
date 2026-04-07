@@ -272,23 +272,43 @@ function getSharedCSS() {
     .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
     /* Header */
-    header { background: rgba(5, 13, 28, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1100; height: var(--nav-height); }
-    nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+    header { background: rgba(5, 13, 28, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky !important; top: 0; z-index: 1100 !important; height: var(--nav-height); }
+    nav { display: flex; justify-content: space-between; align-items: center; height: 100%; position: relative !important; z-index: 1000 !important; }
     .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: 1.5px; }
     .logo-icon { width: 45px; height: 45px; background: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--glow-gold); }
     .nav-links { display: flex; gap: 2.8rem; list-style: none; height: 100%; align-items: center; }
-    .nav-item { height: 100%; display: flex; align-items: center; position: relative; cursor: pointer; }
+    .nav-item { height: 100%; display: flex; align-items: center; position: static !important; cursor: pointer; }
     .nav-links>li>a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; padding: 10px 0; }
     .nav-links>li>a:hover, .nav-links>li>a.active { color: var(--primary); }
 
     /* Mega Menu */
     .mega-menu {
-        position: absolute; top: var(--nav-height); left: 50%; transform: translateX(-50%) translateY(10px);
-        width: 900px; background: transparent; border: none; box-shadow: none;
-        z-index: 9999; padding: 3rem 2rem; opacity: 0; visibility: hidden;
-        transition: opacity 0.15s ease, transform 0.15s ease; border-radius: 0 0 16px 16px;
+        background-color: #ffffff !important;
+        background: #ffffff !important;
+        opacity: 0 !important;
+        visibility: hidden;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        isolation: isolate !important;
+        position: absolute !important;
+        top: var(--nav-height) !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        width: 1200px !important;
+        max-width: 95vw !important;
+        z-index: 9999 !important;
+        padding: 3rem 2rem;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+        border-top: 3px solid #b8972e !important;
     }
-    .nav-item:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-item:hover .mega-menu { 
+        opacity: 1 !important; 
+        visibility: visible !important; 
+        transform: translateX(-50%) translateY(0) !important; 
+        pointer-events: auto !important;
+    }
     .mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; }
     .mega-col h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; color: #1f2937; margin-bottom: 1.5rem; font-weight: 900; }
     .mega-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }

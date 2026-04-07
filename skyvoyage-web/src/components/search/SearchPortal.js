@@ -26,8 +26,8 @@ export default function SearchPortal() {
 
   return (
     <div className="container relative z-10 w-full mt-16 px-0 mb-32">
-      <div className="glass-card bg-dark/80 border border-white/10 p-8 md:p-10 lg:p-12 shadow-2xl">
-        <div className="flex gap-12 mb-10 border-b border-white/10 pb-5 overflow-x-auto no-scrollbar">
+      <div className="bg-white border border-black/5 p-8 md:p-10 lg:p-12 shadow-2xl rounded-3xl">
+        <div className="flex gap-12 mb-10 border-b border-black/5 pb-5 overflow-x-auto no-scrollbar">
           {[
             { id: "oneway", label: "ONE WAY" },
             { id: "round", label: "ROUND TRIP" },
@@ -60,7 +60,7 @@ export default function SearchPortal() {
             <span className="input-label">Travel Date</span>
             <input 
               type="date" 
-              className="input-field bg-white/5 border border-white/10 p-5 rounded-2xl w-full text-white font-bold text-[1.15rem] outline-none hover:border-primary/50 transition-colors" 
+              className="input-field bg-[#f8fafc] border border-[#e2e8f0] p-5 rounded-2xl w-full text-[#000814] font-bold text-[1.15rem] outline-none hover:border-primary/50 transition-colors" 
             />
           </div>
           <div className="flex-1">
@@ -68,7 +68,7 @@ export default function SearchPortal() {
             <select 
               value={travelers}
               onChange={(e) => setTravelers(e.target.value)}
-              className="input-field bg-white/5 border border-white/10 p-5 rounded-2xl w-full text-white font-bold text-[1.15rem] outline-none hover:border-primary/50 appearance-none transition-colors"
+              className="input-field bg-[#f8fafc] border border-[#e2e8f0] p-5 rounded-2xl w-full text-[#000814] font-bold text-[1.15rem] outline-none hover:border-primary/50 appearance-none transition-colors"
             >
               <option value="1">1 Adult, Economy</option>
               <option value="2">2 Adults, Economy</option>

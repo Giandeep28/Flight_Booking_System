@@ -74,15 +74,15 @@ const AirportAutocomplete = ({ placeholder, onSelect }) => {
       />
       
       {isOpen && suggestions.length > 0 && (
-        <div className="absolute top-[105%] left-0 right-0 bg-[#081225] border border-[rgba(255,255,255,0.08)] rounded-2xl max-h-[350px] overflow-y-auto z-[2000] shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-fade-in">
+        <div className="absolute top-[105%] left-0 right-0 bg-white border border-[rgba(0,0,0,0.05)] rounded-2xl max-h-[350px] overflow-y-auto z-[2000] shadow-[0_30px_60px_rgba(0,0,0,0.12)] animate-fade-in">
           {suggestions.map((airport) => (
             <div 
               key={airport.code} 
-              className="p-5 border-b border-[rgba(255,255,255,0.03)] cursor-pointer transition-all hover:bg-[rgba(197,160,89,0.1)] hover:pl-8 flex justify-between items-center group"
+              className="p-5 border-b border-[rgba(0,0,0,0.03)] cursor-pointer transition-all hover:bg-[rgba(197,160,89,0.1)] hover:pl-8 flex justify-between items-center group"
               onClick={() => handleSelect(airport)}
             >
               <div>
-                <div className="font-black text-lg text-white group-hover:text-[#C5A059] transition-colors">{airport.city} ({airport.code})</div>
+                <div className="font-black text-lg text-[#000814] group-hover:text-[#C5A059] transition-colors">{airport.city} ({airport.code})</div>
                 <div className="text-[11px] font-bold text-[#94A3B8] uppercase tracking-wider">{airport.name}</div>
               </div>
               <div className="text-[10px] text-[#C5A059] font-black uppercase tracking-widest">{airport.country}</div>

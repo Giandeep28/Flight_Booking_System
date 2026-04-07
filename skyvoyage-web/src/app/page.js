@@ -59,7 +59,7 @@ export default function Home() {
                 <span className="bg-[rgba(197,160,89,0.1)] text-[#C5A059] px-4 py-1.5 rounded-md text-[10px] font-black uppercase tracking-widest mb-8 inline-block">
                   {slide.tag}
                 </span>
-                <h1 className="text-[68px] font-black leading-[1.1] mb-8 text-white italic">
+                <h1 className="text-[68px] font-black leading-[1.1] mb-8 text-[#000814] italic">
                   {slide.title}
                 </h1>
                 <p className="text-[#94A3B8] text-lg mb-12 max-w-[600px] font-medium">
@@ -76,8 +76,8 @@ export default function Home() {
 
       {/* Search Portal */}
       <div className="max-w-[1280px] mx-auto px-5 relative z-10 w-full">
-        <div className="glass-card p-10 mt-16 bg-[rgba(5, 13, 28, 0.85)] border-[rgba(255,255,255,0.08)]">
-          <div className="flex gap-12 mb-10 border-b border-[rgba(255,255,255,0.08)] pb-5">
+        <div className="glass-card p-10 mt-16">
+          <div className="flex gap-12 mb-10 border-b border-black/5 pb-5">
             {['oneway', 'round', 'multi'].map((type) => (
               <button 
                 key={type}
@@ -159,7 +159,7 @@ export default function Home() {
         ].map((feature, idx) => (
           <div key={idx} className="glass-card p-12 text-center group hover:-translate-y-2 transition-all duration-500">
             <div className="text-4xl text-[#C5A059] mb-8 group-hover:scale-110 transition-transform"><i className={`fas ${feature.icon}`}></i></div>
-            <h4 className="font-black text-[13px] mb-4 tracking-[2px] text-white italic">{feature.title}</h4>
+            <h4 className="font-black text-[13px] mb-4 tracking-[2px] text-[#000814] italic">{feature.title}</h4>
             <p className="text-[12px] text-[#94A3B8] leading-relaxed font-medium">{feature.desc}</p>
           </div>
         ))}
@@ -170,7 +170,7 @@ export default function Home() {
         <div className="flex justify-between items-end mb-12">
           <div>
             <span className="bg-[rgba(197,160,89,0.1)] text-[#C5A059] px-4 py-1.5 rounded-md text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Global Inspiration</span>
-            <h2 className="text-5xl font-black text-white italic tracking-tighter uppercase tracking-widest italic tracking-tighter">Trending <span className="text-[#C5A059]">Experiences</span></h2>
+            <h2 className="text-5xl font-black text-[#000814] italic tracking-tighter uppercase tracking-widest italic tracking-tighter">Trending <span className="text-[#C5A059]">Experiences</span></h2>
           </div>
           <button className="px-8 py-3 rounded-xl border border-white/10 text-[11px] font-black text-[#94A3B8] uppercase tracking-widest hover:bg-white/5 transition-all">Explore All</button>
         </div>
@@ -185,7 +185,7 @@ export default function Home() {
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" 
                 style={{ backgroundImage: `url(${dest.img})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,8,20,0.9)] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,8,20,0.9)] via-transparent to-transparent opacity-80"></div>
               <div className="absolute bottom-10 left-10 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                 <h3 className="text-3xl font-black text-white italic mb-2 tracking-tighter shadow-2xl">{dest.city}</h3>
                 <span className="text-[#C5A059] font-black text-lg drop-shadow-lg">FROM {dest.price}</span>

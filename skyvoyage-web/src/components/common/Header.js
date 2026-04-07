@@ -12,9 +12,9 @@ const Header = () => {
   const handleMenuLeave = () => setActiveMenu(null);
 
   return (
-    <header className="bg-[rgba(5,13,28,0.92)] backdrop-blur-[20px] border-b border-[rgba(255,255,255,0.08)] sticky top-0 z-[1100] h-[80px]">
-      <nav className="max-w-[1280px] mx-auto px-5 flex justify-between items-center h-full">
-        <Link href="/" className="flex items-center gap-3 text-2xl font-black text-white no-underline tracking-[1.5px]">
+    <header className="header bg-white border-b border-[rgba(0,0,0,0.05)] sticky top-0 z-[1100] h-[80px] shadow-sm">
+      <nav className="navbar max-w-[1280px] mx-auto px-5 flex justify-between items-center h-full relative z-[1000]">
+        <Link href="/" className="flex items-center gap-3 text-2xl font-black text-[#000814] no-underline tracking-[1.5px]">
           <div className="w-[45px] height-[45px] bg-[#C5A059] rounded-xl flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(197,160,89,0.25)]">
             ✈️
           </div>
@@ -23,11 +23,11 @@ const Header = () => {
         
         <ul className="flex gap-11 list-none h-full items-center">
           <li 
-            className="h-full flex items-center group relative nav-item"
+            className="h-full flex items-center group nav-item"
             onMouseEnter={() => handleMenuEnter('flights')}
             onMouseLeave={handleMenuLeave}
           >
-            <a href="#" className="text-[#94A3B8] font-bold text-[13px] uppercase tracking-wider transition-colors hover:text-[#C5A059]">
+            <a href="#" className="text-[#1e293b] font-bold text-[13px] uppercase tracking-wider transition-colors hover:text-[#C5A059]">
               Flights <i className="fas fa-chevron-down text-[10px] ml-1"></i>
             </a>
             
@@ -60,7 +60,7 @@ const Header = () => {
                     <li><a href="#" className="mega-link"><i className="fas fa-globe text-[#C5A059] mr-2"></i> New York JFK</a></li>
                   </ul>
                 </div>
-                <div className="bg-[rgba(197,160,89,0.05)] p-8 rounded-2xl border border-[rgba(197,160,89,0.1)] flex flex-col justify-center text-center">
+                <div className="bg-white p-8 rounded-2xl border border-[rgba(197,160,89,0.1)] flex flex-col justify-center text-center">
                   <h4 className="text-[12px] uppercase tracking-[2.5px] font-black italic text-[#C5A059] mb-4">SKYPRIORITY CARD</h4>
                   <p className="text-[13px] text-[#1e293b] mb-6 font-medium leading-relaxed">Unlock premium lounge access and priority boarding with our loyalty tier.</p>
                   <button className="btn-primary py-3 px-6 rounded-xl text-[12px]">UPGRADE NOW</button>
@@ -78,9 +78,9 @@ const Header = () => {
             <Link href="/dashboard" className="flex items-center gap-3 group">
               <div className="text-right">
                 <div className="text-[11px] font-black text-[#C5A059] uppercase tracking-tighter">SkyPriority</div>
-                <div className="text-[14px] font-bold text-white">{user.name}</div>
+                <div className="text-[14px] font-bold text-[#000814]">{user.name}</div>
               </div>
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white ring-2 ring-transparent group-hover:ring-[#C5A059] transition-all">
+              <div className="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-[#1e293b] ring-2 ring-transparent group-hover:ring-[#C5A059] transition-all">
                 <i className="fas fa-user-circle text-lg"></i>
               </div>
             </Link>
@@ -97,7 +97,7 @@ const Header = () => {
 
       <style jsx>{`
         .nav-link {
-          @apply text-[#94A3B8] font-bold text-[13px] uppercase tracking-wider transition-colors hover:text-[#C5A059] no-underline;
+          @apply text-[#1e293b] font-bold text-[13px] uppercase tracking-wider transition-colors hover:text-[#C5A059] no-underline;
         }
         .mega-link {
           @apply flex items-center gap-3 text-[#1e293b] font-semibold text-[14px] p-3 rounded-lg hover:bg-[rgba(197,160,89,0.1)] hover:text-[#C5A059] hover:translate-x-2 transition-all duration-300 no-underline italic;

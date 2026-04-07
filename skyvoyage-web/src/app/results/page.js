@@ -58,7 +58,7 @@ const ResultsPage = () => {
             <span className="input-label">Stops Count</span>
             <div className="flex flex-col gap-4 mt-4">
               {['Non-Stop', '1 Stop', '2+ Stops'].map((stop) => (
-                <label key={stop} className="flex items-center gap-3 text-[14px] font-bold text-[#94A3B8] cursor-pointer group">
+                <label key={stop} className="flex items-center gap-3 text-[14px] font-bold text-slate-500 cursor-pointer group">
                   <input type="checkbox" className="w-[18px] h-[18px] accent-[#C5A059]" />
                   <span className="group-hover:text-[#C5A059] transition-colors">{stop}</span>
                 </label>
@@ -70,7 +70,7 @@ const ResultsPage = () => {
             <span className="input-label">Airlines</span>
             <div className="flex flex-col gap-4 mt-4">
               {['Air India', 'IndiGo', 'Vistara', 'Emirates'].map((airline) => (
-                <label key={airline} className="flex items-center gap-3 text-[14px] font-bold text-[#94A3B8] cursor-pointer group">
+                <label key={airline} className="flex items-center gap-3 text-[14px] font-bold text-slate-500 cursor-pointer group">
                   <input type="checkbox" className="w-[18px] h-[18px] accent-[#C5A059]" />
                   <span className="group-hover:text-[#C5A059] transition-colors">{airline}</span>
                 </label>
@@ -82,12 +82,12 @@ const ResultsPage = () => {
 
       {/* Results List */}
       <div className="w-full">
-        <div className="glass-card mb-8 px-12 py-6 flex justify-between items-center bg-[rgba(197,160,89,0.05)] border-[rgba(197,160,89,0.1)]">
+        <div className="glass-card mb-8 px-12 py-6 flex justify-between items-center bg-white">
           <div className="font-black text-lg text-[#C5A059] italic uppercase tracking-wider">
             {loading ? 'Finding Best Fares...' : `Best Fares from ${from} to ${to}`}
           </div>
           {!loading && (
-            <div className="text-[12px] font-bold text-[#94A3B8] uppercase tracking-widest bg-[rgba(255,255,255,0.03)] px-4 py-2 rounded-lg border border-[rgba(255,255,255,0.05)]">
+            <div className="text-[12px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
               {flights.length} flights showing
             </div>
           )}
@@ -97,31 +97,31 @@ const ResultsPage = () => {
           {loading ? (
             // Skeleton Loaders
             Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="glass-card p-12 h-[180px] animate-pulse bg-[rgba(255,255,255,0.02)]" />
+              <div key={i} className="glass-card p-12 h-[180px] animate-pulse bg-slate-50" />
             ))
           ) : (
             flights.map((flight) => (
-              <div key={flight.id} className="glass-card p-10 lg:p-12 grid grid-cols-1 md:grid-cols-[2fr_1.5fr_1fr_1.5fr_1.5fr] items-center gap-8 md:gap-12 group hover:translate-x-1 outline outline-transparent hover:outline-[rgba(197,160,89,0.2)] transition-all duration-300">
+              <div key={flight.id} className="glass-card p-10 lg:p-12 grid grid-cols-1 md:grid-cols-[2fr_1.5fr_1fr_1.5fr_1.5fr] items-center gap-8 md:gap-12 group hover:translate-x-1 outline outline-transparent hover:outline-[rgba(197,160,89,0.1)] transition-all duration-300">
                 <div className="flex items-center gap-6">
                   <img src={flight.airline.logo} alt={flight.airline.name} className="h-12 w-12 object-contain filter grayscale group-hover:grayscale-0 transition-all" />
-                  <span className="font-extrabold text-[#94A3B8] group-hover:text-white transition-colors">{flight.airline.name}</span>
+                  <span className="font-extrabold text-slate-600 group-hover:text-[#000814] transition-colors">{flight.airline.name}</span>
                 </div>
                 
                 <div className="text-center md:text-left">
-                  <div className="font-black text-3xl mb-1">{flight.departure}</div>
+                  <div className="font-black text-3xl mb-1 text-[#000814]">{flight.departure}</div>
                   <div className="text-[12px] font-black text-[#C5A059] uppercase tracking-widest">{from}</div>
                 </div>
 
                 <div className="text-center flex flex-col items-center">
-                  <div className="text-[11px] font-bold text-[#94A3B8] mb-2">{flight.duration}</div>
-                  <div className="w-[80px] h-[2px] bg-[rgba(255,255,255,0.1)] relative">
+                  <div className="text-[11px] font-bold text-slate-400 mb-2">{flight.duration}</div>
+                  <div className="w-[80px] h-[2px] bg-slate-100 relative">
                     <div className="absolute top-[-3px] left-[50%] translate-x-[-50%] w-2 h-2 bg-[#C5A059] rounded-full shadow-[0_0_10px_#C5A059]" />
                   </div>
                   <div className="text-[10px] font-black text-[#C5A059] mt-2 uppercase tracking-tighter italic">{flight.stops}</div>
                 </div>
 
                 <div className="text-center md:text-right">
-                  <div className="font-black text-3xl mb-1">{flight.arrival}</div>
+                  <div className="font-black text-3xl mb-1 text-[#000814]">{flight.arrival}</div>
                   <div className="text-[12px] font-black text-[#C5A059] uppercase tracking-widest">{to}</div>
                 </div>
 
